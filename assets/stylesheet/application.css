@@ -1,7 +1,23 @@
+:root{
+  --green: #038133;
+  --blue: #00619A;
+  --yellow: #E3C03E;
+  --textColor: #000;
+  --placeHold: #8D8D8D;
+  --white: white;
+}
+
 .bgLogin{
   background-image: url(/assets/images/login.png);
   height: 400px;
   width: 366px;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.titleLogin{
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 48px;
 }
