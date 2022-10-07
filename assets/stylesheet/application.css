@@ -13,6 +13,9 @@
   width: 366px;
   background-repeat: no-repeat;
   background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .titleLogin{
@@ -20,4 +23,24 @@
   font-size: 48px;
   font-weight: 700;
   line-height: 48px;
+  color: var(--white);
+}
+
+.textCenter{
+  text-align: center;
+}
+
+.col-5.align-self-center {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.pb-3.col-6 > img {
+  right: 62%;
+  position: absolute;
+  top: 36.6%;
 }
