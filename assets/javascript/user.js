@@ -1,7 +1,7 @@
 // class User {
-//   constructor(name, "email", registration){
+//   constructor(name, email, registration){
 //     this.name = name;
-//     this."email" = "email";
+//     this."email" = email;
 //     this.registration = registration;
 //   }
 // }
@@ -31,6 +31,26 @@ const user = [
         "nome": 'Victor Ehrich Carneiro de Medeiros',
         "matricula": '418332',
         "email": 'victormedeiro@yahoo.com.br'
+      },
+      {
+        "nome": 'Maurício de Moura dos Santos',
+        "matricula": '494752',
+        "email": 'mauriciomoura837@gmail.com'
+      },
+      {
+        "nome": 'Vinicius Moraes Marques',
+        "matricula": '434045',
+        "email": 'viniciusmarques@alu.ufc.br'
+      },
+      {
+        "nome": 'Aiko Hilly Ribeiro de Paula',
+        "matricula": '515015',
+        "email": 'aikohilly@alu.ufc.br'
+      },
+      {
+        "nome": 'Fábio Gabriel Esteves Ivo Gomes',
+        "matricula": '510514',
+        "email": 'fabiogabrieleig@gmail.com'
       }
     ]
   }

@@ -7,6 +7,10 @@
   --white: white;
 }
 
+.containeer{
+  padding: 0 40px;
+}
+
 .bgLogin{
   background-image: url(/assets/images/login.png);
   height: 400px;
@@ -43,4 +47,21 @@
   right: 62%;
   position: absolute;
   top: 36.6%;
+}
+
+.gridUser{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 20px;
+}
+
+.textLimit{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.imgPassword{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }

@@ -30,9 +30,9 @@ class userCard extends HTMLElement{
     <div class="card" style="width: 18rem;">
     <img src="/assets/images/user.png" class="card-img-top" alt="...">   
     <ul class="list-group list-group-flush">
-    <h5 class="card-title list-group-item m-0">Teo</h5>
+    <h5 class="card-title list-group-item m-0 textLimit">Teo</h5>
     <li class="list-group-item registrationCard"></li>
-    <li class="list-group-item emailCard"></li>
+    <li class="list-group-item emailCard textLimit"></li>
     </ul>
     </div>
     `
@@ -42,15 +42,18 @@ class userCard extends HTMLElement{
 customElements.define('user-card', userCard);
 customElements.define('header-bootstrap', headerBootstrap);
 
-let nameCard = document.querySelector(".card-title")
-nameCard.innerHTML = `${user[0]['infos'][0]['nome']}`
-let registrationCard = document.querySelector(".registrationCard")
-registrationCard.innerHTML = `Matrícula: ${user[0]['infos'][0]['matricula']}`
-let emailCard = document.querySelector(".emailCard")
-emailCard.innerHTML = `E-mail: ${user[0]['infos'][0]['email']}`
+for(let i = 0; i < user[0].infos.length-1; i++){
+  let el = document.createElement('user-card')
+  rowUser.append(el)
+}
 
-
-// let rowUser = document.querySelector("#rowUser")
-// let el = document.createElement('user-card')
-// rowUser.append(el)
+const listUseCard = document.querySelectorAll("user-card")
+for (let [index, uc]  of listUseCard.entries()) {
+  let nameCard = document.querySelectorAll(".card-title")
+  nameCard[index].innerHTML = `${user[0]['infos'][index]['nome']}`
+  let registrationCard = document.querySelectorAll(".registrationCard")
+  registrationCard[index].innerHTML = `Matrícula: ${user[0]['infos'][index]['matricula']}`
+  let emailCard = document.querySelectorAll(".emailCard")
+  emailCard[index].innerHTML = `E-mail: ${user[0]['infos'][index]['email']}`
+}
 
