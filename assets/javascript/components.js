@@ -49,8 +49,18 @@ registrationCard.innerHTML = `Matrícula: ${user[0]['infos'][0]['matricula']}`
 let emailCard = document.querySelector(".emailCard")
 emailCard.innerHTML = `E-mail: ${user[0]['infos'][0]['email']}`
 
+for(let i = 0; i < user[0].infos.length-1; i++){
+  let el = document.createElement('user-card')
+  rowUser.append(el)
+}
 
-// let rowUser = document.querySelector("#rowUser")
-// let el = document.createElement('user-card')
-// rowUser.append(el)
+const listUseCard = document.querySelectorAll("user-card")
+for (let [index, uc]  of listUseCard.entries()) {
+  let nameCard = document.querySelectorAll(".card-title")
+  nameCard[index].innerHTML = `${user[0]['infos'][index]['nome']}`
+  let registrationCard = document.querySelectorAll(".registrationCard")
+  registrationCard[index].innerHTML = `Matrícula: ${user[0]['infos'][index]['matricula']}`
+  let emailCard = document.querySelectorAll(".emailCard")
+  emailCard[index].innerHTML = `E-mail: ${user[0]['infos'][index]['email']}`
+}
 

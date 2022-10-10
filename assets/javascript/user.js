@@ -31,6 +31,16 @@ const user = [
         "nome": 'Victor Ehrich Carneiro de Medeiros',
         "matricula": '418332',
         "email": 'victormedeiro@yahoo.com.br'
+      },
+      {
+        "nome": 'Maurício de Moura dos Santos',
+        "matricula": '494752',
+        "email": 'mauriciomoura837@gmail.com'
+      },
+      {
+        "nome": 'Vinicius Moraes Marques',
+        "matricula": '434045',
+        "email": 'viniciusmarques@alu.ufc.br'
       }
     ]
   }
