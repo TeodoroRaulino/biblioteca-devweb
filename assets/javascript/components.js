@@ -7,7 +7,7 @@ class headerBootstrap extends HTMLElement {
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="#">Home</a>
@@ -16,6 +16,16 @@ class headerBootstrap extends HTMLElement {
                 <a class="nav-link" href="#">Livros</a>
               </li>
             </ul>
+          </div>                           
+          <div class="navSidebar">
+            <div class="toggle">
+              <input type="checkbox" class="switch" name="theme" id="switch">
+              <label for="switch" class="label">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+                <div class="ball"></div>
+              </label>
+            </div>
           </div>
         </div>
       </nav>
@@ -42,14 +52,14 @@ class navSidebar extends HTMLElement{
   connectedCallback(){
     this.innerHTML = `
       <div class="navSidebar">
-      <div class="toggle">
-        <input type="checkbox" class="switch" name="theme" id="switch">
-        <label for="switch" class="label">
-          <i class="fas fa-moon"></i>
-          <i class="fas fa-sun"></i>
-          <div class="ball"></div>
-        </label>
-      </div>
+        <div class="toggle">
+          <input type="checkbox" class="switch" name="theme" id="switch">
+          <label for="switch" class="label">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <div class="ball"></div>
+          </label>
+        </div>
       </div>
     `
   }
