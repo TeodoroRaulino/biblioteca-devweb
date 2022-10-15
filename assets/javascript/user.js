@@ -1,13 +1,3 @@
-// class User {
-//   constructor(name, email, registration){
-//     this.name = name;
-//     this."email" = email;
-//     this.registration = registration;
-//   }
-// }
-// const user = new User ('Teodoro Raulino', 'teoirado@gmail.com', '429884')
-
-
 const user = [
   {
     "typeUser": "Aluno",
@@ -51,7 +41,27 @@ const user = [
         "nome": 'Fábio Gabriel Esteves Ivo Gomes',
         "matricula": '510514',
         "email": 'fabiogabrieleig@gmail.com'
+      },
+      {
+        "nome": 'Victor Emanuel Alves do Santos',
+        "matricula": '417395',
+        "email": 'victor.eas19@gmail.com'
       }
     ]
   }
 ]
+
+for(let i = 0; i < user[0].infos.length; i++){
+  let el = document.createElement('user-card')
+  rowUser.appendChild(el)
+}
+
+const listUseCard = document.querySelectorAll("user-card")
+for (let [index, uc]  of listUseCard.entries()) {
+  let nameCard = document.querySelectorAll(".card-title")
+  nameCard[index].innerHTML = `${user[0]['infos'][index]['nome']}`
+  let registrationCard = document.querySelectorAll(".registrationCard")
+  registrationCard[index].innerHTML = `Matrícula: ${user[0]['infos'][index]['matricula']}`
+  let emailCard = document.querySelectorAll(".emailCard")
+  emailCard[index].innerHTML = `E-mail: ${user[0]['infos'][index]['email']}`
+}
