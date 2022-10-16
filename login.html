@@ -10,29 +10,30 @@
 </head>
 <body>
 
-  <header-bootstrap></header-bootstrap>
-
-  <div class="row m-0 py-5 justify-content-center">
-    <div class="col-5 align-self-center">
-      <h2 class="textCenter">Entrar na sua conta</h2>
-      <div class="pb-3 pt-3 col-6">
-        <input type="text" class="form-control" placeholder="e-mail">
+  <nav-bar></nav-bar>
+  <div class="loginContainer">
+    <div class="row m-0 py-5 justify-content-center">
+      <div class="col-5 align-self-center p-5">
+        <h2 class="textCenter text-color">Entre na sua conta</h2>
+        <div class="pb-3 pt-3">
+          <input type="text" class="formLogin" placeholder="e-mail">
+        </div>
+        <div class="pb-3 d-flex align-items-center">
+          <input type="password" class="formLogin" id="password" placeholder="password">
+          <img class="visibilityPassword" src="/assets/images/visibility_off.png" id="visibility">
+        </div>
+        <div class="textCenter">
+          <button type="submit" class="btn btn-success">Entrar</button>
+        </div>
       </div>
-      <div class="pb-3 col-6">
-        <input type="password" class="form-control" id="password" placeholder="password">
-        <img src="/assets/images/visibility_off.png" id="visibility">
-      </div>
-      <div class="col-6 textCenter">
-        <button type="submit" class="btn btn-success col-4">Entrar</button>
-      </div>
-    </div>
-    <div class="col-5 titleLogin p-0">
-      <div class="bgLogin">
-        <p>
-          Seja <br>
-          <span class="contrast">bem-vindo</span> <br>
-          de volta.
-        </p>
+      <div class="col-6 titleLogin p-5">
+        <div class="bgLogin text-white">
+          <p>
+            Seja <br>
+            <span class="contrast">bem-vindo</span> <br>
+            de volta.
+          </p>
+        </div>
       </div>
     </div>
   </div>
