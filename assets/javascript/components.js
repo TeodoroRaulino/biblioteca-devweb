@@ -1,34 +1,23 @@
-class headerBootstrap extends HTMLElement {
+class navbarComponent extends HTMLElement {
   connectedCallback() {
       this.innerHTML = `
-      <nav class="navbar navbar-expand-lg bg-light px-5">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="/assets/images/logo.png"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Livros</a>
-              </li>
-            </ul>
-          </div>                           
-          <div class="navSidebar">
-            <div class="toggle">
-              <input type="checkbox" class="switch" name="theme" id="switch">
-              <label for="switch" class="label">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
-                <div class="ball"></div>
-              </label>
-            </div>
-          </div>
+      <div class="navSidebar d-flex containeer justify-content-between">
+        <div class=""><a href="/index.html">
+          <img src="/assets/images/logo.png" id="logo">
+        </a></div>
+        <div>
+            <a class="p-2" href="#">Home</a>
+            <a class="p-2" href="#">Livros</a>
         </div>
-      </nav>
+        <div class="toggle">
+          <input type="checkbox" class="switch" name="theme" id="switch"">
+          <label for="switch" class="label">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <div class="ball"></div>
+          </label>
+        </div>
+      </div>
       `
   }
 }
@@ -53,7 +42,7 @@ class navSidebar extends HTMLElement{
     this.innerHTML = `
       <div class="navSidebar">
         <div class="toggle">
-          <input type="checkbox" class="switch" name="theme" id="switch">
+          <input type="checkbox" class="switch" name="theme" id="switch"">
           <label for="switch" class="label">
             <i class="fas fa-moon"></i>
             <i class="fas fa-sun"></i>
@@ -72,9 +61,9 @@ class userCard extends HTMLElement{
     <div class="card shadowCard" style="width: 18rem;">
     <img src="/assets/images/user.png" class="card-img-top" alt="...">   
     <ul class="list-group list-group-flush">
-    <h5 class="card-title list-group-item m-0 textLimit"></h5>
-    <li class="list-group-item registrationCard"></li>
-    <li class="list-group-item emailCard textLimit"></li>
+      <h5 class="card-title list-group-item m-0 textLimit"></h5>
+      <li class="list-group-item registrationCard textLimit"></li>
+      <li class="list-group-item emailCard textLimit"></li>
     </ul>
     </div>
     </a>
@@ -83,6 +72,6 @@ class userCard extends HTMLElement{
 }
 
 customElements.define('user-card', userCard);
-customElements.define('header-bootstrap', headerBootstrap);
+customElements.define('nav-bar', navbarComponent);
 customElements.define('side-bar', sidebar)
 customElements.define('nav-sidebar', navSidebar)
