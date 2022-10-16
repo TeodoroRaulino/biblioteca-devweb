@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Livro</title>
+  <link rel="stylesheet" href="/assets/stylesheet/application.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+  <side-bar></side-bar>
+  <nav-sidebar></nav-sidebar>
+
+  <div class="m250 px-5 py-5">
+    <div class="row">
+      <div class="row">
+        <div class="col-5 px-3 pb-3">
+          <h1 class="">Adicionar Livro</h1>
+        </div>
+      </div>
+        <div class="row">
+          <div class="pb-3 col-4">
+            <label class="textBold">Titulo</label>
+            <input type="text" class="form-control" placeholder="Lorem Ipsun">
+          </div>
+          <div class="pb-3 col-4">
+            <label class="textBold">Autor</label>
+            <input type="text" class="form-control" placeholder="João e Maria">
+          </div>
+          <div class="pb-3 col-4">
+            <label class="textBold">Ano de lançamento</label>
+            <input type="text" class="form-control" placeholder="Matrícula">
+          </div>
+        </div>
+        <div class="row">
+          <div class="pb-3 col-6">
+            <label class="textBold">Sinopse</label>
+            <textarea class="form-control" placeholder="Descrição do livro..." rows="4"></textarea>
+          </div>
+          <div class="pb-3 col-3">
+            <label class="textBold">Edição/Volume</label>
+            <input type="text" class="form-control" placeholder="5ª Ed. / Volume 8">
+          </div>
+          <div class="pb-3 col-3">
+            <label class="textBold">Exemplares</label>
+            <input type="form-select" class="form-control" placeholder="Quantidade">
+          </div>
+        </div>
+        <div class="col-10 textCenter">
+          <button type="submit" class="btn btn-success mt-3 col-4">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/javascript/components.js"></script>
+  <script src="/assets/javascript/application.js"></script>
+</body>
