@@ -4,28 +4,28 @@ const user = [
     "infos": [
       {
         "nome": 'Teodoro Raulino Lima Neto',
-        "identificador": 'Matrícula: 429884',
-        "email": 'teodororau@alu.ufc.br'
+        "identificador": 'Matrícula: XXXXXX',
+        "email": 'alu@alu.ufc.br'
       },
       {
         "nome": 'Italo Viana Severo',
-        "identificador": 'Matrícula: 434043',
-        "email": 'italo_1002@live.com'
+        "identificador": 'Matrícula: XXXXXX',
+        "email": 'alu@alu.ufc.br'
       },
       {
         "nome": 'John Vasconcelos dos Santos',
-        "identificador": 'Matrícula: 414953',
-        "email": 'john1998_@live.com'
+        "identificador": 'Matrícula: XXXXXX',
+        "email": 'alu@alu.ufc.br'
       },
       {
         "nome": 'Victor Ehrich Carneiro de Medeiros',
-        "identificador": 'Matrícula: 418332',
-        "email": 'victormedeiro@yahoo.com.br'
+        "identificador": 'Matrícula: XXXXXX',
+        "email": 'alu@alu.ufc.br'
       },
       {
         "nome": 'Jose Marques Soares',
         "identificador": 'Departamento: DETI',
-        "email": 'marques.deti@gmail.com'
+        "email": 'alu@alu.ufc.br'
       },
       {
         "nome": 'João XYZ',
@@ -34,28 +34,13 @@ const user = [
       },
       {
         "nome": 'Maurício de Moura dos Santos',
-        "identificador": 'Matrícula: 494752',
-        "email": 'mauriciomoura837@gmail.com'
+        "identificador": 'Matrícula: XXXXXX',
+        "email": 'alu@alu.ufc.br'
       },
       {
         "nome": 'Vinicius Moraes Marques',
-        "identificador": 'Matrícula: 434045',
-        "email": 'viniciusmarques@alu.ufc.br'
-      },
-      {
-        "nome": 'Aiko Hilly Ribeiro de Paula',
-        "identificador": 'Matrícula: 515015',
-        "email": 'aikohilly@alu.ufc.br'
-      },
-      {
-        "nome": 'Fábio Gabriel Esteves Ivo Gomes',
-        "identificador": 'Matrícula: 510514',
-        "email": 'fabiogabrieleig@gmail.com'
-      },
-      {
-        "nome": 'Victor Emanuel Alves do Santos',
-        "identificador": 'Matrícula: 417395',
-        "email": 'victor.eas19@gmail.com'
+        "identificador": 'Matrícula: XXXXXX',
+        "email": 'alu@alu.ufc.br'
       }
     ]
   }

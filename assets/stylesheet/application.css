@@ -145,7 +145,7 @@ body{
   justify-items: center;
 }
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1575px) {
   .gridUser{
     display: grid;
     grid-template-columns: auto auto auto;
