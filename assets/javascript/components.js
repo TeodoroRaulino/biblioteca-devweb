@@ -77,7 +77,7 @@ class bookCard extends HTMLElement{
     <div class="container">
       <a href="/book/view.html" class="textDecorationNone">
         <div class="card bookCard" style="width: 18rem;">
-          <img src="/assets/images/book.png" class="card-img-top" alt="...">
+          <img src="/assets/images/book.png" class="card-img-top borderImg" alt="...">
           <div class="overlay d-flex list-group list-group-flush"> 
             <p class="card-title list-group-item m-0 textLimit">Title</p> 
             <p class="list-group-item authorCard textLimit">Author</p> 
