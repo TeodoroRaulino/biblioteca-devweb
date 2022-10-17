@@ -49,6 +49,12 @@ body{
   color: var(--textColor);
 }
 
+.bookCard .list-group-item{
+  background-color: var(--bgCard);
+  opacity: 0.85;
+  color: var(--textColor)
+}
+
 .text-color{
   color: var(--textColor);
 }
@@ -276,4 +282,33 @@ ul{
 
 .fa-sun {
   color: #f39c12;
+}
+
+
+.overlay { 
+  position: absolute;  
+  bottom: 0;  
+  background: rgb(0, 0, 0); 
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */ 
+  color: #f1f1f1;  
+  width: 100%; 
+  transition: .5s ease; 
+  opacity:0; 
+  color: white; 
+  font-size: 20px; 
+  height: 100%; 
+  text-align: center; 
+} 
+ 
+.container:hover .overlay { 
+  opacity: 1; 
+}
+
+.bookCard p{
+  margin-bottom: 0px;
+  padding-top: 10%;
+}
+
+.card.bookCard{
+  border:none;
 }

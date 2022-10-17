@@ -30,7 +30,7 @@ class sidebar extends HTMLElement{
         <ul>
           <li><a href="/administrative.html"><i class="fa-brands fa-js"></i>Dashboard</a></li>
           <li><a href="/user/user_dashboard.html"><i class="fa-solid fa-users"></i>Usuários</a></li>
-          <li><a href="#"><i class="fa-solid fa-book"></i>Livros</a></li>
+          <li><a href="/book/dashboard.html"><i class="fa-solid fa-book"></i>Livros</a></li>
         </ul>
     </aside>
     `
@@ -71,6 +71,26 @@ class userCard extends HTMLElement{
   }
 }
 
+class bookCard extends HTMLElement{
+  connectedCallback(){
+    this.innerHTML = `
+    <div class="container">
+      <a href="/book/view.html" class="textDecorationNone">
+        <div class="card bookCard" style="width: 18rem;">
+          <img src="/assets/images/book.png" class="card-img-top" alt="...">
+          <div class="overlay d-flex list-group list-group-flush"> 
+            <p class="card-title list-group-item m-0 textLimit">Title</p> 
+            <p class="list-group-item authorCard textLimit">Author</p> 
+            <p class="list-group-item categoryCard textLimit">Edition</p> 
+          </div>   
+        </div>
+      </a>
+    </div>
+    `
+  }
+}
+
+customElements.define('book-card', bookCard);
 customElements.define('user-card', userCard);
 customElements.define('nav-bar', navbarComponent);
 customElements.define('side-bar', sidebar)
