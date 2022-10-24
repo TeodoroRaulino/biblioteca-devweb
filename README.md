@@ -1,8 +1,8 @@
 # biblioteca-devweb
 
-Trabalho da cadeira de <b>desenvolvimento de aplicações web</b>.
+### Trabalho da cadeira de desenvolvimento de aplicações web.
  
- Descrição: Projeto de Biblioteca que consiste na disponibilização de livros, onde os usuários poderão ter acesso a várias informações do livro(titulo, autor, sinopse, ano de lançamento e edição) e poderá atráves de um atendente alugar um livro. Os usuários, os livros e os atendente serão cadastrado pelo o admistristrador da plataforma.
+#### Descrição: Projeto de Biblioteca que consiste na disponibilização de livros, onde os usuários poderão ter acesso a várias informações do livro(titulo, autor, sinopse, ano de lançamento e edição) e poderá atráves de um atendente alugar um livro. Os usuários, os livros e os atendente serão cadastrado pelo o admistristrador da plataforma.
 
 Tipos de visualização:
 <ul>
@@ -24,3 +24,10 @@ Tipos de visualização:
     <li>Controle do acervo de livros.</li>
     </ul>
 </ul>
+
+<br>
+<br>
+
+# Tecnologias
+
+### NodeJS, EJS, Express, HTML, CSS e JavaScript
