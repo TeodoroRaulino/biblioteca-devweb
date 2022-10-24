@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca UFC</title>
+  <link rel="stylesheet" href="../stylesheet/application.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+
+  <%- include('../../../partials/sidebar'); %>
+
+  <div class="d-flex m250 py-5 justify-content-center">
+    <div class="col-5 align-self-center">
+      <h1 class="textCenter pb-5 text-color">Criar novo cadastro</h1>
+      <div class="pb-3 pt-3 col-10">
+        <input type="text" class="form-control" placeholder="Nome">
+      </div>
+      <div class="pb-3 col-10">
+        <input type="text" class="form-control" placeholder="CPF">
+      </div>
+      <div class="pb-3 col-10">
+        <input type="text" class="form-control" placeholder="Matrícula">
+      </div>
+      <div class="pb-3 col-10">
+        <input type="text" class="form-control" placeholder="E-mail">
+      </div>
+      <div class="pb-3 col-10">
+        <input type="password" class="form-control" id="password" placeholder="Senha">
+      </div>
+      <div class="pb-3 col-10">
+        <input type="password" class="form-control" id="confirmation-password" placeholder="Confirmação de senha">
+      </div>
+      <div class="pb-3 col-4">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Aluno</option>
+          <option value="1">Professor</option>
+          <option value="2">Funcionário</option>
+          <option value="3">Administrador</option>
+        </select>
+      </div>
+      <div class="col-10 textCenter">
+        <button type="submit" class="btn btn-success col-4">Registrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../javascript/application.js"></script>
+
+</body>
+</html>

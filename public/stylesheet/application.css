@@ -1,0 +1,316 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
+
+:root{
+  --green: #038133;
+  --blue: #00619A;
+  --yellow: #E3C03E;
+  --textColor: #000;
+  --placeHold: #8D8D8D;
+  --white: white;
+  --navColor: #f8f9fa;
+  --shadow: 0px 2px 16px rgba(0, 0, 0, 0.25);
+  --bgCard: #ececec;
+  --bgLogin: #D5D5D5;
+}
+
+body{
+  background-color: var(--white)!important;
+  color: var(--textColor)!important;
+  /*sobrescrever bootstrap*/
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.containeer{
+  padding: 0 40px;
+}
+
+.m250{
+  margin-left: 250px;
+}
+
+.textDecorationNone{
+  color: black;
+  text-decoration: none;
+}
+
+.textDecorationNone:hover{
+  color: black;
+  text-decoration: none;
+}
+
+.list-group-item{
+  background: var(--bgCard);
+  color: var(--textColor);
+}
+
+.bookCard .list-group-item{
+  background-color: var(--bgCard);
+  opacity: 0.85;
+  color: var(--textColor)
+}
+
+.text-color{
+  color: var(--textColor);
+}
+
+.titleButton{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.lineHeight{
+  line-height: 40px;
+}
+
+.shadowCard{
+  box-shadow: var(--shadow);
+}
+
+/* Login */
+
+.loginContainer{
+  background: var(--bgLogin);
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  margin: 120px auto;
+  position: relative;
+  width: fit-content;
+}
+
+.bgLogin{
+  background-image: url(/images/login.png);
+  height: 400px;
+  width: 366px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleLogin{
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 48px;
+  color: var(--white);
+}
+
+.text-white{
+  color: white;
+}
+
+.visibilityPassword {
+  position: absolute;
+  right: 62%;
+}
+
+.formLogin{
+  width: 260px;
+  height: 40px;
+  border: solid 1px;
+  border-radius: 8px;
+  padding-left: 8px;
+}
+/**/
+
+.textCenter{
+  text-align: center;
+}
+
+.textBold{
+  font-weight: bold;
+}
+
+.col-5.align-self-center {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.gridUser{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 40px;
+  justify-items: center;
+}
+
+@media only screen and (max-width: 1575px) {
+  .gridUser{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 40px;
+    justify-items: center;
+  }
+}
+
+.textLimit{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.imgPassword{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+/* sidebar */
+
+.sidebar{
+  position: fixed;
+  left: 0px;
+  width: 250px;
+  height: 100%;
+  background: var(--navColor);
+  box-shadow: var(--shadow);
+}
+
+.sidebar header{
+  text-align: center;
+  line-height: 70px;
+  background: var(--navColor);
+  user-select: none;
+}
+
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: var(--textColor);
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid var(--textColor);
+  transition: .4s;
+  text-decoration: none;
+}
+
+ul li:hover a{
+  padding-left: 50px;
+}
+
+.sidebar ul a i{
+  margin-right: 16px;
+}
+
+ul{
+  padding-left: 0!important;
+}
+
+.navSidebar{
+  height: 80px;
+  background: var(--navColor);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navSidebar a{
+  color: var(--textColor);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.navSidebar a:hover{
+  color: var(--blue);
+}
+
+/* Dark Mode */
+
+.toggle{
+  margin-right: 20px;
+}
+
+.switch {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  background-color: var(--textColor);
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  height: 26px;
+  width: 50px;
+  transform: scale(1.5);
+}
+
+.label .ball {
+  background-color: var(--white);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 22px;
+  width: 22px;
+  transform: translateX(0px);
+  transition: transform 0.2s linear;
+}
+
+.switch:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: black;
+}
+
+.fa-sun {
+  color: #f39c12;
+}
+
+/* Book */
+
+.overlay { 
+  position: absolute;  
+  bottom: 0;  
+  background: rgb(0, 0, 0); 
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;  
+  width: 100%; 
+  transition: .5s ease; 
+  opacity:0; 
+  color: white; 
+  font-size: 20px; 
+  height: 100%; 
+  text-align: center; 
+} 
+ 
+.container:hover .overlay { 
+  opacity: 1; 
+}
+
+.bookCard p{
+  margin-bottom: 0px;
+  padding-top: 10%;
+}
+
+.card.bookCard{
+  border:none;
+}
+
+.borderImg {
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
