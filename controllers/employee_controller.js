@@ -6,4 +6,4 @@ class EmployeeController {
 
 }
 
-module.exports = EmployeeController
+module.exports = new EmployeeController

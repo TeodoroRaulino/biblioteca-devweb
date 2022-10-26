@@ -10,4 +10,4 @@ class StudentController {
 
 }
 
-module.exports = StudentController
+module.exports = new StudentController

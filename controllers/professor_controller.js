@@ -10,4 +10,4 @@ class ProfessorController {
 
 }
 
-module.exports = ProfessorController
+module.exports = new ProfessorController
