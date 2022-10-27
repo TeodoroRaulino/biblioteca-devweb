@@ -317,11 +317,23 @@ ul{
 
 /* Book */
 
+.container-book { 
+  position: relative; 
+  max-width: 175px;
+  box-shadow: var(--shadow);
+} 
+ 
+.image-book { 
+  display: block; 
+  width: auto;
+  height: 250px; 
+} 
+ 
 .overlay { 
   position: absolute;  
   bottom: 0;  
   background: rgb(0, 0, 0); 
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */ 
   color: #f1f1f1;  
   width: 100%; 
   transition: .5s ease; 
@@ -332,20 +344,37 @@ ul{
   text-align: center; 
 } 
  
-.container:hover .overlay { 
+.container-book:hover .overlay { 
   opacity: 1; 
+} 
+ 
+.d-flex-book{ 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+} 
+
+.d-grid-book{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 20px;
 }
 
-.bookCard p{
-  margin-bottom: 0px;
-  padding-top: 10%;
+.bookAdminView {
+  height: 180px;
 }
 
-.card.bookCard{
-  border:none;
-}
-
-.borderImg {
+.bookAdministrative {
+  width: fit-content;
+  border: solid 1px;
   border-radius: 8px;
+  border-color: var(--textColor);
   box-shadow: var(--shadow);
+  width: 470px;
+}
+
+.grid-book {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
 }

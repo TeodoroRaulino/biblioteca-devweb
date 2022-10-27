@@ -17,9 +17,9 @@
     <a class="lineHeight btn btn-success mr-4" href="/book/form.html">Adicionar novo Livro</a>
   </div>
 
-  <div class="m250 containeer gridUser">
-    <% books.forEach( book => {%>
-      <%- include('../../../partials/book', {book: book}) %>
+  <div class="m250 grid-book px-4 py-2">
+    <% books.forEach( book => { %>
+      <%- include('../../../partials/bookAdmin', {book: book}) %>
     <% }) %>
   </div>
   

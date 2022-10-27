@@ -12,25 +12,10 @@
 
   <%- include('../partials/header'); %>
 
-  <div>
-    <!-- <div class="bookAdministrative">
-      <div class="container py-3 d-flex align-items-center">
-        <img src="images/book.png" class="bookHome">
-        <div class="px-3">
-          <h2>Title book</h2>
-          <p> Author | Edition | Year | id </p>
-        </div>
-      </div>
-    </div>
-    <div class="bookAdministrative"></div>
-      <div class="container py-3 d-flex align-items-center">
-        <img src="images/book.png" class="bookHome">
-        <div class="px-3">
-          <h2>Title book</h2>
-          <p> Author | Edition | Year | id </p>
-        </div>
-      </div>
-    </div> -->
+  <div class="d-grid-book p-5">
+    <% books.forEach(book => { %>
+      <%- include('../partials/book', {book: book}) %> 
+    <% }) %>
   </div>
 
   <script src="javascript/application.js"></script>
