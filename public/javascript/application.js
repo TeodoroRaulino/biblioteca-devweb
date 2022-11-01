@@ -12,7 +12,8 @@ const initialColors = {
   navColor: getStyle(html, "--navColor"),
   shadow: getStyle(html, "--shadow"),
   bgCard: getStyle(html, "--bgCard"),
-  bgLogin: getStyle(html, "--bgLogin")
+  bgLogin: getStyle(html, "--bgLogin"),
+  backgroundBody: getStyle(html, "--backgroundBody")
 }
 
 const darkMode = {
@@ -20,8 +21,10 @@ const darkMode = {
   textColor: "#e5e5e5",
   white: "black",
   navColor: "#121212",
-  shadow: "0px 2px 16px rgba(255, 255, 255, 0.50)",
-  bgLogin: "#00304D"
+  shadow: "0px 2px 16px rgba(255, 255, 255, 0.25)",
+  bgLogin: "#00304D",
+  backgroundBody: "#21262d",
+  bgAdminBook: "#484f58"
 }
 
 const transformKey = key => "--" + key

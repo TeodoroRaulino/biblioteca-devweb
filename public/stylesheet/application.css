@@ -8,13 +8,15 @@
   --placeHold: #8D8D8D;
   --white: white;
   --navColor: #f8f9fa;
-  --shadow: 0px 2px 16px rgba(0, 0, 0, 0.25);
+  --shadow: 0px 2px 16px rgba(0, 0, 0, 0.50);
   --bgCard: #ececec;
   --bgLogin: #D5D5D5;
+  --backgroundBody: #E5E5E5;
+  --bgAdminBook: #8D8D8D;
 }
 
 body{
-  background-color: var(--white)!important;
+  background-color: var(--backgroundBody)!important;
   color: var(--textColor)!important;
   /*sobrescrever bootstrap*/
 }
@@ -326,7 +328,8 @@ ul{
 .image-book { 
   display: block; 
   width: auto;
-  height: 250px; 
+  height: 250px;
+  border-radius: 4px;
 } 
  
 .overlay { 
@@ -362,11 +365,11 @@ ul{
 
 .bookAdminView {
   height: 180px;
+  border-radius: 4px;
 }
 
 .bookAdministrative {
-  width: fit-content;
-  border: solid 1px;
+  background-color: var(--bgAdminBook);
   border-radius: 8px;
   border-color: var(--textColor);
   box-shadow: var(--shadow);
