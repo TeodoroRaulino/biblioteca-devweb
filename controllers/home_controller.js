@@ -1,11 +1,17 @@
 class HomeController{
 
   async index(req, res){
-    res.render('pages/index', {title: "Home"})
+    res.render('pages/index', {
+      title: "Home",
+      baseUrl: req.baseUrl
+    })
   }
 
   async login(req, res){
-    res.render('pages/login', {title: "Login"})
+    res.render('pages/login', {
+      title: "Login",
+      baseUrl: req.baseUrl
+    })
   }
 
   async books(req, res){
@@ -70,7 +76,8 @@ class HomeController{
 
     res.render('pages/books', {
       title: "Livros",
-      books: book
+      books: book,
+      baseUrl: req.baseUrl
     })
   }
 

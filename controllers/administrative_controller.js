@@ -1,7 +1,10 @@
 class AdministrativeController{
   
   async administrative(req, res){
-    res.render('pages/administrative/administrative', {title: "Painel Administrativo"})
+    res.render('pages/administrative/administrative', {
+      title: "Painel Administrativo",
+      baseUrl: req.baseUrl
+    })
   }
   
   async users(req, res){
@@ -59,15 +62,19 @@ class AdministrativeController{
       }
     ]
 
-    res.render('pages/administrative/user/user_dashboard', {
+    res.render('pages/administrative/user/index', {
       title: "Usuários",
-      users: user
+      users: user,
+      baseUrl: req.baseUrl
     })
 
   }
 
   async user(req, res){
-    res.render('pages/administrative/user/user_view', {title: "Usuário"})
+    res.render('pages/administrative/user/show', {
+      title: "Usuário",
+      baseUrl: req.baseUrl
+    })
   }
 
   async books(req, res){
@@ -132,7 +139,8 @@ class AdministrativeController{
 
     res.render('pages/administrative/book/dashboard', {
       title: "Livros",
-      books: book
+      books: book,
+      baseUrl: req.baseUrl
     })
   }
 
