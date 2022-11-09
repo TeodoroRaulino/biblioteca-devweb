@@ -8,13 +8,15 @@
   --placeHold: #8D8D8D;
   --white: white;
   --navColor: #f8f9fa;
-  --shadow: 0px 2px 16px rgba(0, 0, 0, 0.25);
+  --shadow: 0px 2px 16px rgba(0, 0, 0, 0.50);
   --bgCard: #ececec;
   --bgLogin: #D5D5D5;
+  --backgroundBody: #E5E5E5;
+  --bgAdminBook: #8D8D8D;
 }
 
 body{
-  background-color: var(--white)!important;
+  background-color: var(--backgroundBody)!important;
   color: var(--textColor)!important;
   /*sobrescrever bootstrap*/
 }
@@ -31,7 +33,7 @@ body{
 }
 
 .m250{
-  margin-left: 250px;
+  margin: 0 0 0 250px;
 }
 
 .textDecorationNone{
@@ -160,6 +162,41 @@ body{
   white-space: nowrap;
 }
 
+.textLimit .tooltip { 
+  visibility: hidden; 
+  width: auto; 
+  background-color: #555; 
+  color: #fff; 
+  text-align: center; 
+  border-radius: 6px; 
+  padding: 5px 2px; 
+  position: absolute; 
+  z-index: 1; 
+  bottom: 30%; 
+  left: 26.5%; 
+  margin-left: -60px; 
+  opacity: 0; 
+  width: 228px; 
+  white-space: normal; 
+  transition: opacity 0.3s; 
+} 
+ 
+.textLimit .tooltip::after { 
+  content: ""; 
+  position: absolute; 
+  top: 100%; 
+  left: 50%; 
+  margin-left: -5px; 
+  border-width: 5px; 
+  border-style: solid; 
+  border-color: #555 transparent transparent transparent; 
+} 
+ 
+.textLimit:hover .tooltip { 
+  visibility: visible; 
+  opacity: 1; 
+} 
+
 .imgPassword{
   display: flex;
   align-items: center;
@@ -282,11 +319,24 @@ ul{
 
 /* Book */
 
+.container-book { 
+  position: relative; 
+  max-width: 175px;
+  box-shadow: var(--shadow);
+} 
+ 
+.image-book { 
+  display: block; 
+  width: auto;
+  height: 250px;
+  border-radius: 4px;
+} 
+ 
 .overlay { 
   position: absolute;  
   bottom: 0;  
   background: rgb(0, 0, 0); 
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */ 
   color: #f1f1f1;  
   width: 100%; 
   transition: .5s ease; 
@@ -297,20 +347,62 @@ ul{
   text-align: center; 
 } 
  
-.container:hover .overlay { 
+.container-book:hover .overlay { 
   opacity: 1; 
+} 
+ 
+.d-flex-book{ 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+} 
+
+.d-grid-book{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-gap: 20px;
 }
 
-.bookCard p{
-  margin-bottom: 0px;
-  padding-top: 10%;
+.bookAdminView {
+  height: 180px;
+  border-radius: 4px;
 }
 
-.card.bookCard{
-  border:none;
-}
-
-.borderImg {
+.bookAdministrative {
+  background-color: var(--bgAdminBook);
   border-radius: 8px;
+  border-color: var(--textColor);
   box-shadow: var(--shadow);
+  width: 470px;
+}
+
+.grid-book {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+  justify-items: center;
+}
+
+@media only screen and (max-width: 1575px) {
+  .grid-book {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    justify-items: center;
+  }
+
+  .d-grid-book{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 20px;
+  }
+}
+
+input[type="search"] {
+  padding: 8px 16px; 
+  width: 800px;
+  height: 37px;
+  background: #F0F0F0;
+  border: 1px solid #C4C4C4;
+  border-radius: 16px;
 }

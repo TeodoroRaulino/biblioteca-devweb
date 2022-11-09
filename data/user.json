@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "nome": "Teodoro Raulino Lima Neto",
+    "cpf": "xxx.xxx.xxx-xx",
+    "identificador": "Matrícula: XXXXXX",
+    "email": "alu@alu.ufc.br",
+    "senha": "******",
+    "typeUser": "Aluno"
+  },
+  {
+    "id": "2",
+    "nome": "Italo Viana Severo",
+    "cpf": "xxx.xxx.xxx-xx",
+    "identificador": "Matrícula: XXXXXX",
+    "email": "alu@alu.ufc.br",
+    "senha": "******",
+    "typeUser": "Aluno"
+  },
+  {
+    "id": "3",
+    "nome": "John Vasconcelos dos Santos",
+    "cpf": "xxx.xxx.xxx-xx",
+    "identificador": "Matrícula: XXXXXX",
+    "email": "alu@alu.ufc.br",
+    "senha": "******",
+    "typeUser": "Aluno"
+  },
+  {
+    "id": "4",
+    "nome": "Victor Ehrich Carneiro de Medeiros",
+    "cpf": "xxx.xxx.xxx-xx",
+    "identificador": "Matrícula: XXXXXX",
+    "email": "alu@alu.ufc.br",
+    "senha": "******",
+    "typeUser": "Aluno"
+  },
+  {
+    "id": "5",
+    "nome": "Jose Marques Soares",
+    "cpf": "xxx.xxx.xxx-xx",
+    "identificador": "Departamento: DETI",
+    "email": "alu@alu.ufc.br",
+    "senha": "******",
+    "typeUser": "Professor"
+  },
+  {
+    "id": "6",
+    "nome": "João XYZ",
+    "cpf": "xxx.xxx.xxx-xx",
+    "identificador": "xyz: 123-456-789-00",
+    "email": "joaoxyz@gmail.com",
+    "senha": "******",
+    "typeUser": "Funcionário"
+  },
+  {
+    "id": "7",
+    "nome": "Maurício de Moura dos Santos",
+    "cpf": "xxx.xxx.xxx-xx",
+    "identificador": "Matrícula: XXXXXX",
+    "email": "alu@alu.ufc.br",
+    "senha": "******",
+    "typeUser": "Aluno"
+  }
+]

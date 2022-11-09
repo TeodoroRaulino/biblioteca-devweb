@@ -12,19 +12,10 @@
 
   <%- include('../partials/header'); %>
 
-  <div class="container py-3">
-    <div class="card" style="width: 18rem;">
-      <img src="images/book.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card Livros</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-      </ul>
-    </div>
+  <div class="d-grid-book p-5">
+    <% books.forEach(book => { %>
+      <%- include('../partials/book', {book: book}) %> 
+    <% }) %>
   </div>
 
   <script src="javascript/application.js"></script>

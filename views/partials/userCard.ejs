@@ -2,9 +2,24 @@
   <div class="card shadowCard" style="width: 18rem;">
     <img src="../images/user.png" class="card-img-top" alt="...">   
     <ul class="list-group list-group-flush">
-      <h5 class="card-title list-group-item m-0 textLimit"> <%= user.nome %> </h5>
-      <li class="list-group-item registrationCard textLimit"> <%= user.identificador %> </li>
-      <li class="list-group-item emailCard textLimit"> <%= user.email %> </li>
+      <h5 class="card-title list-group-item m-0 textLimit"> 
+        <%= user.nome %>
+        <span class="tooltip">
+          <%= user.nome %>
+        </span> 
+      </h5>
+      <li class="list-group-item registrationCard textLimit"> 
+        <%= user.identificador %>
+        <span class="tooltip">
+          <%= user.identificador %>
+        </span> 
+      </li>
+      <li class="list-group-item emailCard textLimit"> 
+        <%= user.email %>
+        <span class="tooltip">
+          <%= user.email %>
+        </span> 
+      </li>
     </ul>
   </div>
 </a>

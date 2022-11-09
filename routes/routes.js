@@ -1,36 +1,33 @@
 const express = require('express')
-const HomeController = require('../controllers/HomeController.js')
-const AdministrativeController = require('../controllers/AdministrativeController.js')
-const EmployeeController = require('../controllers/EmployeeController')
-const ProfessorController = require('../controllers/ProfessorController')
-const StudentController = require('../controllers/StudentController')
+const HomeController = require('../controllers/home_controller.js')
+const AdministrativeController = require('../controllers/administrative_controller.js')
+const EmployeeController = require('../controllers/employee_controller')
+const ProfessorController = require('../controllers/professor_controller')
+const StudentController = require('../controllers/student_controller')
 
 const router = express.Router()
-const homeController = new HomeController
-const administrativeController = new AdministrativeController
-const employeeController = new EmployeeController
-const professorController = new ProfessorController
-const studentController = new StudentController
 
 //Home
-router.get('/', homeController.index)
-router.get('/books', homeController.books)
-router.get('/login', homeController.login)
+router.get('/', HomeController.index)
+router.get('/books', HomeController.books)
+router.get('/login', HomeController.login)
 
 //Administrative
-router.get('/administrative', administrativeController.administrative)
-router.get('/administrative/users', administrativeController.users)
-router.get('/administrative/books', administrativeController.books)
+router.get('/administrative', AdministrativeController.administrative)
+router.get('/administrative/users', AdministrativeController.users)
+router.get('/administrative/user', AdministrativeController.user)
+router.get('/administrative/user/new', AdministrativeController.userCreate)
+router.get('/administrative/books', AdministrativeController.books)
 
 //Employee
-router.get('/employee', employeeController.administrative)
+router.get('/employee', EmployeeController.administrative)
 
 //Professor
-router.get('/professor', professorController.administrative)
-router.get('/professor/book', professorController.book)
+router.get('/professor', ProfessorController.administrative)
+router.get('/professor/book', ProfessorController.book)
 
 //Student
-router.get('/student', studentController.administrative)
-router.get('/stundent/book', studentController.book)
+router.get('/student', StudentController.administrative)
+router.get('/stundent/book', StudentController.book)
 
 module.exports = router
