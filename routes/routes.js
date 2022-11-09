@@ -16,7 +16,7 @@ router.get('/login', HomeController.login)
 router.get('/administrative', AdministrativeController.administrative)
 router.get('/administrative/users', AdministrativeController.users)
 router.get('/administrative/user', AdministrativeController.user)
-router.post('/administrative/user/new', AdministrativeController.userCreate)
+router.get('/administrative/user/new', AdministrativeController.userCreate)
 router.get('/administrative/books', AdministrativeController.books)
 
 //Employee

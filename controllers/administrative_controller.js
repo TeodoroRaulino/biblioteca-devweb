@@ -11,7 +11,7 @@ class AdministrativeController{
   }
   
   async users(req, res){
-    res.render('pages/administrative/user/user_dashboard', {
+    res.render('pages/administrative/user/index', {
       title: "Usuários",
       users: user,
       baseUrl: req.baseUrl
@@ -26,7 +26,7 @@ class AdministrativeController{
   }
 
   async userCreate(req, res){
-    res.render('pages/administrative/user/user_new', {title: "Novo usuário", baseUrl: req.baseUrl})
+    res.render('pages/administrative/user/new', {title: "Novo usuário", baseUrl: req.baseUrl})
   }
 
   async books(req, res){
