@@ -35,7 +35,6 @@ const changeColors = (colors) => {
   )
 }
 
-  
 let logoChange = document.querySelector("#logo")
 
 checkbox.addEventListener("change", ({target}) => {
@@ -43,6 +42,44 @@ checkbox.addEventListener("change", ({target}) => {
   target.checked ? changeColors(darkMode) : changeColors(initialColors)
   target.checked ? logoChange.src = '../images/logoDarkMode.png' : logoChange.src = '../images/logo.png'
 })
+
+//
+
+let countFont
+
+const fonts = {
+  fs16: getStyle(html, '--fs16'),
+  fs20 : getStyle(html, '--fs20'),
+  fs32: getStyle(html, '--fs32'),
+  fs48: getStyle(html, '--fs48')
+}
+
+let increaseFont = (font) => {
+  Object.keys(font).map(key =>
+    html.style.setProperty(transformKey(key), (parseInt(fonts[key]) + countFont) + 'px')
+  )
+}
+
+const increase = document.querySelector("#increase")
+const decrease = document.querySelector("#decrease")
+
+increase.addEventListener("click", () => {
+  if(countFont < 10){
+    countFont++
+    increaseFont(fonts)
+    localStorage.setItem("fontSize", countFont)
+  }  
+})
+
+decrease.addEventListener("click", () => {
+  if(countFont > -10){
+    countFont--
+    increaseFont(fonts)
+    localStorage.setItem("fontSize", countFont)
+  } 
+})
+
+//
 
 window.onload = function(){
   if(!localStorage.getItem("mode")){
@@ -57,5 +94,12 @@ window.onload = function(){
     changeColors(darkMode)
     logoChange.src = '../images/logoDarkMode.png'
     checkbox.checked = true
+  }
+
+  countFont = 0
+
+  if(!!localStorage.getItem("fontSize")){
+    countFont = parseInt(localStorage.getItem("fontSize"))
+    increaseFont(fonts)
   }
 }
