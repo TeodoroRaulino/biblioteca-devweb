@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "nome": "Teodoro Raulino Lima Neto",
     "cpf": "xxx.xxx.xxx-xx",
     "identificador": "Matrícula: XXXXXX",
@@ -9,7 +9,7 @@
     "typeUser": "Aluno"
   },
   {
-    "id": "2",
+    "id": 2,
     "nome": "Italo Viana Severo",
     "cpf": "xxx.xxx.xxx-xx",
     "identificador": "Matrícula: XXXXXX",
@@ -18,7 +18,7 @@
     "typeUser": "Aluno"
   },
   {
-    "id": "3",
+    "id": 3,
     "nome": "John Vasconcelos dos Santos",
     "cpf": "xxx.xxx.xxx-xx",
     "identificador": "Matrícula: XXXXXX",
@@ -27,7 +27,7 @@
     "typeUser": "Aluno"
   },
   {
-    "id": "4",
+    "id": 4,
     "nome": "Victor Ehrich Carneiro de Medeiros",
     "cpf": "xxx.xxx.xxx-xx",
     "identificador": "Matrícula: XXXXXX",
@@ -36,7 +36,7 @@
     "typeUser": "Aluno"
   },
   {
-    "id": "5",
+    "id": 5,
     "nome": "Jose Marques Soares",
     "cpf": "xxx.xxx.xxx-xx",
     "identificador": "Departamento: DETI",
@@ -45,7 +45,7 @@
     "typeUser": "Professor"
   },
   {
-    "id": "6",
+    "id": 6,
     "nome": "João XYZ",
     "cpf": "xxx.xxx.xxx-xx",
     "identificador": "xyz: 123-456-789-00",
@@ -54,7 +54,7 @@
     "typeUser": "Funcionário"
   },
   {
-    "id": "7",
+    "id": 7,
     "nome": "Maurício de Moura dos Santos",
     "cpf": "xxx.xxx.xxx-xx",
     "identificador": "Matrícula: XXXXXX",
