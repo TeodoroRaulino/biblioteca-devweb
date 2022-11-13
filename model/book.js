@@ -149,3 +149,5 @@ function generate_json(title, author, category, id = null) {
     "category": category
   }
 }
+
+module.exports = Book
