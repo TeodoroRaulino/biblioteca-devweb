@@ -14,8 +14,6 @@ class DataAccessor{
   }
 
   find(id){
-    this.reload_data();
-
     let record = this.data.filter(element => element["id"] == id);
 
     if(record.length < 1){
@@ -28,14 +26,12 @@ class DataAccessor{
   }
 
   where(key, value){
-    this.reload_data();
     let record = this.data.filter(element => element[key].includes(value));
 
     return record;
   }
 
   create(json){
-    this.reload_data();
     const existing_ids = this.data.map(({id})=>(id))
     let max_id = Math.max(...existing_ids)
     let new_id = max_id + 1
@@ -44,6 +40,8 @@ class DataAccessor{
 
     this.data.push(json)
     this.save()
+
+    return json;
   }
 
   update(json){
@@ -52,8 +50,8 @@ class DataAccessor{
     let index = existing_ids.indexOf(record["id"])
 
     this.data[index] = json
-
     this.save();
+    return json;
   }
 
   delete(id){
@@ -62,7 +60,7 @@ class DataAccessor{
     let index = existing_ids.indexOf(record["id"])
 
     this.data.splice(index, 1)
-    this.save();    
+    this.save(); 
   }
 
   save(){
@@ -75,7 +73,6 @@ class DataAccessor{
       readFile(this.path)
     );
   }
-  
 }
 
 function readFile(path){
@@ -93,3 +90,5 @@ function writeFile(path, data) {
     }
   });
 }
+
+module.exports = DataAccessor
