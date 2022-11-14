@@ -16,11 +16,11 @@ class Book{
 
   save(){
     if(this.id == null){
-      const data = Book.create(
-        this.title,
-        this.author,
-        this.category
-      )
+      const data = Book.create({
+        title: this.title,
+        author: this.author,
+        category: this.category
+      })
       this.id = data.id
     }
     else{
@@ -28,7 +28,11 @@ class Book{
     }
   }
 
-  static create(title, author, category){
+  static create = ({
+    title = null,
+    author = null,
+    category = null
+  }) => {
     const db = new DataAccessor('book');
     const json = generate_json(title, author, category)
     let data = db.create(json)
@@ -42,7 +46,11 @@ class Book{
     return book;
   }
 
-  update = ({title = null, author = null, category= null}) => {
+  update = ({
+    title = null,
+    author = null,
+    category = null
+  }) => {
     const db = new DataAccessor('book');
 
     if(title == null){
@@ -93,7 +101,11 @@ class Book{
     db.delete(id)
   }
 
-  static where = ({title = null, author = null, category = null }) => {
+  static where = ({
+    title = null,
+    author = null,
+    category = null
+  }) => {
     const db = new DataAccessor('book')
     let books_titles_data = []
     let books_authors_data = []
@@ -126,6 +138,9 @@ class Book{
       books_data = books_data.filter(element => element["category"].includes(category));
     }
 
+    books_data = books_data.filter((arr, index, self) => 
+       index === self.findIndex((t) => (t.id === arr.id)))
+
     books = books_data.map((data)=>{
       let instanced_book =  new Book(
         data["title"],
@@ -141,7 +156,7 @@ class Book{
   }
 }
 
-function generate_json(title, author, category, id = null) {
+function generate_json(title, author, category, id = null){
   return {
     "id": id,
     "title": title,
