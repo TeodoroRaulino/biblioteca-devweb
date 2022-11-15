@@ -1,4 +1,6 @@
 const DataAccessor = require('../services/data_accessor.js')
+const User = require('./user')
+const Book = require('./book')
 
 class Reservation{
   /** 
@@ -99,6 +101,18 @@ class Reservation{
     this.return_date = data["return_date"]
 
     return this
+  }
+
+  user(){
+    let user = User.find(this.user_id)
+
+    return user;
+  }
+
+  book(){
+    let book = Book.find(this.book_id)
+
+    return book;
   }
 
   delete(){
@@ -206,12 +220,3 @@ function generate_json(user_id, book_id, rental_date, return_date, id = null){
 }
 
 module.exports = Reservation
-
-let teste = Reservation.create({
-  user_id: 2,
-  book_id: 2,
-  rental_date: "09/08/2022",
-  return_date: "16/11/2022"
-})
-
-console.log(teste)
