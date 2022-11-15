@@ -406,3 +406,14 @@ input[type="search"] {
   border: 1px solid #C4C4C4;
   border-radius: 16px;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

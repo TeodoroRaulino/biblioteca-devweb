@@ -1,9 +1,11 @@
-<div class="bookAdministrative">
-  <div class="container py-3 d-flex align-items-center">
-    <img src="../images/bookXGH.jpg" class="bookAdminView">
-    <div class="px-3">
-      <h2><%= book.title %></h2>
-      <p> <%= book.author %> | <%= book.category %> </p>
+<a href="/administrative/book/<%= book.id %>" class="textDecorationNone">
+  <div class="bookAdministrative">
+    <div class="container py-3 d-flex align-items-center">
+      <img src="../images/bookXGH.jpg" class="bookAdminView">
+      <div class="px-3">
+        <h2><%= book.title %></h2>
+        <p> <%= book.author %> | <%= book.category %> </p>
+      </div>
     </div>
   </div>
-</div>
+</a>

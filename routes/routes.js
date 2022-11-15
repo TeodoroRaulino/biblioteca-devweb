@@ -14,11 +14,15 @@ router.get('/login', HomeController.login)
 
 //Administrative
 router.get('/administrative', AdministrativeController.administrative)
+
 router.get('/administrative/users', AdministrativeController.users)
 router.get('/administrative/user/:id', AdministrativeController.user)
 router.get('/administrative/user/new', AdministrativeController.userCreate)
-router.get('/administrative/books', AdministrativeController.books)
 
+router.get('/administrative/books', AdministrativeController.books)
+router.get('/administrative/book/new', AdministrativeController.bookNew)
+router.get('/administrative/book/:id', AdministrativeController.book)
+router.post('/administrative/book', AdministrativeController.bookCreate)
 //Employee
 router.get('/employee', EmployeeController.administrative)
 

@@ -32,13 +32,50 @@ class AdministrativeController{
   }
 
   async userCreate(req, res){
-    res.render('pages/administrative/user/new', {title: "Novo usuário", baseUrl: req.baseUrl})
+    res.render('pages/administrative/user/new', {
+      title: "Novo usuário",
+      baseUrl: req.baseUrl
+    });
   }
 
   async books(req, res){
     res.render('pages/administrative/book/dashboard', {
       title: "Livros",
       books: book,
+      baseUrl: req.baseUrl
+    })
+  }
+
+  async book(req, res){
+    let book = Book.find(req.params.id)
+    res.render('pages/administrative/book/view',{
+      book: book,
+      baseUrl: req.baseUrl
+    })
+  }
+
+  async bookNew(req, res){
+    res.render('pages/administrative/book/new',{
+      baseUrl: req.baseUrl
+    })
+  }
+
+  async bookCreate(req, res){
+    let params = req.body
+
+    let book = Book.create({
+      title: params.title,
+      author: params.author,
+      category: params.category,
+      isbn: params.isbn,
+      edition: params.edition,
+      launch_year: params.launch_year,
+      quantity: params.quantity,
+      sinopse: params.sinopse
+    })
+
+    res.render('pages/administrative/book/view',{
+      book: book,
       baseUrl: req.baseUrl
     })
   }
