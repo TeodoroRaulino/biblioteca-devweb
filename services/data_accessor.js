@@ -7,7 +7,7 @@ class DataAccessor{
   */
 
   constructor(type){
-    this.path = `../data/${type}.json`;
+    this.path = `./data/${type}.json`;
     this.data = JSON.parse(
       readFile(this.path)
     );

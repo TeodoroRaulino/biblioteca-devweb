@@ -249,13 +249,3 @@ function generate_json(cpf, type, name, email, password, identifier, id = null){
 }
 
 module.exports = User
-
-let user = User.where({
-  cpf: '111111',
-  type: 'professor',
-  name: 'teste',
-  email: '@',
-  password: '*****',
-  identifier: 'akshfasidfh'
-})
-console.log(user)
