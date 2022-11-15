@@ -18,12 +18,12 @@
       <img src="../images/monkey.png" alt="">
     </div>
     <div class="col-6">
-      <p>Nome:  Aluno aluno aluno</p>
-      <p>CPF: 123-456-789-01</p>
-      <p>Matrícula: 123456</p>
-      <p>Departamento: Informação não fornecida pelo administrador</p>
-      <p>E-mail: emaildoaluno@email.com</p>
-      <div class="pb-5 imgPassword"><p>Senha: ****************</p><img src="../images/visibility_off.png" id="visibility">
+      <p>Nome: <%= user.name %></p>
+      <p>CPF: <%= user.cpf %></p>
+      <p>Matrícula: <%= user.identifier %></p>
+      <p>Atribuição: <%= user.type %></p>
+      <p>E-mail: <%= user.email %></p>
+      <div class="pb-5 imgPassword"><p>Senha: <%= user.password %></p><img src="../images/visibility_off.png" id="visibility">
       </div>
       <div class="pb-3">
         <a href="/user/user_edit.html" type="submit" class="btn btn-primary col-4">Editar</a>

@@ -1,3 +1,6 @@
+const User = require('./../model/user');
+const Book = require('./../model/book');
+
 let user = require('../services/user_service')
 let book = require('../services/book_service')
 
@@ -19,8 +22,11 @@ class AdministrativeController{
   }
 
   async user(req, res){
+    let user = User.find(req.params.id);
+
     res.render('pages/administrative/user/show', {
       title: "Usuário",
+      user: user,
       baseUrl: req.baseUrl
     })
   }
