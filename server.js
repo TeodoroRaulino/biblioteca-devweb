@@ -1,5 +1,7 @@
 const express = require('express')
 const favicon = require('serve-favicon')
+const logger = require('morgan')
+const cookieParser = require('cookie-parser');
 const routes = require('./routes/routes')
 
 const app = express()
@@ -7,6 +9,12 @@ const app = express()
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(express.static('public'))
 app.set("view engine", "ejs")
+
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 //Routes
 app.use("/", routes)

@@ -40,7 +40,7 @@ let logoChange = document.querySelector("#logo")
 checkbox.addEventListener("change", ({target}) => {
   target.checked ? localStorage.setItem("mode", "darkMode") : localStorage.setItem("mode", "lightMode")
   target.checked ? changeColors(darkMode) : changeColors(initialColors)
-  target.checked ? logoChange.src = '../images/logoDarkMode.png' : logoChange.src = '../images/logo.png'
+  target.checked ? logoChange.src = '../../images/logoDarkMode.png' : logoChange.src = '../../images/logo.png'
 })
 
 //
@@ -84,15 +84,15 @@ decrease.addEventListener("click", () => {
 window.onload = function(){
   if(!localStorage.getItem("mode")){
     changeColors(initialColors)
-    logoChange.src = '../images/logo.png'
+    logoChange.src = '../../images/logo.png'
   }
   else if(localStorage.getItem("mode") == "lightMode"){
     changeColors(initialColors)
-    logoChange.src = '../images/logo.png'
+    logoChange.src = '../../images/logo.png'
   }
   else{
     changeColors(darkMode)
-    logoChange.src = '../images/logoDarkMode.png'
+    logoChange.src = '../../images/logoDarkMode.png'
     checkbox.checked = true
   }
 
