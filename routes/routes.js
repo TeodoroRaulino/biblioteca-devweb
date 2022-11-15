@@ -11,6 +11,7 @@ const router = express.Router()
 router.get('/', HomeController.index)
 router.get('/books', HomeController.books)
 router.get('/login', HomeController.login)
+router.get('/forgotpassword', HomeController.forgotPassword)
 
 //Administrative
 router.get('/administrative', AdministrativeController.administrative)
@@ -25,6 +26,8 @@ router.get('/administrative/book/:id', AdministrativeController.book)
 router.post('/administrative/book', AdministrativeController.bookCreate)
 //Employee
 router.get('/employee', EmployeeController.administrative)
+router.get('/employee/reservation', EmployeeController.reservations)
+router.get('/employee/reservation/new', EmployeeController.reservartionNew)
 
 //Professor
 router.get('/professor', ProfessorController.administrative)

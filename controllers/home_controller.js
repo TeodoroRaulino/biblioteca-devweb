@@ -14,6 +14,13 @@ class HomeController{
     })
   }
 
+  async forgotPassword(req, res){
+    res.render('pages/forgotPassword', {
+      title: "Recuperar senha",
+      baseUrl: req.baseUrl
+    })
+  }
+
   async books(req, res){
 
     const book = [
