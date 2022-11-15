@@ -293,6 +293,29 @@ class Book{
 
     return books; 
   }
+
+  static all(){
+    const db = new DataAccessor('book')
+    let books_data = db.all()
+
+    let books = books_data.map((data)=>{
+      let instanced_book =  new Book(
+        data["title"],
+        data["author"],
+        data["category"],
+        data["isbn"],
+        data["edition"],
+        data["launch_year"],
+        data["quantity"],
+        data["sinopse"]
+      );
+      instanced_book.id = data["id"];
+
+      return instanced_book;
+    })
+
+    return books;
+  }
 }
 
 function generate_json(

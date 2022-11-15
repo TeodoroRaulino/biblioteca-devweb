@@ -207,6 +207,25 @@ class Reservation{
 
     return reservations; 
   }
+
+  static all(){
+    const db = new DataAccessor('reservation')
+    let reservations_data = db.all()
+
+    let reservations = reservations_data.map((data)=>{
+      let instanced_reservation =  new Reservation(
+        data["user_id"],
+        data["book_id"],
+        data["rental_date"],
+        data["return_date"]
+      );
+      instanced_reservation.id = data["id"];
+
+      return instanced_reservation;
+    })
+
+    return reservations; 
+  }
 }
 
 function generate_json(user_id, book_id, rental_date, return_date, id = null){

@@ -234,6 +234,27 @@ class User{
 
     return users; 
   }
+
+  static all(){
+    const db = new DataAccessor('user')
+    let users_data = db.all()
+
+    let users = users_data.map((data)=>{
+      let instanced_user =  new User(
+        data["cpf"],
+        data["type"],
+        data["name"],
+        data["email"],
+        data["password"],
+        data["identifier"]
+      );
+      instanced_user.id = data["id"];
+
+      return instanced_user;
+    })
+
+    return users; 
+  }
 }
 
 function generate_json(cpf, type, name, email, password, identifier, id = null){

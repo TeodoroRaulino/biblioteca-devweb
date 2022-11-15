@@ -1,9 +1,6 @@
 const User = require('./../model/user');
 const Book = require('./../model/book');
 
-let user = require('../services/user_service')
-let book = require('../services/book_service')
-
 class AdministrativeController{
   
   async administrative(req, res){
@@ -14,9 +11,10 @@ class AdministrativeController{
   }
   
   async users(req, res){
+    let users = User.all()
     res.render('pages/administrative/user/index', {
       title: "Usuários",
-      users: user,
+      users: users,
       baseUrl: req.baseUrl
     })
   }
@@ -39,9 +37,10 @@ class AdministrativeController{
   }
 
   async books(req, res){
+    let books = Book.all()
     res.render('pages/administrative/book/dashboard', {
       title: "Livros",
-      books: book,
+      books: books,
       baseUrl: req.baseUrl
     })
   }

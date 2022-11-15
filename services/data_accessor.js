@@ -73,6 +73,10 @@ class DataAccessor{
       readFile(this.path)
     );
   }
+
+  all(){
+    return this.data;
+  }
 }
 
 function readFile(path){
