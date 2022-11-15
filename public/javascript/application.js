@@ -64,7 +64,7 @@ const increase = document.querySelector("#increase")
 const decrease = document.querySelector("#decrease")
 
 increase.addEventListener("click", () => {
-  if(countFont < 10){
+  if(countFont < 6){
     countFont++
     increaseFont(fonts)
     localStorage.setItem("fontSize", countFont)
@@ -72,7 +72,7 @@ increase.addEventListener("click", () => {
 })
 
 decrease.addEventListener("click", () => {
-  if(countFont > -10){
+  if(countFont > -6){
     countFont--
     increaseFont(fonts)
     localStorage.setItem("fontSize", countFont)

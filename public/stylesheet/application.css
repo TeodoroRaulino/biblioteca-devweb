@@ -111,23 +111,20 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-.titleLogin {
+.titleLogin p{
   font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 48px;
+  font-size: var(--fs48);
   font-weight: 700;
   line-height: 48px;
-  color: var(--white);
-}
-
-.text-white {
   color: white;
 }
 
 .visibilityPassword {
   position: absolute;
-  right: 62%;
+  right: 20%;
 }
 
 .formLogin {
@@ -137,6 +134,12 @@ h2 {
   border-radius: 8px;
   padding-left: 8px;
 }
+
+.loginContainer a {
+  text-decoration: none;
+  color: var(--textColor);
+}
+
 /**/
 
 .textCenter {
@@ -444,4 +447,12 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+/* Table */
+
+table, th {
+  border: 1px solid var(--textColor);
+  padding: 8px;
+  font-size: var(--fs16);
 }
