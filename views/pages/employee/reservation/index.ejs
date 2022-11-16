@@ -28,7 +28,9 @@
           <th>Data de devolução</th>
           <th></th>
         </tr>
-        <%- include('../../../partials/reservation'); %>
+        <% reservations.forEach(reservation => { %>
+          <%- include('../../../partials/reservation', {reservation: reservation}); %>
+        <% }) %>
       </table>
   </div>
 

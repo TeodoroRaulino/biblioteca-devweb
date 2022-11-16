@@ -34,6 +34,9 @@ router.post('/administrative/book', AdministrativeController.bookCreate)
 router.get('/employee', EmployeeController.administrative)
 router.get('/employee/reservation', EmployeeController.reservations)
 router.get('/employee/reservation/new', EmployeeController.reservartionNew)
+router.post('/employee/reservation/edit', EmployeeController.reservartionUpdate)
+router.get('/employee/reservation/edit/:id', EmployeeController.reservartionEdit)
+router.post('/employee/reservation', EmployeeController.reservationCreate)
 
 //Professor
 router.get('/professor', ProfessorController.administrative)

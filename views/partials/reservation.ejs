@@ -1,10 +1,10 @@
 <tr>
-  <th>book title</th>
-  <th>user name</th>
-  <th>rental_date</th>
-  <th>return_date</th>
+  <th><%= reservation.book().title %></th>
+  <th><%= reservation.user().name %></th>
+  <th><%= reservation.rental_date %></th>
+  <th><%= reservation.return_date %></th>
   <th>
-    <button class="btn btn-primary">Edit</button>
-    <button class="btn btn-danger">Remove</button>
+    <a href="/employee/reservation/edit/<%= reservation.id %>" class="btn btn-primary">Editar</a>
+    <a class="btn btn-danger">Remove</a>
   </th>
 </tr>
