@@ -22,6 +22,8 @@ router.get('/administrative/user/new', AdministrativeController.userCreate)
 
 router.get('/administrative/books', AdministrativeController.books)
 router.get('/administrative/book/new', AdministrativeController.bookNew)
+router.post('/administrative/book/edit', AdministrativeController.bookUpdate)
+router.get('/administrative/book/edit/:id', AdministrativeController.bookEdit)
 router.get('/administrative/book/:id', AdministrativeController.book)
 router.post('/administrative/book', AdministrativeController.bookCreate)
 //Employee

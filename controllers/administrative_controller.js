@@ -54,8 +54,9 @@ class AdministrativeController{
   }
 
   async bookNew(req, res){
-    res.render('pages/administrative/book/new',{
-      baseUrl: req.baseUrl
+    res.render('pages/administrative/book/form',{
+      baseUrl: req.baseUrl,
+      book: null
     })
   }
 
@@ -63,6 +64,37 @@ class AdministrativeController{
     let params = req.body
 
     let book = Book.create({
+      title: params.title,
+      author: params.author,
+      category: params.category,
+      isbn: params.isbn,
+      edition: params.edition,
+      launch_year: params.launch_year,
+      quantity: params.quantity,
+      sinopse: params.sinopse
+    })
+
+    res.render('pages/administrative/book/view',{
+      book: book,
+      baseUrl: req.baseUrl
+    })
+  }
+
+  async bookEdit(req, res){
+    let book = Book.find(req.params.id)
+    console.log(book)
+    res.render('pages/administrative/book/form',{
+      baseUrl: req.baseUrl,
+      book: book
+    })
+  }
+
+  async bookUpdate(req, res){
+    let book = Book.find(req.body.id)
+    console.log(req.body)
+    let params = req.body
+    
+    book.update({
       title: params.title,
       author: params.author,
       category: params.category,
