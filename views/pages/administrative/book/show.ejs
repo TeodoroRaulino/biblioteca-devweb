@@ -36,13 +36,13 @@
           <p>Sinopse: <%= book.sinopse %></p>
           <p class="pb-5">Edição: <%= book.edition %></p>
           <div class="pb-3">
-            <a href="/book/form.html" type="submit" class="btn btn-primary col-4">Editar</a>
+            <a href="/administrative/book/edit/<%= book.id %>" type="submit" class="btn btn-primary col-4">Editar</a>
           </div>
           <div class="pb-3">
             <a type="submit" class="btn btn-danger col-4">Deletar</a>
           </div>
           <div class="">
-            <a href="/book/dashboard.html" type="button" class="btn btn-secondary col-4">Voltar</a>
+            <a href="/administrative/books" type="button" class="btn btn-secondary col-4">Voltar</a>
           </div>
         </div>
       </div>
