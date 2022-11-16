@@ -1,3 +1,4 @@
+const Book = require('../model/book')
 class ProfessorController {
 
   async administrative(req, res){
@@ -7,8 +8,11 @@ class ProfessorController {
   }
 
   async book(req, res){
+    const book = Book.all()
+    
     res.render('pages/professor/book/index', {
-      title: "Professor - Livros"
+      title: "Professor - Livros",
+      books: book
     })
   }
 

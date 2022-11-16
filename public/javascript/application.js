@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+// const fetch = require('node-fetch')
 
 const html = document.querySelector("html")
 const checkbox = document.querySelector("input[name=theme]")
@@ -106,9 +106,43 @@ window.onload = function(){
   }
 }
 
-async function searchbook(){
-  let body = {"type": "categoria", "search": "Tec"}
+let inputSearch = document.querySelector("#inputSearch")
+const btnSearch = document.querySelector("#btnSearch")
+const selectValue = document.querySelector("#selectType")
+
+
+
+btnSearch.addEventListener("click", () => {
+  searchbook(selectValue.value, inputSearch.value)
+})
+
+async function searchbook(type, search){
+  let body = {"type": type, "search": search}
   let resp = await fetch('/books', {method: 'POST', body: JSON.stringify(body), headers:{'Content-Type': 'application/json'}})
-  let data = await resp.json()
-  console.log(data)
+  let datas = await resp.json()
+
+  let divBook = document.querySelector(".grid-book")
+  divBook.innerHTML = ''
+      
+  datas.forEach( data => {
+    let newDiv = document.createElement("div")
+    newDiv.innerHTML = creatBookCard(data) 
+    divBook.appendChild(newDiv)
+  })
+}
+
+function creatBookCard(data) {
+  let htmlBook = `<a href="/administrative/book/${data.id}" class="textDecorationNone">
+  <div class="bookAdministrative">
+    <div class="container py-3 d-flex align-items-center">
+      <img src="/images/bookXGH.jpg" class="bookAdminView">
+      <div class="px-3">
+        <h2>${data.title}</h2>
+        <p> ${data.author} | ${data.category} </p>
+      </div>
+    </div>
+  </div>
+  </a>`
+  
+  return htmlBook
 }

@@ -1,3 +1,5 @@
+const Book = require('../model/book')
+
 class StudentController {
 
   async administrative(req, res){
@@ -8,9 +10,12 @@ class StudentController {
   }
 
   async book(req, res){
+    const book = Book.all()
+
     res.render('pages/student/book/index', {
       title: "Estudante - Livros", 
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      books: book
     })
   }
 

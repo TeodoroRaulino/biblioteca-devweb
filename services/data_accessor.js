@@ -26,7 +26,7 @@ class DataAccessor{
   }
 
   where(key, value){
-    let record = this.data.filter(element => element[key].includes(value));
+    let record = this.data.filter(element => element[key].toLowerCase().includes(value.toLowerCase()));
 
     return record;
   }

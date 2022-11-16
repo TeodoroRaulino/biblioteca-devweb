@@ -1,9 +1,14 @@
+const Book = require('../model/book')
+
 class HomeController{
 
   async index(req, res){
+    const book = Book.all()
+
     res.render('pages/index', {
       title: "Home",
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      books: book
     })
   }
 

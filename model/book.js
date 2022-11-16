@@ -262,14 +262,15 @@ class Book{
       sinopse_data,
     )
 
+    
     if(title){
-      books_data = books_data.filter(element => element["title"].includes(title));
+      books_data = books_data.filter(element => element["title"].toLowerCase().includes(title.toLowerCase()));
     }
     if(author) {
-      books_data = books_data.filter(element => element["author"].includes(author));
+      books_data = books_data.filter(element => element["author"].toLowerCase().includes(author.toLowerCase()));
     }
     if(category){
-      books_data = books_data.filter(element => element["category"].includes(category));
+      books_data = books_data.filter(element => element["category"].toLowerCase().includes(category.toLowerCase()));
     }
     if(isbn){
       books_data = books_data.filter(element => element["isbn"].includes(isbn));
@@ -308,6 +309,7 @@ class Book{
 
     return books; 
   }
+
 
   static all(){
     const db = new DataAccessor('book')

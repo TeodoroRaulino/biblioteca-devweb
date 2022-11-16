@@ -22,6 +22,7 @@ class AdministrativeController{
         break;
       case "autor":
         books = Book.where({author: req.body.search})
+        break;
       default:
         books = Book.all()
         break;
@@ -30,7 +31,6 @@ class AdministrativeController{
     let books_jsons = books.map(book => {
       return book.json()
     });
-
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(books_jsons));
   }
@@ -45,7 +45,6 @@ class AdministrativeController{
   }
 
   async user(req, res){
-    console.log(req.params.id)
     let user = User.find(req.params.id)
     res.render('pages/administrative/user/show', {
       title: "Usuário",
@@ -156,7 +155,6 @@ class AdministrativeController{
 
   async bookEdit(req, res){
     let book = Book.find(req.params.id)
-    console.log(book)
     res.render('pages/administrative/book/form',{
       baseUrl: req.baseUrl,
       book: book
