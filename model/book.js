@@ -167,6 +167,21 @@ class Book{
     this.id = null;
   }
 
+  json(){
+    let json = {
+      "title": this.title,
+      "author": this.author,
+      "category": this.category,
+      "isbn": this.isbn,
+      "edition": this.edition,
+      "launch_year": this.launch_year,
+      "quantity": this.quantity,
+      "sinopse": this.sinopse,
+      "id": this.id,
+    }
+    return json
+  }
+
   static find(id){
     const db = new DataAccessor('book')
     let data = db.find(id);
@@ -219,7 +234,7 @@ class Book{
       authors_data = db.where('author', author)
     }
     if(category){
-      categories_data = db.where('category', author)
+      categories_data = db.where('category', category)
     }
     if(isbn){
       isbn_data = db.where('isbn', isbn)

@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 const html = document.querySelector("html")
 const checkbox = document.querySelector("input[name=theme]")
 
@@ -102,4 +104,11 @@ window.onload = function(){
     countFont = parseInt(localStorage.getItem("fontSize"))
     increaseFont(fonts)
   }
+}
+
+async function searchbook(){
+  let body = {"type": "categoria", "search": "Tec"}
+  let resp = await fetch('/books', {method: 'POST', body: JSON.stringify(body), headers:{'Content-Type': 'application/json'}})
+  let data = await resp.json()
+  console.log(data)
 }

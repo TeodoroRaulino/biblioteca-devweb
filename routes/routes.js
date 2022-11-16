@@ -10,6 +10,7 @@ const router = express.Router()
 //Home
 router.get('/', HomeController.index)
 router.get('/books', HomeController.books)
+router.post('/books', AdministrativeController.booksJson)
 router.get('/login', HomeController.login)
 router.get('/forgotpassword', HomeController.forgotPassword)
 

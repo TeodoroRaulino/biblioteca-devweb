@@ -9,6 +9,31 @@ class AdministrativeController{
       baseUrl: req.baseUrl
     })
   }
+
+  async booksJson(req,res){
+    let type = req.body.type
+    let books = []
+    switch (type) {
+      case "categoria":
+        books = Book.where({category: req.body.search})
+        break;
+      case "titulo":
+        books = Book.where({title: req.body.search})
+        break;
+      case "autor":
+        books = Book.where({author: req.body.search})
+      default:
+        books = Book.all()
+        break;
+    }
+  
+    let books_jsons = books.map(book => {
+      return book.json()
+    });
+
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(books_jsons));
+  }
   
   async users(req, res){
     let users = User.all()
