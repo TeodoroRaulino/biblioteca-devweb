@@ -20,8 +20,8 @@ class AdministrativeController{
   }
 
   async user(req, res){
-    let user = User.find(req.params.id);
-
+    console.log(req.params.id)
+    let user = User.find(req.params.id)
     res.render('pages/administrative/user/show', {
       title: "Usuário",
       user: user,
@@ -29,11 +29,60 @@ class AdministrativeController{
     })
   }
 
+  async userNew(req, res) {
+    res.render('pages/administrative/user/form', {
+      title: "VAI TOMA NO CU PerformanceResourceTiming",
+      baseUrl: req.baseUrl,
+      user: null
+    })
+  }
+  
   async userCreate(req, res){
-    res.render('pages/administrative/user/new', {
+    let params = req.body
+
+    let user = User.create({
+      name: params.name,
+      cpf: params.cpf,
+      identifier: params.identifier,
+      email: params.email,
+      password: params.password,
+      type: params.type
+    })
+
+    res.render('pages/administrative/user/show', {
       title: "Novo usuário",
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      user: user
     });
+  }
+
+  async userEdit(req, res) {
+    let user = User.find(req.params.id)
+
+    res.render('pages/administrative/user/form', {
+      title: "Edit",
+      user: user
+    })
+  }
+
+  async userUpdate(req, res) {
+    let user = User.find(req.body.id)
+    let params = req.body
+    
+    user.update({
+      name: params.name,
+      cpf: params.cpf,
+      identifier: params.identifier,
+      email: params.email,
+      password: params.password,
+      type: params.type
+    })
+
+    res.render('pages/administrative/user/show',{
+      title: "Usuário",
+      user: user,
+      baseUrl: req.baseUrl
+    })
   }
 
   async books(req, res){
@@ -47,7 +96,7 @@ class AdministrativeController{
 
   async book(req, res){
     let book = Book.find(req.params.id)
-    res.render('pages/administrative/book/view',{
+    res.render('pages/administrative/book/show',{
       book: book,
       baseUrl: req.baseUrl
     })
@@ -74,7 +123,7 @@ class AdministrativeController{
       sinopse: params.sinopse
     })
 
-    res.render('pages/administrative/book/view',{
+    res.render('pages/administrative/book/show',{
       book: book,
       baseUrl: req.baseUrl
     })
@@ -91,7 +140,6 @@ class AdministrativeController{
 
   async bookUpdate(req, res){
     let book = Book.find(req.body.id)
-    console.log(req.body)
     let params = req.body
     
     book.update({
@@ -105,7 +153,7 @@ class AdministrativeController{
       sinopse: params.sinopse
     })
 
-    res.render('pages/administrative/book/view',{
+    res.render('pages/administrative/book/show',{
       book: book,
       baseUrl: req.baseUrl
     })

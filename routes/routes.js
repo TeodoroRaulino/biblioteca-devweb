@@ -17,8 +17,11 @@ router.get('/forgotpassword', HomeController.forgotPassword)
 router.get('/administrative', AdministrativeController.administrative)
 
 router.get('/administrative/users', AdministrativeController.users)
+router.get('/administrative/user/new', AdministrativeController.userNew)
+router.post('/administrative/user/edit', AdministrativeController.userUpdate)
+router.get('/administrative/user/edit/:id', AdministrativeController.userEdit)
 router.get('/administrative/user/:id', AdministrativeController.user)
-router.get('/administrative/user/new', AdministrativeController.userCreate)
+router.post('/administrative/user', AdministrativeController.userCreate)
 
 router.get('/administrative/books', AdministrativeController.books)
 router.get('/administrative/book/new', AdministrativeController.bookNew)
@@ -26,6 +29,7 @@ router.post('/administrative/book/edit', AdministrativeController.bookUpdate)
 router.get('/administrative/book/edit/:id', AdministrativeController.bookEdit)
 router.get('/administrative/book/:id', AdministrativeController.book)
 router.post('/administrative/book', AdministrativeController.bookCreate)
+
 //Employee
 router.get('/employee', EmployeeController.administrative)
 router.get('/employee/reservation', EmployeeController.reservations)
