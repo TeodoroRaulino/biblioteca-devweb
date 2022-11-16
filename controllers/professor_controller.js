@@ -2,15 +2,13 @@ class ProfessorController {
 
   async administrative(req, res){
     res.render('pages/professor/administrative', {
-      title: "Painel do professor",
-      baseUrl: req.baseUrl
+      title: "Painel do professor"
     })
   }
 
   async book(req, res){
-    res.render('pages/professor/book/dashboard', {
-      title: "Professor - Livros",
-      baseUrl: req.baseUrl
+    res.render('pages/professor/book/index', {
+      title: "Professor - Livros"
     })
   }
 

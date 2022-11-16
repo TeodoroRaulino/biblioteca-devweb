@@ -8,7 +8,7 @@ class StudentController {
   }
 
   async book(req, res){
-    res.render('pages/student/book/dashboard', {
+    res.render('pages/student/book/index', {
       title: "Estudante - Livros", 
       baseUrl: req.baseUrl
     })
