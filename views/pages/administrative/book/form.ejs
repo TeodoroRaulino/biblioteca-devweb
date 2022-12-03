@@ -46,7 +46,7 @@
         <div class="row">
           <div class="pb-3 col-6">
             <label class="textBold">Sinopse</label>
-            <textarea name="sinopse" class="form-control" placeholder="Descrição do livro..." rows="4" required value="<%=book ? book.sinopse : ''%>"></textarea>
+            <textarea name="sinopse" class="form-control" placeholder="Descrição do livro..." rows="4" required><%= book ? book.sinopse : ''%></textarea>
           </div>
           <div class="pb-3 col-3">
             <label class="textBold">Edição/Volume</label>
