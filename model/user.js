@@ -1,5 +1,5 @@
 const DataAccessor = require('../services/data_accessor.js')
-
+const bcrypt = require('bcrypt');
 class User{
   /** 
   * @param id
@@ -53,6 +53,7 @@ class User{
     identifier = null
   }) => {
     const db = new DataAccessor('user');
+    password = cryptography(password)
     const json = generate_json(
       cpf,
       type,
@@ -105,6 +106,7 @@ class User{
       identifier = this.identifier
     }
 
+    password = cryptography(password)
     const json = generate_json(
       cpf,
       type,
@@ -267,6 +269,11 @@ function generate_json(cpf, type, name, email, password, identifier, id = null){
     "password": password,
     "identifier": identifier
   }
+}
+
+function cryptography(password){
+  const hash = bcrypt.hashSync(password, 10)
+  return hash
 }
 
 module.exports = User
