@@ -2,10 +2,15 @@ const ApplicationController = require('./application_controller')
 const User = require('../model/user') 
 
 class UserController extends ApplicationController{
-  async users(req, res){
+  async index(req, res){
     const [current_user, policy] = super.define_user_and_policy(res)
-
     let users = User.all()
+    
+    if(!policy.user().index()){
+      res.status(401)
+      return res.end()
+    }
+    
 
     res.render('pages/user/index', {
       title: "Usuários",
@@ -17,6 +22,12 @@ class UserController extends ApplicationController{
 
   async show(req, res){
     const [current_user, policy] = super.define_user_and_policy(res)
+    
+    if(!policy.user().show()){
+      res.status(401)
+      return res.end()
+    }
+    
     let user = User.find(req.params.id)
 
     res.render('pages/user/show', {
@@ -27,8 +38,13 @@ class UserController extends ApplicationController{
     })
   }
 
-  async userNew(req, res) {
+  async new(req, res) {
     const [current_user, policy] = super.define_user_and_policy(res)
+
+    if(!policy.user().new()){
+      res.status(401)
+      return res.end()
+    }
 
     res.render('pages/user/form', {
       title: "User formulário",
@@ -38,8 +54,14 @@ class UserController extends ApplicationController{
     })
   }
 
-  async userCreate(req, res){
+  async create(req, res){
     const [current_user, policy] = super.define_user_and_policy(res)
+
+    if(!policy.user().create()){
+      res.status(401)
+      return res.end()
+    }
+
     let params = req.body
 
     let user = User.create({
@@ -59,8 +81,14 @@ class UserController extends ApplicationController{
     });
   }
 
-  async userEdit(req, res) {
+  async edit(req, res) {
     const [current_user, policy] = super.define_user_and_policy(res)
+    
+    if(!policy.user().edit()){
+      res.status(401)
+      return res.end()
+    }
+
     let user = User.find(req.params.id)
 
     res.render('pages/user/form', {
@@ -70,8 +98,14 @@ class UserController extends ApplicationController{
     })
   }
 
-  async userUpdate(req, res) {
+  async update(req, res) {
     const [current_user, policy] = super.define_user_and_policy(res)
+
+    if(!policy.user().update()){
+      res.status(401)
+      return res.end()
+    }
+
     let user = User.find(req.body.id)
     let params = req.body
     
