@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <%- include('../../partials/sidebarStudent'); %>
+  <%- include('../../partials/sidebar'); %>
 
   <div class="m250 row justify-content-center py-5">
     <h1>Dashboard Administrativa</h1>
@@ -22,12 +22,20 @@
 
   <div class="m250 row justify-content-center">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <a href="/stundent/book" type="button" class="btn btn-secondary">Livros</a>
+      <% if(current_user.type === 'admin'){ %>
+        <a href="/administrative/users" type="button" class="btn btn-secondary">Usuários</a>
+        <a href="/administrative/books" type="button" class="btn btn-secondary">Livros</a>
+      <% } else if(current_user.type === 'employee') { %>
+        <a href="/employee/reservation" type="button" class="btn btn-secondary">Reservas</a>
+      <% } else if(current_user.type === 'professor') { %>
+        <a href="/professor/book" type="button" class="btn btn-secondary">Livros</a>
+      <% } else if(current_user.type === 'student') { %>
+        <a href="/stundent/book" type="button" class="btn btn-secondary">Livros</a>
+      <% } %> 
     </div>
   </div>
 
   
-  <script src="javascript/components.js"></script>
   <script src="javascript/application.js"></script>
 
 </body>

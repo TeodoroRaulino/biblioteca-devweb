@@ -1,9 +1,21 @@
 <aside class="sidebar" style="z-index:10">
   <header class="pb-2"><img src="/images/logo.png" id="logo"></header>
     <ul>
-      <li><a href="/administrative"><i class="fa-brands fa-js"></i>Dashboard</a></li>
-      <li><a href="/administrative/users"><i class="fa-solid fa-users"></i>Usuários</a></li>
-      <li><a href="/administrative/books"><i class="fa-solid fa-book"></i>Livros</a></li>
+      <% if(current_user.type === 'admin'){ %>
+        <li><a href="/administrative"><i class="fa-brands fa-js"></i>Dashboard</a></li>
+        <li><a href="/administrative/users"><i class="fa-solid fa-users"></i>Usuários</a></li>
+        <li><a href="/administrative/books"><i class="fa-solid fa-book"></i>Livros</a></li>
+      <% } else if(current_user.type === 'employee') { %>
+        <li><a href="/employee"><i class="fa-brands fa-js"></i>Dashboard</a></li>
+        <li><a href="/employee/reservation"><i class="fa-solid fa-calendar-days"></i>Reservas</a></li>
+      <% } else if(current_user.type === 'professor') { %>
+        <li><a href="/professor"><i class="fa-brands fa-js"></i>Dashboard</a></li>
+        <li><a href="/professor/book"><i class="fa-solid fa-book"></i>Meus Livros</a></li>
+        <li><a href="/professor/request"><i class="fa-solid fa-pen-to-square"></i>Pedido</a></li>
+      <% } else if(current_user.type === 'student') { %>
+        <li><a href="/student"><i class="fa-brands fa-js"></i>Dashboard</a></li>
+        <li><a href="/student/book"><i class="fa-solid fa-book"></i>Meus Livros</a></li>  
+      <% } %> 
     </ul>
 </aside>
 
@@ -13,7 +25,7 @@
     <button class="p-1 " id="decrease"><i class="fa-solid fa-font"></i><i class="fa-solid fa-minus"></i></button>
   </div>
   <div class="toggle">
-    <input type="checkbox" class="switch" name="theme" id="switch"">
+    <input type="checkbox" class="switch" name="theme" id="switch">
     <label for="switch" class="label">
       <i class="fas fa-moon"></i>
       <i class="fas fa-sun"></i>

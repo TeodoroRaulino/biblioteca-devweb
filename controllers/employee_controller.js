@@ -10,9 +10,13 @@ class EmployeeController {
   }
 
   async reservations(req, res) {
-    let reservations = Reservation.all()
-
-    res.render('pages/employee/reservation/index', {
+    let reservations = []
+    if(current_user.type === 'employee' || current_user.type === 'admin'){
+      reservations = Reservation.all()
+    }else{
+      reservations = Reservation.where({user_id: current_user.id})
+    }
+    res.render('pages/reservation/index', {
       title: "Reservas",
       reservations: reservations
     })
