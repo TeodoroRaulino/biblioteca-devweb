@@ -4,6 +4,8 @@ const Book = require('./../model/book');
 class AdministrativeController{
   
   async administrative(req, res){
+    const current_user = res.locals.user
+
     res.render('pages/administrative/administrative', {
       title: "Painel Administrativo",
       baseUrl: req.baseUrl
@@ -45,7 +47,9 @@ class AdministrativeController{
   }
 
   async user(req, res){
+    const current_user = res.locals.user
     let user = User.find(req.params.id)
+
     res.render('pages/administrative/user/show', {
       title: "Usuário",
       user: user,
@@ -54,6 +58,8 @@ class AdministrativeController{
   }
 
   async userNew(req, res) {
+    const current_user = res.locals.user
+
     res.render('pages/administrative/user/form', {
       title: "VAI TOMA NO CU PerformanceResourceTiming",
       baseUrl: req.baseUrl,
@@ -62,6 +68,7 @@ class AdministrativeController{
   }
   
   async userCreate(req, res){
+    const current_user = res.locals.user
     let params = req.body
 
     let user = User.create({
@@ -81,6 +88,7 @@ class AdministrativeController{
   }
 
   async userEdit(req, res) {
+    const current_user = res.locals.user
     let user = User.find(req.params.id)
 
     res.render('pages/administrative/user/form', {
@@ -90,6 +98,7 @@ class AdministrativeController{
   }
 
   async userUpdate(req, res) {
+    const current_user = res.locals.user
     let user = User.find(req.body.id)
     let params = req.body
     
@@ -127,6 +136,8 @@ class AdministrativeController{
   }
 
   async bookNew(req, res){
+    const current_user = res.locals.user
+
     res.render('pages/administrative/book/form',{
       baseUrl: req.baseUrl,
       book: null
@@ -134,6 +145,7 @@ class AdministrativeController{
   }
 
   async bookCreate(req, res){
+    const current_user = res.locals.user
     let params = req.body
 
     let book = Book.create({
@@ -154,7 +166,9 @@ class AdministrativeController{
   }
 
   async bookEdit(req, res){
+    const current_user = res.locals.user
     let book = Book.find(req.params.id)
+
     res.render('pages/administrative/book/form',{
       baseUrl: req.baseUrl,
       book: book
@@ -162,6 +176,7 @@ class AdministrativeController{
   }
 
   async bookUpdate(req, res){
+    const current_user = res.locals.user
     let book = Book.find(req.body.id)
     let params = req.body
     
