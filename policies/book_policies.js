@@ -8,11 +8,64 @@ class BookPolicies{
     this.logged_user = logged_user
   }
 
-  new(){}
-  create(){}
-  edit(){}
-  update(){}
-  delete(){}
+  index(){
+    switch (this.logged_user.type) {
+      case 'admin':
+        return true
+      case 'student':
+        return false
+      case 'employee':
+        return true
+      case 'professor':
+        return false
+      default:
+        return false
+    }
+  }
+  show(){
+    switch (this.logged_user.type) {
+      case 'admin':
+        return true
+      case 'student':
+        return false
+      case 'employee':
+        return true
+      case 'professor':
+        return false
+      default:
+        return false
+    }
+  }
+  new(){
+    if(this.logged_user.type === 'admin'){
+      return true
+    }
+    return false
+  }
+  create(){
+    if(this.logged_user.type === 'admin'){
+      return true
+    }
+    return false
+  }
+  edit(){
+    if(this.logged_user.type === 'admin'){
+      return true
+    }
+    return false
+  }
+  update(){
+    if(this.logged_user.type === 'admin'){
+      return true
+    }
+    return false
+  }
+  delete(){
+    if(this.logged_user.type === 'admin'){
+      return true
+    }
+    return false
+  }
 }
 
 module.exports = BookPolicies

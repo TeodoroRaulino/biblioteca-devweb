@@ -37,8 +37,14 @@ class BookController extends ApplicationController{
     })
   }
 
-  async administrative_books(req, res){
+  async index(req, res){
     const [current_user, policy] = super.define_user_and_policy(res)
+
+    if(!policy.book().index()){
+      res.status(401)
+      return res.end()
+    }
+
     let books = Book.all()
 
     res.render('pages/book/dashboard', {
@@ -49,8 +55,14 @@ class BookController extends ApplicationController{
     })
   }
 
-  async book(req, res){
+  async show(req, res){
     const [current_user, policy] = super.define_user_and_policy(res)
+
+    if(!policy.book().show()){
+      res.status(401)
+      return res.end()
+    }
+
     let book = Book.find(req.params.id)
     
     res.render('pages/book/show',{
@@ -60,8 +72,13 @@ class BookController extends ApplicationController{
     })
   }
 
-  async bookNew(req, res){
+  async new(req, res){
     const [current_user, policy] = super.define_user_and_policy(res)
+
+    if(!policy.book().new()){
+      res.status(401)
+      return res.end()
+    }
 
     res.render('pages/book/form',{
       baseUrl: req.baseUrl,
@@ -70,8 +87,14 @@ class BookController extends ApplicationController{
     })
   }
 
-  async bookCreate(req, res){
+  async create(req, res){
     const [current_user, policy] = super.define_user_and_policy(res)
+
+    if(!policy.book().create()){
+      res.status(401)
+      return res.end()
+    }
+
     let params = req.body
 
     let book = Book.create({
@@ -92,8 +115,14 @@ class BookController extends ApplicationController{
     })
   }
 
-  async bookEdit(req, res){
+  async edit(req, res){
     const [current_user, policy] = super.define_user_and_policy(res)
+
+    if(!policy.book().edit()){
+      res.status(401)
+      return res.end()
+    }
+
     let book = Book.find(req.params.id)
 
     res.render('pages/book/form',{
@@ -103,8 +132,14 @@ class BookController extends ApplicationController{
     })
   }
 
-  async bookUpdate(req, res){
+  async update(req, res){
     const [current_user, policy] = super.define_user_and_policy(res)
+
+    if(!policy.book().update()){
+      res.status(401)
+      return res.end()
+    }
+
     let book = Book.find(req.body.id)
     let params = req.body
     
