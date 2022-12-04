@@ -287,6 +287,11 @@ ul {
   color: var(--blue);
 }
 
+.btnLogout {
+  padding: 6px;
+  border-radius: 24px;
+}
+
 /* Dark Mode */
 
 .toggle {
