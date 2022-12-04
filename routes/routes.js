@@ -36,11 +36,11 @@ router.get('/administrative/book/edit/:id', BookController.edit)
 router.get('/administrative/book/:id', BookController.show)
 router.post('/administrative/book', BookController.create)
 
-router.get('/administrative/reservation', ReservationController.reservations)
-router.get('/administrative/reservation/new', ReservationController.reservartionNew)
-router.post('/administrative/reservation/edit', ReservationController.reservartionUpdate)
-router.get('/administrative/reservation/edit/:id', ReservationController.reservartionEdit)
-router.post('/administrative/reservation', ReservationController.reservationCreate)
+router.get('/administrative/reservation', ReservationController.index)
+router.get('/administrative/reservation/new', ReservationController.new)
+router.post('/administrative/reservation/edit', ReservationController.update)
+router.get('/administrative/reservation/edit/:id', ReservationController.edit)
+router.post('/administrative/reservation', ReservationController.create)
 
 
 function authenticate (req, res, next) {
