@@ -16,7 +16,7 @@
 
   <div class="m250 containeer pt-5 titleButton">
     <h1>Reservas</h1>
-    <a class="btn btn-success mr-4" href="/employee/reservation/new"><i class="fa-solid fa-clock px-2"></i></i>Nova reserva</a>
+    <a class="btn btn-success mr-4" href="/administrative/reservation/new"><i class="fa-solid fa-clock px-2"></i></i>Nova reserva</a>
   </div>
 
   <div class="m250 px-5 py-5">
@@ -29,7 +29,7 @@
           <th></th>
         </tr>
         <% reservations.forEach(reservation => { %>
-          <%- include('../../../partials/reservation', {reservation: reservation}); %>
+          <%- include('../../partials/reservation', {reservation: reservation}); %>
         <% }) %>
       </table>
   </div>

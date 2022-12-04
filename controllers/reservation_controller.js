@@ -2,13 +2,7 @@ const User = require('../model/user')
 const Book = require('../model/book')
 const Reservation = require('../model/reservation')
 
-class EmployeeController {
-  async administrative(req, res) {
-    res.render('pages/employee/administrative', {
-      title: "Painel do Funcionário"
-    })
-  }
-
+class ReservationController{
   async reservations(req, res) {
     const current_user = res.locals.user
     let reservations = []
@@ -56,7 +50,7 @@ class EmployeeController {
       current_user: current_user
     })
   }
-
+  
   async reservartionEdit(req, res) {
     const current_user = res.locals.user
     let users = User.all()
@@ -91,6 +85,7 @@ class EmployeeController {
       current_user: current_user
     })
   }
+
 }
 
-module.exports = new EmployeeController
+module.exports = new ReservationController

@@ -15,10 +15,10 @@
   <div class="d-flex m250 py-5 justify-content-center">
     <div class="col-5 align-self-center">
       <%if(reservation){%>
-        <form action="/employee/reservation/edit" method="post">
+        <form action="/administrative/reservation/edit" method="post">
           <input type="hidden" name="id" value="<%= reservation.id %>"></input>
       <%}else{%>
-        <form action="/employee/reservation" method="post">
+        <form action="/administrative/reservation" method="post">
       <%}%>
       <h1 class="textCenter pb-5 text-color"><%= reservation ? 'Editar Reserva' : 'Criar Reserva' %></h1>
         <div class="pb-3">
