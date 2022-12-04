@@ -24,7 +24,7 @@ router.get('/administrative/users', UserController.users)
 router.get('/administrative/user/new', UserController.userNew)
 router.post('/administrative/user/edit', UserController.userUpdate)
 router.get('/administrative/user/edit/:id', UserController.userEdit)
-router.get('/administrative/user/:id', UserController.user)
+router.get('/administrative/user/:id', UserController.show)
 router.post('/administrative/user', UserController.userCreate)
 
 router.get('/books', BookController.books)
