@@ -37,4 +37,11 @@
       <button type="submit" class="btnLogout">Sair<i class="fa-solid fa-sign-out pl-1"></i></button>
     </form>
   </div>
+  
 </div>
+
+<% if(error){ %> 
+<div class="m250 row justify-content-center py-2" style="background-color: red;">
+  <h3><%= error %> </h3>
+</div>
+<% } %> 

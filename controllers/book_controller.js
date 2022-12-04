@@ -42,7 +42,7 @@ class BookController extends ApplicationController{
 
     if(!policy.book().index()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
 
     let books = Book.all()
@@ -120,7 +120,7 @@ class BookController extends ApplicationController{
 
     if(!policy.book().edit()){
       res.status(401)
-      return res.end()
+      return super.return_error(res)
     }
 
     let book = Book.find(req.params.id)
