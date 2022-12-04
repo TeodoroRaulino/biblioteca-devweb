@@ -38,6 +38,7 @@ class BookController extends ApplicationController{
   }
 
   async index(req, res){
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().index()){
@@ -51,11 +52,13 @@ class BookController extends ApplicationController{
       title: "Livros",
       books: books,
       baseUrl: req.baseUrl,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async show(req, res){
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().show()){
@@ -68,11 +71,13 @@ class BookController extends ApplicationController{
     res.render('pages/book/show',{
       book: book,
       baseUrl: req.baseUrl,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async new(req, res){
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().new()){
@@ -83,11 +88,13 @@ class BookController extends ApplicationController{
     res.render('pages/book/form',{
       baseUrl: req.baseUrl,
       book: null,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async create(req, res){
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().create()){
@@ -111,11 +118,13 @@ class BookController extends ApplicationController{
     res.render('pages/book/show',{
       book: book,
       baseUrl: req.baseUrl,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async edit(req, res){
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().edit()){
@@ -128,11 +137,13 @@ class BookController extends ApplicationController{
     res.render('pages/book/form',{
       baseUrl: req.baseUrl,
       book: book,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async update(req, res){
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().update()){
@@ -157,7 +168,8 @@ class BookController extends ApplicationController{
     res.render('pages/book/show',{
       book: book,
       baseUrl: req.baseUrl,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 }

@@ -3,6 +3,7 @@ const User = require('../model/user')
 
 class UserController extends ApplicationController{
   async index(req, res){
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
     let users = User.all()
     
@@ -16,11 +17,13 @@ class UserController extends ApplicationController{
       title: "Usuários",
       users: users,
       baseUrl: req.baseUrl,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async show(req, res){
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
     
     if(!policy.user().show()){
@@ -34,11 +37,13 @@ class UserController extends ApplicationController{
       title: "Usuário",
       user: user,
       baseUrl: req.baseUrl,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async new(req, res) {
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.user().new()){
@@ -50,11 +55,13 @@ class UserController extends ApplicationController{
       title: "User formulário",
       baseUrl: req.baseUrl,
       user: null,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async create(req, res){
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.user().create()){
@@ -77,11 +84,13 @@ class UserController extends ApplicationController{
       title: "Novo usuário",
       baseUrl: req.baseUrl,
       user: user,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     });
   }
 
   async edit(req, res) {
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
     
     if(!policy.user().edit()){
@@ -94,11 +103,13 @@ class UserController extends ApplicationController{
     res.render('pages/user/form', {
       title: "Edit",
       user: user,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async update(req, res) {
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.user().update()){
@@ -122,7 +133,8 @@ class UserController extends ApplicationController{
       title: "Usuário",
       user: user,
       baseUrl: req.baseUrl,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 }

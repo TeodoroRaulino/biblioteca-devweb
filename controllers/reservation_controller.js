@@ -5,6 +5,7 @@ const Reservation = require('../model/reservation')
 
 class ReservationController extends ApplicationController{
   async index(req, res) {
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().index()){
@@ -23,11 +24,13 @@ class ReservationController extends ApplicationController{
     res.render('pages/reservation/index', {
       title: "Reservas",
       reservations: reservations,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async new(req, res) {
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().new()){
@@ -43,11 +46,13 @@ class ReservationController extends ApplicationController{
       users: users,
       books: books,
       reservation: null,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async create(req, res) {
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().create()){
@@ -68,11 +73,13 @@ class ReservationController extends ApplicationController{
     res.render('pages/reservation/index', {
       title: "Reservas",
       reservations: reservations,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
   
   async edit(req, res) {
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().edit()){
@@ -89,11 +96,13 @@ class ReservationController extends ApplicationController{
       users: users,
       books: books,
       reservation: reservation,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 
   async update(req, res) {
+    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.book().update()){
@@ -115,7 +124,8 @@ class ReservationController extends ApplicationController{
     res.render('pages/reservation/index', {
       title: "Reservas",
       reservations: reservations,
-      current_user: current_user
+      current_user: current_user,
+      error: error
     })
   }
 

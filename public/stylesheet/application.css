@@ -464,6 +464,8 @@ table, th {
 
 #error-section{
   background-color: red;
+  padding: 0 12px;
+  border-radius: 8px;
   display: none;
   transition: 1s;
 }
