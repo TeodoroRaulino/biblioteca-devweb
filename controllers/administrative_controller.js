@@ -6,9 +6,10 @@ class AdministrativeController{
   async administrative(req, res){
     const current_user = res.locals.user
 
-    res.render('pages/administrative/administrative', {
+    res.render('pages/administrative', {
       title: "Painel Administrativo",
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      current_user: current_user
     })
   }
 
@@ -38,11 +39,14 @@ class AdministrativeController{
   }
   
   async users(req, res){
+    const current_user = res.locals.user
     let users = User.all()
-    res.render('pages/administrative/user/index', {
+
+    res.render('pages/user/index', {
       title: "Usuários",
       users: users,
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      current_user: current_user
     })
   }
 
@@ -50,20 +54,22 @@ class AdministrativeController{
     const current_user = res.locals.user
     let user = User.find(req.params.id)
 
-    res.render('pages/administrative/user/show', {
+    res.render('pages/user/show', {
       title: "Usuário",
       user: user,
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      current_user: current_user
     })
   }
 
   async userNew(req, res) {
     const current_user = res.locals.user
 
-    res.render('pages/administrative/user/form', {
-      title: "VAI TOMA NO CU PerformanceResourceTiming",
+    res.render('pages/user/form', {
+      title: "User formulário",
       baseUrl: req.baseUrl,
-      user: null
+      user: null,
+      current_user: current_user
     })
   }
   
@@ -80,10 +86,11 @@ class AdministrativeController{
       type: params.type
     })
 
-    res.render('pages/administrative/user/show', {
+    res.render('pages/user/show', {
       title: "Novo usuário",
       baseUrl: req.baseUrl,
-      user: user
+      user: user,
+      current_user: current_user
     });
   }
 
@@ -91,9 +98,10 @@ class AdministrativeController{
     const current_user = res.locals.user
     let user = User.find(req.params.id)
 
-    res.render('pages/administrative/user/form', {
+    res.render('pages/user/form', {
       title: "Edit",
-      user: user
+      user: user,
+      current_user: current_user
     })
   }
 
@@ -111,36 +119,44 @@ class AdministrativeController{
       type: params.type
     })
 
-    res.render('pages/administrative/user/show',{
+    res.render('pages/user/show',{
       title: "Usuário",
       user: user,
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      current_user: current_user
     })
   }
 
   async books(req, res){
+    const current_user = res.locals.user
     let books = Book.all()
-    res.render('pages/administrative/book/dashboard', {
+
+    res.render('pages/book/dashboard', {
       title: "Livros",
       books: books,
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      current_user: current_user
     })
   }
 
   async book(req, res){
+    const current_user = res.locals.user
     let book = Book.find(req.params.id)
-    res.render('pages/administrative/book/show',{
+    
+    res.render('pages/book/show',{
       book: book,
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      current_user: current_user
     })
   }
 
   async bookNew(req, res){
     const current_user = res.locals.user
 
-    res.render('pages/administrative/book/form',{
+    res.render('pages/book/form',{
       baseUrl: req.baseUrl,
-      book: null
+      book: null,
+      current_user: current_user
     })
   }
 
@@ -159,9 +175,10 @@ class AdministrativeController{
       sinopse: params.sinopse
     })
 
-    res.render('pages/administrative/book/show',{
+    res.render('pages/book/show',{
       book: book,
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      current_user: current_user
     })
   }
 
@@ -169,9 +186,10 @@ class AdministrativeController{
     const current_user = res.locals.user
     let book = Book.find(req.params.id)
 
-    res.render('pages/administrative/book/form',{
+    res.render('pages/book/form',{
       baseUrl: req.baseUrl,
-      book: book
+      book: book,
+      current_user: current_user
     })
   }
 
@@ -191,9 +209,10 @@ class AdministrativeController{
       sinopse: params.sinopse
     })
 
-    res.render('pages/administrative/book/show',{
+    res.render('pages/book/show',{
       book: book,
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      current_user: current_user
     })
   }
 

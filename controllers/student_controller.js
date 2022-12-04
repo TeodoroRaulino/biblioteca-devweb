@@ -3,19 +3,24 @@ const Book = require('../model/book')
 class StudentController {
 
   async administrative(req, res){
-    res.render('pages/student/administrative', {
+    const current_user = res.locals.user
+
+    res.render('pages/administrative', {
       title: "Painel do estudante", 
-      baseUrl: req.baseUrl
+      baseUrl: req.baseUrl,
+      current_user: current_user
     })
   }
 
   async book(req, res){
+    const current_user = res.locals.user
     const book = Book.all()
 
-    res.render('pages/student/book/index', {
+    res.render('pages/book/index', {
       title: "Estudante - Livros", 
       baseUrl: req.baseUrl,
-      books: book
+      books: book,
+      current_user: current_user
     })
   }
 

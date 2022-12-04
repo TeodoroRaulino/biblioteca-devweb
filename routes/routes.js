@@ -18,7 +18,7 @@ router.post('/logout', HomeController.logout)
 router.get('/forgotpassword', HomeController.forgotPassword)
 
 //Administrative
-router.get('/administrative', authenticate, AdministrativeController.administrative)
+router.get('/administrative', authenticate, AdministrativeController.administrative) //  SÓ PRECISA DE UM .administrative, ITALO DO FUTURO - ARROMBADO
 
 router.get('/administrative/users', authenticate, AdministrativeController.users)
 router.get('/administrative/user/new', authenticate, AdministrativeController.userNew)
@@ -44,7 +44,7 @@ router.post('/employee/reservation', authenticate, EmployeeController.reservatio
 
 //Professor
 router.get('/professor', authenticate, ProfessorController.administrative)
-router.get('/professor/book', authenticate, ProfessorController.book)
+router.get('/professor/book', authenticate, ProfessorController.book) // MY BOOKS ITALO DO FUTURO, VAI VIRAR RESERVATION - line 39
 
 //Student
 router.get('/student', authenticate, StudentController.administrative)
@@ -52,6 +52,9 @@ router.get('/stundent/book', authenticate, StudentController.book)
 
 function authenticate (req, res, next) {
   const session_token = req.cookies["session_token"]
+  if(!session_token){
+    res.redirect('/login')
+  }
   const user = Authentication.validate_token(session_token)
   
   if(!user){
@@ -64,6 +67,9 @@ function authenticate (req, res, next) {
 
 function verify_user_logged(req, res, next){
   const session_token = req.cookies["session_token"]
+  if(!session_token){
+    next()
+  }
   const user = Authentication.validate_token(session_token)
 
   if(user){

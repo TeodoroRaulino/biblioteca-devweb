@@ -10,6 +10,7 @@ class EmployeeController {
   }
 
   async reservations(req, res) {
+    const current_user = res.locals.user
     let reservations = []
     if(current_user.type === 'employee' || current_user.type === 'admin'){
       reservations = Reservation.all()
@@ -18,23 +19,27 @@ class EmployeeController {
     }
     res.render('pages/reservation/index', {
       title: "Reservas",
-      reservations: reservations
+      reservations: reservations,
+      current_user: current_user
     })
   }
 
   async reservartionNew(req, res) {
+    const current_user = res.locals.user
     let users = User.all()
     let books = Book.all()
 
-    res.render('pages/employee/reservation/form', {
+    res.render('pages/reservation/form', {
       title: "Painel do Funcionário",
       users: users,
       books: books,
-      reservation: null
+      reservation: null,
+      current_user: current_user
     })
   }
 
   async reservationCreate(req, res) {
+    const current_user = res.locals.user
     let reservations = Reservation.all()
     let params = req.body
 
@@ -45,26 +50,30 @@ class EmployeeController {
       return_date: params.return_date
     })
 
-    res.render('pages/employee/reservation/index', {
+    res.render('pages/reservation/index', {
       title: "Reservas",
-      reservations: reservations
+      reservations: reservations,
+      current_user: current_user
     })
   }
 
   async reservartionEdit(req, res) {
+    const current_user = res.locals.user
     let users = User.all()
     let books = Book.all()
     let reservation = Reservation.find(req.params.id)
 
-    res.render('pages/employee/reservation/form', {
+    res.render('pages/reservation/form', {
       title: "Painel do Funcionário",
       users: users,
       books: books,
-      reservation: reservation
+      reservation: reservation,
+      current_user: current_user
     })
   }
 
   async reservartionUpdate(req, res) {
+    const current_user = res.locals.user
     let reservations = Reservation.all()
     let params = req.body
     let reservation = Reservation.find(params.id)
@@ -76,9 +85,10 @@ class EmployeeController {
       return_date: params.return_date
     })
 
-    res.render('pages/employee/reservation/index', {
+    res.render('pages/reservation/index', {
       title: "Reservas",
-      reservations: reservations
+      reservations: reservations,
+      current_user: current_user
     })
   }
 }

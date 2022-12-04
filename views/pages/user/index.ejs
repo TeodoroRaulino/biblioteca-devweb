@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <%- include('../../../partials/sidebar'); %>
+  <%- include('../../partials/sidebar'); %>
 
   <div class="m250 row containeer py-5 titleButton">
     <h1>Usuários</h1>
@@ -19,7 +19,7 @@
 
   <div class="m250 containeer gridUser"> 
     <% users.forEach(user => { %>
-      <%- include('../../../partials/userCard', {user: user}) %> 
+      <%- include('../../partials/userCard', {user: user}) %> 
     <% }) %>
   </div>
   
