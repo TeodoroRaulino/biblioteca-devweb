@@ -1,8 +1,10 @@
-const User = require('./../model/user');
+const ApplicationController = require('./application_controller')
+const User = require('../model/user') 
 
-class UserController{
+class UserController extends ApplicationController{
   async users(req, res){
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
+
     let users = User.all()
 
     res.render('pages/user/index', {
@@ -13,8 +15,8 @@ class UserController{
     })
   }
 
-  async user(req, res){
-    const current_user = res.locals.user
+  async show(req, res){
+    const [current_user, policy] = super.define_user_and_policy(res)
     let user = User.find(req.params.id)
 
     res.render('pages/user/show', {
@@ -26,7 +28,7 @@ class UserController{
   }
 
   async userNew(req, res) {
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
 
     res.render('pages/user/form', {
       title: "User formulário",
@@ -37,7 +39,7 @@ class UserController{
   }
 
   async userCreate(req, res){
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let params = req.body
 
     let user = User.create({
@@ -58,7 +60,7 @@ class UserController{
   }
 
   async userEdit(req, res) {
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let user = User.find(req.params.id)
 
     res.render('pages/user/form', {
@@ -69,7 +71,7 @@ class UserController{
   }
 
   async userUpdate(req, res) {
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let user = User.find(req.body.id)
     let params = req.body
     

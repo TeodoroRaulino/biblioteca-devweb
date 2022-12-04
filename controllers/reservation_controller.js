@@ -1,16 +1,19 @@
+const ApplicationController = require('./application_controller')
 const User = require('../model/user')
 const Book = require('../model/book')
 const Reservation = require('../model/reservation')
 
-class ReservationController{
+class ReservationController extends ApplicationController{
   async reservations(req, res) {
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let reservations = []
+
     if(current_user.type === 'employee' || current_user.type === 'admin'){
       reservations = Reservation.all()
     }else{
       reservations = Reservation.where({user_id: current_user.id})
     }
+
     res.render('pages/reservation/index', {
       title: "Reservas",
       reservations: reservations,
@@ -19,7 +22,7 @@ class ReservationController{
   }
 
   async reservartionNew(req, res) {
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let users = User.all()
     let books = Book.all()
 
@@ -33,7 +36,7 @@ class ReservationController{
   }
 
   async reservationCreate(req, res) {
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let reservations = Reservation.all()
     let params = req.body
 
@@ -52,7 +55,7 @@ class ReservationController{
   }
   
   async reservartionEdit(req, res) {
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let users = User.all()
     let books = Book.all()
     let reservation = Reservation.find(req.params.id)
@@ -67,7 +70,7 @@ class ReservationController{
   }
 
   async reservartionUpdate(req, res) {
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let reservations = Reservation.all()
     let params = req.body
     let reservation = Reservation.find(params.id)

@@ -1,6 +1,7 @@
+const ApplicationController = require('./application_controller');
 const Book = require('./../model/book');
 
-class BookController{
+class BookController extends ApplicationController{
   async booksJson(req,res){
     let type = req.body.type
     let books = []
@@ -37,7 +38,7 @@ class BookController{
   }
 
   async administrative_books(req, res){
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let books = Book.all()
 
     res.render('pages/book/dashboard', {
@@ -49,7 +50,7 @@ class BookController{
   }
 
   async book(req, res){
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let book = Book.find(req.params.id)
     
     res.render('pages/book/show',{
@@ -60,7 +61,7 @@ class BookController{
   }
 
   async bookNew(req, res){
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
 
     res.render('pages/book/form',{
       baseUrl: req.baseUrl,
@@ -70,7 +71,7 @@ class BookController{
   }
 
   async bookCreate(req, res){
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let params = req.body
 
     let book = Book.create({
@@ -92,7 +93,7 @@ class BookController{
   }
 
   async bookEdit(req, res){
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let book = Book.find(req.params.id)
 
     res.render('pages/book/form',{
@@ -103,7 +104,7 @@ class BookController{
   }
 
   async bookUpdate(req, res){
-    const current_user = res.locals.user
+    const [current_user, policy] = super.define_user_and_policy(res)
     let book = Book.find(req.body.id)
     let params = req.body
     
