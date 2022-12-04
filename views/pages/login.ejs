@@ -16,17 +16,19 @@
     <div class="row m-0 py-5 justify-content-center">
       <div class="col-5 align-self-center p-5">
         <h2 class="textCenter text-color">Entre na sua conta</h2>
-        <div class="pb-3 pt-3">
-          <input type="text" class="formLogin" placeholder="e-mail">
-        </div>
-        <div class="pb-3 d-flex align-items-center">
-          <input type="password" class="formLogin" id="password" placeholder="password">
-          <img class="visibilityPassword" src="images/visibility_off.png" id="visibility">
-        </div>
-        <a href="/forgotPassword" class="pb-3">Esqueceu sua senha?</a>
-        <div class="textCenter">
-          <a href="/administrative" type="submit" class="btn btn-success">Entrar</a>
-        </div>
+        <form action="/login" method="post">
+          <div class="pb-3 pt-3">
+            <input name ="email" type="text" class="formLogin" placeholder="e-mail">
+          </div>
+          <div class="pb-3 d-flex align-items-center">
+            <input name="password" type="password" class="formLogin" id="password" placeholder="password">
+            <img class="visibilityPassword" src="images/visibility_off.png" id="visibility">
+          </div>
+          <a href="/forgotPassword" class="pb-3">Esqueceu sua senha?</a>
+          <div class="textCenter">
+            <input type="submit" value="Entrar" class="btn btn-success"></input>
+          </div>
+        </form>
       </div>
       <div class="col-6 titleLogin p-5">
         <div class="bgLogin text-white">
@@ -42,6 +44,5 @@
 
   <script src="javascript/login.js"></script>
   <script src="javascript/application.js"></script>
-
 </body>
 </html>
