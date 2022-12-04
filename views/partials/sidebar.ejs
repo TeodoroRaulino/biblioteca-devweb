@@ -20,6 +20,9 @@
 </aside>
 
 <div class="navSidebar">
+  <div class="row justify-content-center pr-5 py-2" id="error-section">
+    <h3>aslkdasdoasd</h3>
+  </div>
   <div class="mr-5">
     <button class="p-1" id="increase"><i class="fa-solid fa-font"></i><i class="fa-solid fa-plus"></i></button>
     <button class="p-1 " id="decrease"><i class="fa-solid fa-font"></i><i class="fa-solid fa-minus"></i></button>
@@ -40,8 +43,25 @@
   
 </div>
 
-<% if(error){ %> 
-<div class="m250 row justify-content-center py-2" style="background-color: red;">
-  <h3><%= error %> </h3>
-</div>
+<% if(error){ %>
+  <script>
+    let el = document.querySelector("#error-section")
+    el.style.display = "flex"
+
+    setTimeout(fadeEffect,4000)
+    function fadeEffect(){
+
+      var fadeTarget = document.getElementById("error-section");
+      var fadeEffect = setInterval(function () {
+        if (!fadeTarget.style.opacity) {
+          fadeTarget.style.opacity = 1;
+        }
+        if (fadeTarget.style.opacity > 0) {
+          fadeTarget.style.opacity -= 0.1;
+        } else {
+          clearInterval(fadeEffect);
+        }
+      }, 50);
+    }
+  </script>
 <% } %> 

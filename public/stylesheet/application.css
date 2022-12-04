@@ -461,3 +461,9 @@ table, th {
   padding: 8px;
   font-size: var(--fs16);
 }
+
+#error-section{
+  background-color: red;
+  display: none;
+  transition: 1s;
+}
