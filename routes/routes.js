@@ -1,54 +1,47 @@
 const express = require('express')
 const HomeController = require('../controllers/home_controller.js')
 const AdministrativeController = require('../controllers/administrative_controller.js')
-const EmployeeController = require('../controllers/employee_controller')
-const ProfessorController = require('../controllers/professor_controller')
-const StudentController = require('../controllers/student_controller')
+const BookController = require("../controllers/book_controller")
+const UserController = require('../controllers/user_controller')
+const ReservationController = require('../controllers/reservation_controller')
 const Authentication = require('../services/authentication')
 
 const router = express.Router()
 
 //Home
 router.get('/', HomeController.index)
-router.get('/books', HomeController.books)
-router.post('/books', AdministrativeController.booksJson)
 router.get('/login', verify_user_logged, HomeController.login)
 router.post('/login', HomeController.authenticate)
 router.post('/logout', HomeController.logout)
 router.get('/forgotpassword', HomeController.forgotPassword)
 
 //Administrative
-router.get('/administrative', authenticate, AdministrativeController.administrative) //  SÓ PRECISA DE UM .administrative, ITALO DO FUTURO - ARROMBADO
 
-router.get('/administrative/users', authenticate, AdministrativeController.users)
-router.get('/administrative/user/new', authenticate, AdministrativeController.userNew)
-router.post('/administrative/user/edit', authenticate, AdministrativeController.userUpdate)
-router.get('/administrative/user/edit/:id', authenticate, AdministrativeController.userEdit)
-router.get('/administrative/user/:id', authenticate, AdministrativeController.user)
-router.post('/administrative/user', authenticate, AdministrativeController.userCreate)
+router.use('/administrative', authenticate)
+router.get('/administrative', AdministrativeController.administrative)
 
-router.get('/administrative/books', authenticate, AdministrativeController.books)
-router.get('/administrative/book/new', authenticate, AdministrativeController.bookNew)
-router.post('/administrative/book/edit', authenticate, AdministrativeController.bookUpdate)
-router.get('/administrative/book/edit/:id', authenticate, AdministrativeController.bookEdit)
-router.get('/administrative/book/:id', authenticate, AdministrativeController.book)
-router.post('/administrative/book', authenticate, AdministrativeController.bookCreate)
+router.get('/administrative/users', UserController.users)
+router.get('/administrative/user/new', UserController.userNew)
+router.post('/administrative/user/edit', UserController.userUpdate)
+router.get('/administrative/user/edit/:id', UserController.userEdit)
+router.get('/administrative/user/:id', UserController.user)
+router.post('/administrative/user', UserController.userCreate)
 
-//Employee
-router.get('/employee', authenticate, EmployeeController.administrative)
-router.get('/employee/reservation', authenticate, EmployeeController.reservations)
-router.get('/employee/reservation/new', authenticate, EmployeeController.reservartionNew)
-router.post('/employee/reservation/edit', authenticate, EmployeeController.reservartionUpdate)
-router.get('/employee/reservation/edit/:id', authenticate, EmployeeController.reservartionEdit)
-router.post('/employee/reservation', authenticate, EmployeeController.reservationCreate)
+router.get('/books', BookController.books)
+router.post('/books', BookController.booksJson)
+router.get('/administrative/books', BookController.administrative_books)
+router.get('/administrative/book/new', BookController.bookNew)
+router.post('/administrative/book/edit', BookController.bookUpdate)
+router.get('/administrative/book/edit/:id', BookController.bookEdit)
+router.get('/administrative/book/:id', BookController.book)
+router.post('/administrative/book', BookController.bookCreate)
 
-//Professor
-router.get('/professor', authenticate, ProfessorController.administrative)
-router.get('/professor/book', authenticate, ProfessorController.book) // MY BOOKS ITALO DO FUTURO, VAI VIRAR RESERVATION - line 39
+router.get('/administrative/reservation', ReservationController.reservations)
+router.get('/administrative/reservation/new', ReservationController.reservartionNew)
+router.post('/administrative/reservation/edit', ReservationController.reservartionUpdate)
+router.get('/administrative/reservation/edit/:id', ReservationController.reservartionEdit)
+router.post('/administrative/reservation', ReservationController.reservationCreate)
 
-//Student
-router.get('/student', authenticate, StudentController.administrative)
-router.get('/stundent/book', authenticate, StudentController.book)
 
 function authenticate (req, res, next) {
   const session_token = req.cookies["session_token"]
