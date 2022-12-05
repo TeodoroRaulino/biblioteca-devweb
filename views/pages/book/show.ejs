@@ -35,12 +35,14 @@
           <p>Ano de Lançamento: <%= book.launch_year %></p>
           <p>Sinopse: <%= book.sinopse %></p>
           <p class="pb-5">Edição: <%= book.edition %></p>
-          <div class="pb-3">
-            <a href="/administrative/book/edit/<%= book.id %>" type="submit" class="btn btn-primary col-4">Editar</a>
-          </div>
-          <div class="pb-3">
-            <a type="submit" class="btn btn-danger col-4">Deletar</a>
-          </div>
+          <% if(current_user.type === 'admin'){ %>
+            <div class="pb-3">
+              <a href="/administrative/book/edit/<%= book.id %>" type="submit" class="btn btn-primary col-4">Editar</a>
+            </div>
+            <div class="pb-3">
+              <a type="submit" class="btn btn-danger col-4">Deletar</a>
+            </div>
+          <% } %>
           <div class="">
             <a href="/administrative/books" type="button" class="btn btn-secondary col-4">Voltar</a>
           </div>

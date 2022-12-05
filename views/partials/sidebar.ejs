@@ -5,16 +5,22 @@
         <li><a href="/administrative"><i class="fa-brands fa-js"></i>Dashboard</a></li>
         <li><a href="/administrative/users"><i class="fa-solid fa-users"></i>Usuários</a></li>
         <li><a href="/administrative/books"><i class="fa-solid fa-book"></i>Livros</a></li>
+        <li><a href="/administrative/reservation"><i class="fa-solid fa-calendar-days"></i>Reservas</a></li>
+        <li><a href="/administrative/user/<%= current_user.id %>"><i class="fa-solid fa-user"></i>Perfil</a></li> 
       <% } else if(current_user.type === 'employee') { %>
         <li><a href="/administrative"><i class="fa-brands fa-js"></i>Dashboard</a></li>
+        <li><a href="/administrative/books"><i class="fa-solid fa-book"></i>Livros</a></li>
         <li><a href="/administrative/reservation"><i class="fa-solid fa-calendar-days"></i>Reservas</a></li>
+        <li><a href="/administrative/user/<%= current_user.id %>"><i class="fa-solid fa-user"></i>Perfil</a></li>
       <% } else if(current_user.type === 'professor') { %>
         <li><a href="/administrative"><i class="fa-brands fa-js"></i>Dashboard</a></li>
-        <li><a href="/administrative/reservations"><i class="fa-solid fa-book"></i>Meus Livros</a></li>
+        <li><a href="/administrative/reservation"><i class="fa-solid fa-book"></i>Meus Livros</a></li>
         <li><a href="/administrative/request"><i class="fa-solid fa-pen-to-square"></i>Pedido</a></li>
+        <li><a href="/administrative/user/<%= current_user.id %>"><i class="fa-solid fa-user"></i>Perfil</a></li>
       <% } else if(current_user.type === 'student') { %>
         <li><a href="/administrative"><i class="fa-brands fa-js"></i>Dashboard</a></li>
-        <li><a href="/administrative/reservations"><i class="fa-solid fa-book"></i>Meus Livros</a></li>  
+        <li><a href="/administrative/reservation"><i class="fa-solid fa-book"></i>Meus Livros</a></li> 
+        <li><a href="/administrative/user/<%= current_user.id %>"><i class="fa-solid fa-user"></i>Perfil</a></li> 
       <% } %> 
     </ul>
 </aside>

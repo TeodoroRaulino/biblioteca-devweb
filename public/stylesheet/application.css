@@ -468,4 +468,5 @@ table, th {
   border-radius: 8px;
   display: none;
   transition: 1s;
+  color: white;
 }

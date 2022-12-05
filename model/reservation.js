@@ -159,10 +159,10 @@ class Reservation{
     let reservations = []
 
     if(user_id){
-      user_ids_data = db.where('user_id', user_id)
+      user_ids_data = db.where('user_id', user_id.toString())
     }
     if(book_id){
-      book_ids_data = db.where('book_id', book_id)
+      book_ids_data = db.where('book_id', book_id.toString())
     }
     if(rental_date){
       rental_dates_data = db.where('rental_date', rental_date)

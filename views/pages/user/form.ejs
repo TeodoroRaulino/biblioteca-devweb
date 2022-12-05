@@ -36,17 +36,16 @@
         <div class="pb-3 col-10">
           <input name="password" type="password" class="form-control" id="password" placeholder="Senha" value="<%= user ? user.password : '' %>" required>
         </div>
-        <div class="pb-3 col-10">
-          <input type="password" class="form-control" id="confirmation-password" placeholder="Confirmação de senha">
-        </div>
-        <div class="pb-3 col-10">
-          <select name="type" class="form-select form-control" aria-label="Default select example">
-            <option value="student" selected>Aluno</option>
-            <option value="professor">Professor</option>
-            <option value="employee">Funcionário</option>
-            <option value="admin">Administrador</option>
-          </select>
-        </div>
+        <% if(current_user.type === 'admin'){ %>
+          <div class="pb-3 col-10">
+            <select name="type" class="form-select form-control" aria-label="Default select example">
+              <option value="student" selected>Aluno</option>
+              <option value="professor">Professor</option>
+              <option value="employee">Funcionário</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
+        <% } %>
         <div class="col-10 textCenter">
           <input type="submit" value="<%= user  ? 'Salvar' : 'Registrar'%>" class="btn btn-success mt-3 col-4"></input>
         </div>

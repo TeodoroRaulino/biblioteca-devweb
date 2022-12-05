@@ -23,11 +23,11 @@ class UserPolicies{
       case 'admin':
         return true
       case 'student':
-        return true
+        return (this.logged_user.id === this.user.id)
       case 'employee':
-        return true
+        return (this.logged_user.id === this.user.id)
       case 'professor':
-        return true
+        return (this.logged_user.id === this.user.id)
       default:
         return false
     }

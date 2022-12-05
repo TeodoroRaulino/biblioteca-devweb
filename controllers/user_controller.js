@@ -9,10 +9,9 @@ class UserController extends ApplicationController{
     
     if(!policy.user().index()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
     
-
     res.render('pages/user/index', {
       title: "Usuários",
       users: users,
@@ -25,13 +24,12 @@ class UserController extends ApplicationController{
   async show(req, res){
     const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
-    
-    if(!policy.user().show()){
-      res.status(401)
-      return res.end()
-    }
-    
     let user = User.find(req.params.id)
+    
+    if(!policy.user(user).show()){
+      res.status(401)
+      super.return_error(res)
+    }
 
     res.render('pages/user/show', {
       title: "Usuário",
@@ -48,7 +46,7 @@ class UserController extends ApplicationController{
 
     if(!policy.user().new()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
 
     res.render('pages/user/form', {
@@ -66,7 +64,7 @@ class UserController extends ApplicationController{
 
     if(!policy.user().create()){
       res.status(401)
-      return res.end()
+      return super.return_error(res)
     }
 
     let params = req.body
@@ -95,7 +93,7 @@ class UserController extends ApplicationController{
     
     if(!policy.user().edit()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
 
     let user = User.find(req.params.id)
@@ -114,7 +112,7 @@ class UserController extends ApplicationController{
 
     if(!policy.user().update()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
 
     let user = User.find(req.body.id)

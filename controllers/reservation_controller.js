@@ -8,9 +8,9 @@ class ReservationController extends ApplicationController{
     const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
-    if(!policy.book().index()){
+    if(!policy.reservation().index()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
 
     let reservations = []
@@ -33,9 +33,9 @@ class ReservationController extends ApplicationController{
     const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
-    if(!policy.book().new()){
+    if(!policy.reservation().new()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
 
     let users = User.all()
@@ -55,9 +55,9 @@ class ReservationController extends ApplicationController{
     const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
-    if(!policy.book().create()){
+    if(!policy.reservation().create()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
 
     let reservations = Reservation.all()
@@ -81,10 +81,10 @@ class ReservationController extends ApplicationController{
   async edit(req, res) {
     const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
-
-    if(!policy.book().edit()){
+    
+    if(!policy.reservation().edit()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
 
     let users = User.all()
@@ -105,9 +105,9 @@ class ReservationController extends ApplicationController{
     const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
-    if(!policy.book().update()){
+    if(!policy.reservation().update()){
       res.status(401)
-      return res.end()
+      super.return_error(res)
     }
 
     let reservations = Reservation.all()
