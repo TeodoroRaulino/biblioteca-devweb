@@ -1,33 +1,40 @@
-const ApplicationController = require('./application_controller')
-const User = require('../model/user')
-const Book = require('../model/book')
-const Reservation = require('../model/reservation')
+// const ApplicationController = require('./application_controller')
+// const User = require('../model/user')
+// const Book = require('../model/book')
+// const Reservation = require('../model/reservation')
+const axios = require('axios').default
 
-class ReservationController extends ApplicationController{
+class ReservationController {
   async index(req, res) {
-    const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    // const error = req.query.error
+    // const [current_user, policy] = super.define_user_and_policy(res)
 
-    if(!policy.reservation().index()){
-      res.status(401)
-      super.return_error(res)
+    // if(!policy.reservation().index()){
+    //   res.status(401)
+    //   super.return_error(res)
+    // }
+
+    // let reservations = []
+
+    // if(current_user.type === 'employee' || current_user.type === 'admin'){
+    //   reservations = Reservation.all()
+    // }else{
+    //   reservations = Reservation.where({user_id: current_user.id})
+    // }
+    try {
+      let response = await axios.get('localhost:5000/administrative/reservation')
+      let jsonRes = JSON.parse(response)
+      res.render('pages/reservation/index', {
+        title: "Reservas",
+        reservations: jsonRes.reservations,
+        current_user: jsonRes.current_user,
+        error: jsonRes.error
+      })
+    } catch (error) {
+      
     }
-
-    let reservations = []
-
-    if(current_user.type === 'employee' || current_user.type === 'admin'){
-      reservations = Reservation.all()
-    }else{
-      reservations = Reservation.where({user_id: current_user.id})
+    
     }
-
-    res.render('pages/reservation/index', {
-      title: "Reservas",
-      reservations: reservations,
-      current_user: current_user,
-      error: error
-    })
-  }
 
   async new(req, res) {
     const error = req.query.error

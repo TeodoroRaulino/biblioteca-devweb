@@ -1,4 +1,4 @@
-const Policies = require("../policies/policies")
+// const Policies = require("../policies/policies")
 
 class ApplicationController{
   define_user_and_policy(res){

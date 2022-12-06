@@ -8,7 +8,7 @@ const routes = require('./routes/routes')
 
 const app = express()
 
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+// app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(express.static(staticPath))
 app.set("view engine", "ejs")
 
@@ -21,6 +21,6 @@ app.use(cookieParser());
 //Routes
 app.use("/", routes)
 
-const server = app.listen(3000, () => {
+const server = app.listen(5000, () => {
   console.log('server is running at localhost:%s or 127.0.0.1:%s .', server.address().port, server.address().port);
 })

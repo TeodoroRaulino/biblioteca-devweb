@@ -6,11 +6,11 @@ class HomeController{
   async index(req, res){
     const book = Book.all()
 
-    res.render('pages/index', {
-      title: "Home",
-      baseUrl: req.baseUrl,
+    let data = {
       books: book
-    })
+    }
+    res.status(200)
+    res.send(JSON.stringify(data))
   }
 
   async login(req, res){

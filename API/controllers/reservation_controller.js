@@ -21,12 +21,13 @@ class ReservationController extends ApplicationController{
       reservations = Reservation.where({user_id: current_user.id})
     }
 
-    res.render('pages/reservation/index', {
-      title: "Reservas",
+    let data = {
       reservations: reservations,
       current_user: current_user,
       error: error
-    })
+    }
+    res.status(200)
+    res.send(JSON.stringify(data))
   }
 
   async new(req, res) {
