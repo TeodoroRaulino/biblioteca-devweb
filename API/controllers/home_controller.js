@@ -14,13 +14,30 @@ class HomeController{
   }
 
   async login(req, res){
-    res.render('pages/login', {
-      title: "Login",
-      baseUrl: req.baseUrl
-    })
+    
+    res.status(200)
   }
 
-  async authenticate(req, res){
+  async validateTokenAuth(req, res) {
+    const session_token = req.body.session_token
+    const user = Authentication.validate_token(session_token.toString())
+
+    if(user) {
+      const data = {
+        user: user
+      }
+      res.status(200)
+      res.send(JSON.stringify(data))
+      res.end()
+    }
+    
+    res.status(401)
+    res.end()
+
+ 
+  }
+
+  async authenticate(req, res) {
     const email = req.body["email"]
     const password = req.body["password"]
     const token = Authentication.login(email, password)

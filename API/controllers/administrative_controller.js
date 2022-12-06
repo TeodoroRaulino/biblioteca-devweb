@@ -6,12 +6,12 @@ class AdministrativeController extends ApplicationController{
     const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
-    res.render('pages/administrative', {
-      title: "Painel Administrativo",
-      baseUrl: req.baseUrl,
+    let data = {
       current_user: current_user,
       error: error
-    })
+    }
+    res.status(200)
+    res.send(JSON.stringify(data))
   }
 }
 

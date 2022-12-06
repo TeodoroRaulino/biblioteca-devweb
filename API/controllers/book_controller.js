@@ -45,16 +45,14 @@ class BookController extends ApplicationController{
       res.status(401)
       super.return_error(res)
     }
-
+    
     let books = Book.all()
 
-    res.render('pages/book/dashboard', {
-      title: "Livros",
-      books: books,
-      baseUrl: req.baseUrl,
-      current_user: current_user,
-      error: error
-    })
+    const data = {
+     books: books
+    }
+    res.status(200)
+    res.send(JSON.stringify(data))
   }
 
   async show(req, res){

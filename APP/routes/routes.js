@@ -5,19 +5,20 @@ const BookController = require("../controllers/book_controller")
 const UserController = require('../controllers/user_controller')
 const ReservationController = require('../controllers/reservation_controller')
 const Authentication = require('../services/authentication')
+const axios = require('axios').default
 
 const router = express.Router()
 
 //Home
 router.get('/', HomeController.index)
-router.get('/login', verify_user_logged, HomeController.login)
+router.get('/login', verify_user_logged,HomeController.login)
 router.post('/login', HomeController.authenticate)
 router.post('/logout', HomeController.logout)
 router.get('/forgotpassword', HomeController.forgotPassword)
 
 //Administrative
 
-router.use('/administrative', authenticate)
+// router.use('/administrative', authenticate)
 router.get('/administrative', AdministrativeController.administrative)
 
 router.get('/administrative/users', UserController.index)
@@ -43,33 +44,39 @@ router.get('/administrative/reservation/edit/:id', ReservationController.edit)
 router.post('/administrative/reservation', ReservationController.create)
 
 
-function authenticate (req, res, next) {
+async function authenticate (req, res, next) {
   const session_token = req.cookies["session_token"]
+
   if(!session_token){
     res.redirect('/login')
   }
-  const user = Authentication.validate_token(session_token)
-  
-  if(!user){
-    return res.redirect('/login');
-  }
+
+  const response = await axios.post('http://localhost:5000/auth', {
+    session_token: "outra coisa, qualquer coisa ai"
+  }).catch((error) => {
+    res.redirect('/login')
+  })  
+  console.log('hehe boy 3')
+  const user = response.data
 
   res.locals.user = user
   next()
 }
 
-function verify_user_logged(req, res, next){
+async function verify_user_logged(req, res, next){
   const session_token = req.cookies["session_token"]
+
   if(!session_token){
     next()
   }
-  const user = Authentication.validate_token(session_token)
 
-  if(user){
-    res.redirect('/administrative')
-  }else{
-    next();  
-  }
+  const response = await axios.post('http://localhost:5000/auth', {
+    session_token: "outra coisa, qualquer coisa ai"
+  }).catch((error) => {
+    next()
+  }) 
+
+  res.redirect('/administrative')  
 }
 
 module.exports = router

@@ -1,26 +1,23 @@
-const Book = require('../model/book')
-const Authentication = require('../services/authentication')
 const axios = require('axios').default
 
 class HomeController{
 
   async index(req, res){
     try {
-      let response = await axios.get('localhost:5000/administrative')
-      let jsonRes = JSON.parse(response)
+      let response = await axios.get('http://localhost:5000/')
+      let jsonRes = response.data
       res.render('pages/index', {
         title: "Home",
-        books: jsonRes.book
+        books: jsonRes.books
       })
     } catch (error) {
-      
+      console.log(error.message)
     }
   }
 
   async login(req, res){
     res.render('pages/login', {
-      title: "Login",
-      baseUrl: req.baseUrl
+      title: "Login"
     })
   }
 

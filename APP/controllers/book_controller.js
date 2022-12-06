@@ -1,5 +1,7 @@
 const ApplicationController = require('./application_controller');
-const Book = require('./../model/book');
+const axios = require('axios').default
+
+const urlApi = 'http://localhost:5000/'
 
 class BookController extends ApplicationController{
   async booksJson(req,res){
@@ -39,19 +41,19 @@ class BookController extends ApplicationController{
 
   async index(req, res){
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
-    if(!policy.book().index()){
-      res.status(401)
-      super.return_error(res)
-    }
+    // if(!policy.book().index()){
+    //   res.status(401)
+    //   super.return_error(res)
+    // }
 
-    let books = Book.all()
+    const response = axios.get(urlApi+'administrative/books')
+    const data = response.data
 
     res.render('pages/book/dashboard', {
       title: "Livros",
-      books: books,
-      baseUrl: req.baseUrl,
+      books: data.books,
       current_user: current_user,
       error: error
     })
@@ -59,7 +61,7 @@ class BookController extends ApplicationController{
 
   async show(req, res){
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
     if(!policy.book().show()){
       res.status(401)
@@ -78,7 +80,7 @@ class BookController extends ApplicationController{
 
   async new(req, res){
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
     if(!policy.book().new()){
       res.status(401)
@@ -95,7 +97,7 @@ class BookController extends ApplicationController{
 
   async create(req, res){
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
     if(!policy.book().create()){
       res.status(401)
@@ -125,7 +127,7 @@ class BookController extends ApplicationController{
 
   async edit(req, res){
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
     if(!policy.book().edit()){
       res.status(401)
@@ -144,7 +146,7 @@ class BookController extends ApplicationController{
 
   async update(req, res){
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
     if(!policy.book().update()){
       res.status(401)
