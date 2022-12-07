@@ -28,7 +28,6 @@ router.get('/administrative/user/edit/:id', UserController.edit)
 router.get('/administrative/user/:id', UserController.show)
 router.post('/administrative/user', UserController.create)
 
-router.get('/books', BookController.books)
 router.post('/books', BookController.booksJson)
 router.get('/administrative/books', BookController.index)
 router.get('/administrative/book/new', BookController.new)

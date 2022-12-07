@@ -22,12 +22,10 @@ class ReservationController extends ApplicationController{
     }
 
     let data = {
-      reservations: reservations,
-      current_user: current_user,
-      error: error
+      reservations: reservations
     }
     res.status(200)
-    res.send(JSON.stringify(data))
+    return res.send(JSON.stringify(data))
   }
 
   async new(req, res) {
@@ -41,15 +39,12 @@ class ReservationController extends ApplicationController{
 
     let users = User.all()
     let books = Book.all()
-
-    res.render('pages/reservation/form', {
-      title: "Painel do Funcionário",
-      users: users,
+    const data = {
       books: books,
-      reservation: null,
-      current_user: current_user,
-      error: error
-    })
+      users: users
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
 
   async create(req, res) {
@@ -92,14 +87,13 @@ class ReservationController extends ApplicationController{
     let books = Book.all()
     let reservation = Reservation.find(req.params.id)
 
-    res.render('pages/reservation/form', {
-      title: "Painel do Funcionário",
-      users: users,
+    const data = {
       books: books,
-      reservation: reservation,
-      current_user: current_user,
-      error: error
-    })
+      users: users,
+      reservation: reservation
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
 
   async update(req, res) {
@@ -114,20 +108,21 @@ class ReservationController extends ApplicationController{
     let reservations = Reservation.all()
     let params = req.body
     let reservation = Reservation.find(params.id)
-
     reservation.update({
       user_id: params.user_id,
       book_id: params.book_id,
       rental_date: params.rental_date,
       return_date: params.return_date
     })
-
-    res.render('pages/reservation/index', {
-      title: "Reservas",
+    
+    const data = {
       reservations: reservations,
-      current_user: current_user,
-      error: error
-    })
+      params: params,
+      reservation: reservation
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
+
   }
 
 }

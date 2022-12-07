@@ -1,66 +1,53 @@
-// const ApplicationController = require('./application_controller')
-// const User = require('../model/user')
-// const Book = require('../model/book')
-// const Reservation = require('../model/reservation')
 const axios = require('axios').default
+const urlApi = 'http://localhost:5000/'
 
 class ReservationController {
   async index(req, res) {
-    // const error = req.query.error
-    // const [current_user, policy] = super.define_user_and_policy(res)
+    const error = req.query.error
+    const current_user = super.define_user(res)
 
-    // if(!policy.reservation().index()){
-    //   res.status(401)
-    //   super.return_error(res)
-    // }
-
-    // let reservations = []
-
-    // if(current_user.type === 'employee' || current_user.type === 'admin'){
-    //   reservations = Reservation.all()
-    // }else{
-    //   reservations = Reservation.where({user_id: current_user.id})
-    // }
     try {
-      let response = await axios.get('localhost:5000/administrative/reservation')
-      let jsonRes = JSON.parse(response)
+      const response = await axios.get(urlApi+'administrative/reservations')
+      const data = JSON.parse(response.data)
+
       res.render('pages/reservation/index', {
         title: "Reservas",
-        reservations: jsonRes.reservations,
-        current_user: jsonRes.current_user,
-        error: jsonRes.error
+        reservations: data.reservations,
+        current_user: current_user,
+        error: error
       })
     } catch (error) {
-      
+      res.status(response.status)
+      return super.return_error(res)
     }
     
     }
 
   async new(req, res) {
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
-    if(!policy.reservation().new()){
-      res.status(401)
-      super.return_error(res)
+    try {
+      const response = await axios.get(urlApi+'administrative/reservations/new')
+      const data = response.data
+  
+      res.render('pages/reservation/form', {
+        title: "Painel do Funcionário",
+        users: data.users,
+        books: data.books,
+        reservation: null,
+        current_user: current_user,
+        error: error
+      })
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
     }
-
-    let users = User.all()
-    let books = Book.all()
-
-    res.render('pages/reservation/form', {
-      title: "Painel do Funcionário",
-      users: users,
-      books: books,
-      reservation: null,
-      current_user: current_user,
-      error: error
-    })
   }
 
   async create(req, res) {
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
     if(!policy.reservation().create()){
       res.status(401)
@@ -87,30 +74,36 @@ class ReservationController {
   
   async edit(req, res) {
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
     
     if(!policy.reservation().edit()){
       res.status(401)
       super.return_error(res)
     }
 
-    let users = User.all()
-    let books = Book.all()
-    let reservation = Reservation.find(req.params.id)
-
-    res.render('pages/reservation/form', {
-      title: "Painel do Funcionário",
-      users: users,
-      books: books,
-      reservation: reservation,
-      current_user: current_user,
-      error: error
-    })
+    try {
+      const response = await axios.get(urlApi+'administrative/reservations/edit')
+      const data = response.data
+      
+      if(response.status === 200){
+        res.render('pages/reservation/form', {
+          title: "Painel do Funcionário",
+          users: data.users,
+          books: data.books,
+          reservation: data.reservation,
+          current_user: current_user,
+          error: error
+        })
+      }
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
+    }
   }
 
   async update(req, res) {
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
     if(!policy.reservation().update()){
       res.status(401)
