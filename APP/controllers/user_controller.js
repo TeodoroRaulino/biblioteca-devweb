@@ -179,6 +179,21 @@ class UserController extends ApplicationController{
       error: error
     })
   }
+
+  async delete(req, res){
+    const id = req.params.id
+    const session_token = res.locals.session_token
+    const response = await axios.delete(urlApi+ 'administrative/user/'+id,
+      {
+        headers:{
+          'Cookie': `session_token=${session_token}`
+        }
+      })
+    
+    res.status(204)
+    res.redirect('/administrative/users')
+    return res.end()
+  }
 }
 
 module.exports = new UserController

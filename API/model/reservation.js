@@ -51,7 +51,8 @@ class Reservation{
       rental_date,
       return_date
     );
-
+    
+    json['deleted'] = 'false'
     let data = db.create(json)
     let reservation = new Reservation(
       data["user_id"],
@@ -140,7 +141,7 @@ class Reservation{
   }
 
   static delete(id){
-    const db = DataAccessor('reservation')
+    const db = new DataAccessor('reservation')
     db.delete(id)
   }
 
@@ -148,7 +149,8 @@ class Reservation{
     user_id = null,
     book_id = null,
     rental_date = null,
-    return_date = null
+    return_date = null,
+    deleted = null
   }) => {
     const db = new DataAccessor('reservation')
     let user_ids_data = []
@@ -156,6 +158,7 @@ class Reservation{
     let rental_dates_data = []
     let return_dates_data = []
     let reservations_data = []
+    let deleted_data = []
     let reservations = []
 
     if(user_id){
@@ -170,11 +173,15 @@ class Reservation{
     if(return_date){
       return_dates_data = db.where('return_date', return_date)
     }
+    if(deleted){
+      deleted_data = db.where('deleted', deleted)
+    }
 
     reservations_data = user_ids_data.concat(
       book_ids_data,
       rental_dates_data,
-      return_dates_data
+      return_dates_data,
+      deleted_data
     )
 
     if(user_id){
@@ -188,6 +195,9 @@ class Reservation{
     }
     if(return_date){
       reservations_data = reservations_data.filter(element => element["return_date"].includes(return_date));
+    }
+    if(deleted){
+      reservations_data = reservations_data.filter(element => element['deleted'].includes(deleted))
     }
 
     reservations_data = reservations_data.filter((arr, index, self) => 

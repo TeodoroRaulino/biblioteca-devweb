@@ -7,16 +7,16 @@ class BookController extends ApplicationController{
     let books = []
     switch (type) {
       case "categoria":
-        books = Book.where({category: req.body.search})
+        books = Book.where({category: req.body.search, deleted: "false"})
         break;
       case "titulo":
-        books = Book.where({title: req.body.search})
+        books = Book.where({title: req.body.search, deleted: "false"})
         break;
       case "autor":
-        books = Book.where({author: req.body.search})
+        books = Book.where({author: req.body.search, deleted: "false"})
         break;
       default:
-        books = Book.all()
+        books = Book.where({deleted: "false"})
         break;
     }
   
@@ -37,7 +37,7 @@ class BookController extends ApplicationController{
       return res.end()
     }
     
-    let books = Book.all()
+    let books = Book.where({deleted: "false"})
 
     const data = {
      books: books
@@ -151,6 +151,14 @@ class BookController extends ApplicationController{
     }
     res.status(200)
     return res.send(JSON.stringify(data))
+  }
+
+  async delete(req, res){
+    const id = req.params.id
+    Book.delete(id)
+
+    res.status(204)
+    return res.end();
   }
 }
 

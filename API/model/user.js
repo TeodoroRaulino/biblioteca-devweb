@@ -63,6 +63,7 @@ class User{
       password,
       identifier
     );
+    json['deleted'] = 'false'
 
     let data = db.create(json)
     let user = new User(
@@ -160,7 +161,7 @@ class User{
   }
 
   static delete(id){
-    const db = DataAccessor('user')
+    const db = new DataAccessor('user')
     db.delete(id)
   }
 
@@ -169,7 +170,8 @@ class User{
     type = null,
     name = null,
     email = null,
-    identifier = null
+    identifier = null,
+    deleted = null
   }) => {
     const db = new DataAccessor('user')
     let users_cpfs_data = []
@@ -177,6 +179,7 @@ class User{
     let users_names_data = []
     let users_emails_data = []
     let users_identifiers_data = []
+    let users_deleted_data = []
     let users_data = []
     let users = []
 
@@ -195,12 +198,16 @@ class User{
     if(identifier){
       users_identifiers_data = db.where('identifier', identifier)
     }
+    if(deleted){
+      users_deleted_data = db.where('deleted', deleted)
+    }
 
     users_data = users_cpfs_data.concat(
       users_types_data,
       users_names_data,
       users_emails_data,
-      users_identifiers_data
+      users_identifiers_data,
+      users_deleted_data
     )
 
     if(cpf){
@@ -217,6 +224,9 @@ class User{
     }
     if(identifier){
       users_data = users_data.filter(element => element["identifier"].includes(identifier));
+    }
+    if(deleted){
+      users_data = users_data.filter(element => element["deleted"].includes(deleted));
     }
 
     users_data = users_data.filter((arr, index, self) => 

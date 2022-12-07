@@ -155,6 +155,21 @@ class ReservationController extends ApplicationController{
     return res.end()
   }
 
+  async delete(req, res){
+    const id = req.params.id
+    const session_token = res.locals.session_token
+    const response = await axios.delete(urlApi+ 'administrative/reservation/'+id,
+      {
+        headers:{
+          'Cookie': `session_token=${session_token}`
+        }
+      })
+    
+    res.status(204)
+    res.redirect('/administrative/reservation')
+    return res.end()
+  }
+
 }
 
 module.exports = new ReservationController

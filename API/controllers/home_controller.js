@@ -4,7 +4,7 @@ const Authentication = require('../services/authentication')
 class HomeController{
 
   async index(req, res){
-    const book = Book.all()
+    const book = Book.where({deleted: "false"})
 
     let data = {
       books: book

@@ -26,6 +26,7 @@ router.put('/administrative/user/edit', UserController.update)
 router.get('/administrative/user/edit/:id', UserController.edit)
 router.get('/administrative/user/:id', UserController.show)
 router.post('/administrative/user', UserController.create)
+router.delete('/administrative/user/:id', UserController.delete)
 
 router.post('/books', BookController.booksJson)
 router.get('/administrative/books', BookController.index)
@@ -34,6 +35,7 @@ router.put('/administrative/book/edit', BookController.update)
 router.get('/administrative/book/edit/:id', BookController.edit)
 router.get('/administrative/book/:id', BookController.show)
 router.post('/administrative/book', BookController.create)
+router.delete('/administrative/book/:id', BookController.delete)
 
 router.get('/administrative/reservation', ReservationController.index)
 router.get('/administrative/reservation/new', ReservationController.new)
@@ -41,6 +43,7 @@ router.put('/administrative/reservation/edit', ReservationController.update)
 router.get('/administrative/reservation/edit/:id', ReservationController.edit)
 router.post('/administrative/reservation', ReservationController.create)
 router.patch('/administrative/renovation/:id', ReservationController.renovation)
+router.delete('/administrative/reservation/:id', ReservationController.delete)
 
 
 function authenticate (req, res, next) {
