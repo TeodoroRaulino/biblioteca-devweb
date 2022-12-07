@@ -39,7 +39,7 @@ class BookController extends ApplicationController{
         books: data.books
       })
     } catch (error) {
-      res.status(response.status)
+      res.status(401)
       return super.return_error(res)
     }
 
@@ -48,9 +48,15 @@ class BookController extends ApplicationController{
   async index(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)
+    const session_token = res.locals.session_token
 
     try {
-      const response = axios.get(urlApi+'administrative/books')
+      const response = await axios.get(urlApi+'administrative/books',{
+        headers:{
+          'Cookie': `session_token=${session_token}`
+        }
+      })
+
       const data = response.data
   
       res.render('pages/book/dashboard', {
@@ -60,7 +66,7 @@ class BookController extends ApplicationController{
         error: error
       })
     } catch (error) {
-      res.status(response.status)
+      res.status(401)
       return super.return_error(res)
     }
 
@@ -68,11 +74,16 @@ class BookController extends ApplicationController{
 
   async show(req, res){
     const error = req.query.error
-    const id = req.query.id
+    const id = req.params.id
     const current_user = super.define_user(res)
+    const session_token = res.locals.session_token
 
     try {
-      const response = axios.get(urlApi+'administrative/book/'+id)
+      const response = await axios.get(urlApi+'administrative/book/'+id, {
+        headers:{
+          'Cookie': `session_token=${session_token}`
+        }
+      })
       const data = response.data
         
       res.render('pages/book/show',{
@@ -81,7 +92,7 @@ class BookController extends ApplicationController{
         error: error
       })
     } catch (error) {
-      res.status(response.status)
+      res.status(401)
       return super.return_error(res)
     }
   }
@@ -89,9 +100,14 @@ class BookController extends ApplicationController{
   async new(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)
+    const session_token = res.locals.session_token
 
     try {
-      const response = await axios.get(urlApi+'administrative/book/new')
+      const response = await axios.get(urlApi+'administrative/book/new', {
+        headers:{
+          'Cookie': `session_token=${session_token}`
+        }
+      })
       if(response.status === 200){     
         res.render('pages/book/form',{
           book: null,
@@ -100,7 +116,7 @@ class BookController extends ApplicationController{
         })
       }
     } catch (error) {
-      res.status(response.status)
+      res.status(401)
       return super.return_error(res)
     }
 
@@ -109,35 +125,43 @@ class BookController extends ApplicationController{
   async create(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)
-
+    const session_token = res.locals.session_token
 
     let params = req.body
 
-    let book = Book.create({
-      title: params.title,
-      author: params.author,
-      category: params.category,
-      isbn: params.isbn,
-      edition: params.edition,
-      launch_year: params.launch_year,
-      quantity: params.quantity,
-      sinopse: params.sinopse
+    
+    const response = await axios.post(urlApi+'administrative/book',{
+      params
+    },{
+      headers:{
+        'Cookie': `session_token=${session_token}`
+      }
+    }).catch((error) => {
+      res.status(401)
+      return super.return_error(res)
     })
 
     res.render('pages/book/show',{
-      book: book,
+      book: response.data.book,
       current_user: current_user,
       error: error
     })
+
   }
 
   async edit(req, res){
     const error = req.query.error
-    const id = req.query.id
+    const id = req.params.id
     const current_user = super.define_user(res)
+    const session_token = res.locals.session_token
 
     try {
-      const response = axios.get(urlApi+'administrative/book/'+id)
+      const response = await axios.get(urlApi+'administrative/book/edit/'+id, {
+        headers:{
+          'Cookie': `session_token=${session_token}`
+        }
+      })
+      
       const data = response.data
       if(response.status === 200){
       res.render('pages/book/form',{
@@ -147,7 +171,7 @@ class BookController extends ApplicationController{
         })
       }
     } catch (error) {
-      res.status(response.status)
+      res.status(401)
       return super.return_error(res)
     }
   }
@@ -155,27 +179,29 @@ class BookController extends ApplicationController{
   async update(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)
+    const session_token = res.locals.session_token
 
-    let book = Book.find(req.body.id)
     let params = req.body
-    
-    book.update({
-      title: params.title,
-      author: params.author,
-      category: params.category,
-      isbn: params.isbn,
-      edition: params.edition,
-      launch_year: params.launch_year,
-      quantity: params.quantity,
-      sinopse: params.sinopse
+
+    const response = await axios.post(urlApi+'administrative/book/edit',{
+        params
+      },{
+        headers:{
+          'Cookie': `session_token=${session_token}`
+        }
+      }).catch((error) => {
+      console.log(error.message)
     })
 
+    const data = response.data
+
     res.render('pages/book/show',{
-      book: book,
-      baseUrl: req.baseUrl,
+      title: "Livro",
+      book: data.book,
       current_user: current_user,
       error: error
     })
+    
   }
 }
 

@@ -9,7 +9,7 @@ class UserController extends ApplicationController{
     
     if(!policy.user().index()){
       res.status(401)
-      super.return_error(res)
+      return res.end() 
     }
     
     const data = {
@@ -26,7 +26,7 @@ class UserController extends ApplicationController{
     
     if(!policy.user(user).show()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
 
     const data = {
@@ -42,7 +42,7 @@ class UserController extends ApplicationController{
 
     if(!policy.user().new()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
     res.status(200)
     return res.end()
@@ -83,7 +83,7 @@ class UserController extends ApplicationController{
     
     if(!policy.user().edit()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
 
     let user = User.find(req.params.id)
@@ -101,7 +101,7 @@ class UserController extends ApplicationController{
 
     if(!policy.user().update()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
 
     let user = User.find(req.body.id)

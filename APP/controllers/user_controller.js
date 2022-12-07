@@ -27,7 +27,6 @@ class UserController extends ApplicationController{
         error: error
       })
     } catch(error){
-      console.log(error)
       res.status(401)
       return super.return_error(res)
     }

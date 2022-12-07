@@ -34,7 +34,7 @@ class BookController extends ApplicationController{
 
     if(!policy.book().index()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
     
     let books = Book.all()
@@ -85,7 +85,7 @@ class BookController extends ApplicationController{
       return res.end()
     }
 
-    let params = req.body
+    let params = req.body.params
 
     let book = Book.create({
       title: params.title,
@@ -98,12 +98,11 @@ class BookController extends ApplicationController{
       sinopse: params.sinopse
     })
 
-    res.render('pages/book/show',{
-      book: book,
-      baseUrl: req.baseUrl,
-      current_user: current_user,
-      error: error
-    })
+    let data = {
+      book: book
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
 
   async edit(req, res){
@@ -112,7 +111,7 @@ class BookController extends ApplicationController{
 
     if(!policy.book().edit()){
       res.status(401)
-      return super.return_error(res)
+      return res.end()
     }
 
     let book = Book.find(req.params.id)
@@ -133,8 +132,8 @@ class BookController extends ApplicationController{
       return res.end()
     }
 
-    let book = Book.find(req.body.id)
-    let params = req.body
+    let params = req.body.params
+    let book = Book.find(params.id)
     
     book.update({
       title: params.title,
@@ -147,12 +146,11 @@ class BookController extends ApplicationController{
       sinopse: params.sinopse
     })
 
-    res.render('pages/book/show',{
-      book: book,
-      baseUrl: req.baseUrl,
-      current_user: current_user,
-      error: error
-    })
+    let data = {
+      book: book
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
 }
 
