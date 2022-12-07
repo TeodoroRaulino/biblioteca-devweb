@@ -2,6 +2,35 @@ const ApplicationController = require('./application_controller')
 const User = require('../model/user') 
 
 class UserController extends ApplicationController{
+  async usersJson(req,res){
+    let type = req.body.params.type
+    let users = []
+
+    switch (type) {
+      case "nome":
+        users = User.where({name: req.body.params.search, deleted: "false"})
+        break;
+      case "email":
+        users = User.where({email: req.body.params.search, deleted: "false"})
+        break;
+      default:
+        users = User.where({deleted: "false"})
+        break;
+    }
+  
+    let users_jsons = users.map(user => {
+      return user.json()
+    });
+
+    let data = {
+      users_jsons: users_jsons
+    }
+
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200)
+    return res.send(JSON.stringify(data));
+  }
+  
   async index(req, res){
     const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)

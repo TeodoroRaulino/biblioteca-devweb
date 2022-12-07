@@ -1,1 +1,1 @@
-[{"id":1,"user_id":"1","book_id":"1","rental_date":"09/08/2022","return_date":"16/11/2022","deleted":"false"},{"id":2,"user_id":"1","book_id":"1","rental_date":"2022-12-07","return_date":"2022-12-08","deleted":"true"}]
+[{"id":1,"user_id":"1","book_id":"1","rental_date":"09/08/2022","return_date":"16/11/2022","deleted":"false"},{"id":2,"user_id":"1","book_id":"1","rental_date":"2022-12-07","return_date":"2022-12-08","deleted":"true"},{"id":3,"user_id":"1","book_id":"3","rental_date":"2022-12-14","return_date":"2022-12-21","deleted":"true"}]

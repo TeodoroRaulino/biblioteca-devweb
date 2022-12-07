@@ -144,6 +144,19 @@ class User{
     this.id = null;
   }
 
+  json(){
+    let json = {
+      "cpf": this.cpf,
+      "type": this.type,
+      "name": this.name,
+      "email": this.email,
+      "password": this.password,
+      "identifier": this.identifier,
+      "id": this.id,
+    }
+    return json
+  }
+
   static find(id){
     const db = new DataAccessor('user')
     let data = db.find(id);

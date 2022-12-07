@@ -184,3 +184,59 @@ function creatBookCardIndex(data) {
   
   return htmlBook
 }
+
+const btnSearchUser = document.querySelector("#btnSearchUser")
+
+if(btnSearchUser){
+  btnSearchUser.addEventListener("click", () => {
+    searchbookuser(selectValue.value, inputSearch.value)
+  })
+}
+
+
+async function searchbookuser(type, search){
+  let body = {"type": type, "search": search}
+  let resp = await fetch('/users', {method: 'POST', body: JSON.stringify(body), headers:{'Content-Type': 'application/json'}})
+  let datas = await resp.json()
+
+  let divBook = document.querySelector(".gridUser")
+  divBook.innerHTML = ''
+      
+  datas.forEach( data => {
+    let newDiv = document.createElement("div")
+    newDiv.innerHTML = creatBookCardUser(data) 
+    divBook.appendChild(newDiv)
+  })
+}
+
+function creatBookCardUser(data) {
+  let htmlBook = `
+  <a href="/administrative/user/${data.id}" class="textDecorationNone">
+    <div class="card shadowCard" style="width: 18rem;">
+      <img src="/images/user.png" class="card-img-top" alt="...">   
+      <ul class="list-group list-group-flush">
+        <h5 class="card-title list-group-item m-0 textLimit"> 
+         ${data.name}
+          <span class="tooltip">
+          ${data.name}
+          </span> 
+        </h5>
+        <li class="list-group-item registrationCard textLimit"> 
+        ${data.identifier}
+          <span class="tooltip">
+          ${data.identifier}
+          </span> 
+        </li>
+        <li class="list-group-item emailCard textLimit"> 
+        ${data.email}
+          <span class="tooltip">
+          ${data.email}
+          </span> 
+        </li>
+      </ul>
+    </div>
+  </a>
+`
+  
+  return htmlBook
+}
