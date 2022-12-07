@@ -1,1 +1,1 @@
-[{"id":1,"cpf":"123.456.789-10","type":"admin","name":"Teodoro Raulino","email":"teo@alu","password":"123456","identifier":"123456"}]
+[{"id":1,"cpf":"123.456.789-10","type":"student","name":"Teodoro Raulino3","email":"teo@alu","password":"$2b$10$MRgN7L0dYaGEWvsBlriO4e1DZidzG3nQz7EPQJVvR7mZ7AbFIPrZy","identifier":"123456"},{"id":2,"cpf":"610.947.723-05","type":"admin","name":"italo","email":"teste@teste","password":"$2b$10$1N22VgAoPxTd9KGuIsl/5Ox53yUTHGG0GDGmEGEUzj7BZxXs1pR9O","identifier":"1312312"}]

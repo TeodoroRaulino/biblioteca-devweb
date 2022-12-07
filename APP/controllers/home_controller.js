@@ -47,6 +47,7 @@ class HomeController{
         'Cookie': `session_token=${session_token}`
       }
     }).catch((error) => {
+      console.log(error.message)
     }) 
 
     res.redirect('/login')

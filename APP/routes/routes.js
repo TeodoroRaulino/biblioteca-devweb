@@ -56,7 +56,7 @@ async function authenticate (req, res, next) {
     }
   }).catch((error) => {
     res.redirect('/login')
-    return res.end 
+    return res.end()
   }) 
 
   const user = response.data.user

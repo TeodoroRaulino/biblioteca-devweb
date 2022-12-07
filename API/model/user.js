@@ -29,22 +29,18 @@ class User{
 
   save(){
     if(this.id == null){
-      if(this.valid()){
-        const data = User.create({
-          cpf: this.cpf,
-          type: this.type,
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          identifier: this.identifier
-        })
-        this.id = data.id
-      }
+      const data = User.create({
+        cpf: this.cpf,
+        type: this.type,
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        identifier: this.identifier
+      })
+      this.id = data.id  
     }
     else{
-      if(this.valid()){
-        return this.update({})
-      }
+      return this.update({})
     }
   }
 
@@ -56,9 +52,7 @@ class User{
     password = null,
     identifier = null
   }) => {
-    if (!this.valid(email)){
-      return false;
-    }
+
     const db = new DataAccessor('user');
     password = cryptography(password)
     const json = generate_json(
@@ -113,10 +107,6 @@ class User{
     }
     if(identifier == null){
       identifier = this.identifier
-    }
-
-    if(!this.valid(email)){
-      return false
     }
 
     const json = generate_json(
