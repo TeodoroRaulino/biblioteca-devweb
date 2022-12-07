@@ -1,71 +1,72 @@
 const ApplicationController = require('./application_controller')
-const User = require('../model/user') 
+const axios = require('axios').default
+const urlApi = 'http://localhost:5000/'
 
 class UserController extends ApplicationController{
   async index(req, res){
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
-    let users = User.all()
+    const current_user = super.define_user(res)
     
-    if(!policy.user().index()){
-      res.status(401)
-      super.return_error(res)
+    try {
+      const response = await axios.get(urlApi+'administrative/users')
+      const data = JSON.parse(response)
+      res.render('pages/user/index', {
+        title: "Usuário",
+        users: data.users,
+        baseUrl: req.baseUrl,
+        current_user: current_user,
+        error: error
+      })
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
     }
-    
-    res.render('pages/user/index', {
-      title: "Usuários",
-      users: users,
-      baseUrl: req.baseUrl,
-      current_user: current_user,
-      error: error
-    })
   }
 
   async show(req, res){
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
-    let user = User.find(req.params.id)
+    const id = req.query.id
+    const current_user = super.define_user(res)
     
-    if(!policy.user(user).show()){
-      res.status(401)
-      super.return_error(res)
+    try {
+      const response = await axios.get(urlApi+'administrative/user/'+id)
+      const data = JSON.parse(response)
+      res.render('pages/user/show', {
+        title: "Usuário",
+        user: data.user,
+        current_user: current_user,
+        error: error
+      })
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
     }
-
-    res.render('pages/user/show', {
-      title: "Usuário",
-      user: user,
-      baseUrl: req.baseUrl,
-      current_user: current_user,
-      error: error
-    })
   }
 
   async new(req, res) {
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
-    if(!policy.user().new()){
-      res.status(401)
-      super.return_error(res)
+    try {
+      const response = await axios.get(urlApi+'administrative/user/new')
+      if(response.status === 200){
+        res.render('pages/user/form', {
+          title: "User formulário",
+          baseUrl: req.baseUrl,
+          user: null,
+          current_user: current_user,
+          error: error
+        })
+      }
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
     }
-
-    res.render('pages/user/form', {
-      title: "User formulário",
-      baseUrl: req.baseUrl,
-      user: null,
-      current_user: current_user,
-      error: error
-    })
   }
 
   async create(req, res){
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
-
-    if(!policy.user().create()){
-      res.status(401)
-      return super.return_error(res)
-    }
+    const current_user = super.define_user(res)
 
     let params = req.body
 
@@ -89,26 +90,29 @@ class UserController extends ApplicationController{
 
   async edit(req, res) {
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
-    
-    if(!policy.user().edit()){
-      res.status(401)
-      super.return_error(res)
+    const id = req.query.id
+    const current_user = super.define_user(res)
+
+    try {
+      const response = axios.get(urlApi+'administrative/book/'+id)
+      const data = response.data
+      if(response.status === 200){
+        res.render('pages/user/form', {
+          title: "Edit",
+          user: data.user,
+          current_user: current_user,
+          error: error
+        })
+      }
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
     }
-
-    let user = User.find(req.params.id)
-
-    res.render('pages/user/form', {
-      title: "Edit",
-      user: user,
-      current_user: current_user,
-      error: error
-    })
   }
 
   async update(req, res) {
     const error = req.query.error
-    const [current_user, policy] = super.define_user_and_policy(res)
+    const current_user = super.define_user(res)
 
     if(!policy.user().update()){
       res.status(401)

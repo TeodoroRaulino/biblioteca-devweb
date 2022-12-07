@@ -12,13 +12,11 @@ class UserController extends ApplicationController{
       super.return_error(res)
     }
     
-    res.render('pages/user/index', {
-      title: "Usuários",
-      users: users,
-      baseUrl: req.baseUrl,
-      current_user: current_user,
-      error: error
-    })
+    const data = {
+      users: users
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
 
   async show(req, res){
@@ -31,13 +29,11 @@ class UserController extends ApplicationController{
       super.return_error(res)
     }
 
-    res.render('pages/user/show', {
-      title: "Usuário",
-      user: user,
-      baseUrl: req.baseUrl,
-      current_user: current_user,
-      error: error
-    })
+    const data = {
+      user: user
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
 
   async new(req, res) {
@@ -48,14 +44,8 @@ class UserController extends ApplicationController{
       res.status(401)
       super.return_error(res)
     }
-
-    res.render('pages/user/form', {
-      title: "User formulário",
-      baseUrl: req.baseUrl,
-      user: null,
-      current_user: current_user,
-      error: error
-    })
+    res.status(200)
+    return res.end()
   }
 
   async create(req, res){
@@ -98,12 +88,11 @@ class UserController extends ApplicationController{
 
     let user = User.find(req.params.id)
 
-    res.render('pages/user/form', {
-      title: "Edit",
-      user: user,
-      current_user: current_user,
-      error: error
-    })
+    const data = {
+      user: user
+    }
+    res.status(200)
+    res.send(JSON.stringify(data))
   }
 
   async update(req, res) {

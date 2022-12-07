@@ -1,3 +1,4 @@
+const { response } = require('express');
 const ApplicationController = require('./application_controller');
 const axios = require('axios').default
 
@@ -30,79 +31,85 @@ class BookController extends ApplicationController{
   }
 
   async books(req, res){
-    const book = Book.all()
+    try {
+      const response = await axios.post(urlApi+'/books')
+      const data = response.books_jsons
+      res.render('pages/books', {
+        title: "Livros",
+        books: data.books
+      })
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
+    }
 
-    res.render('pages/books', {
-      title: "Livros",
-      books: book,
-      baseUrl: req.baseUrl
-    })
   }
 
   async index(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)
 
-    // if(!policy.book().index()){
-    //   res.status(401)
-    //   super.return_error(res)
-    // }
+    try {
+      const response = axios.get(urlApi+'administrative/books')
+      const data = response.data
+  
+      res.render('pages/book/dashboard', {
+        title: "Livros",
+        books: data.books,
+        current_user: current_user,
+        error: error
+      })
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
+    }
 
-    const response = axios.get(urlApi+'administrative/books')
-    const data = response.data
-
-    res.render('pages/book/dashboard', {
-      title: "Livros",
-      books: data.books,
-      current_user: current_user,
-      error: error
-    })
   }
 
   async show(req, res){
     const error = req.query.error
+    const id = req.query.id
     const current_user = super.define_user(res)
 
-    if(!policy.book().show()){
-      res.status(401)
-      return res.end()
+    try {
+      const response = axios.get(urlApi+'administrative/book/'+id)
+      const data = response.data
+        
+      res.render('pages/book/show',{
+        book: data.books,
+        current_user: current_user,
+        error: error
+      })
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
     }
-
-    let book = Book.find(req.params.id)
-    
-    res.render('pages/book/show',{
-      book: book,
-      baseUrl: req.baseUrl,
-      current_user: current_user,
-      error: error
-    })
   }
 
   async new(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)
 
-    if(!policy.book().new()){
-      res.status(401)
-      return res.end()
+    try {
+      const response = await axios.get(urlApi+'administrative/book/new')
+      if(response.status === 200){     
+        res.render('pages/book/form',{
+          book: null,
+          current_user: current_user,
+          error: error
+        })
+      }
+    } catch (error) {
+      res.status(response.status)
+      return super.return_error(res)
     }
 
-    res.render('pages/book/form',{
-      baseUrl: req.baseUrl,
-      book: null,
-      current_user: current_user,
-      error: error
-    })
   }
 
   async create(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)
 
-    if(!policy.book().create()){
-      res.status(401)
-      return res.end()
-    }
 
     let params = req.body
 
@@ -119,7 +126,6 @@ class BookController extends ApplicationController{
 
     res.render('pages/book/show',{
       book: book,
-      baseUrl: req.baseUrl,
       current_user: current_user,
       error: error
     })
@@ -127,31 +133,28 @@ class BookController extends ApplicationController{
 
   async edit(req, res){
     const error = req.query.error
+    const id = req.query.id
     const current_user = super.define_user(res)
 
-    if(!policy.book().edit()){
-      res.status(401)
+    try {
+      const response = axios.get(urlApi+'administrative/book/'+id)
+      const data = response.data
+      if(response.status === 200){
+      res.render('pages/book/form',{
+        book: data.book,
+        current_user: current_user,
+        error: error
+        })
+      }
+    } catch (error) {
+      res.status(response.status)
       return super.return_error(res)
     }
-
-    let book = Book.find(req.params.id)
-
-    res.render('pages/book/form',{
-      baseUrl: req.baseUrl,
-      book: book,
-      current_user: current_user,
-      error: error
-    })
   }
 
   async update(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)
-
-    if(!policy.book().update()){
-      res.status(401)
-      return res.end()
-    }
 
     let book = Book.find(req.body.id)
     let params = req.body
