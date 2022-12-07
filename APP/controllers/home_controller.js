@@ -42,14 +42,15 @@ class HomeController{
   async logout(req, res){
     const session_token = req.cookies["session_token"]
 
-    const response = await axios.post('http://localhost:5000/logout', {
-      email: email,
-      password: password
+    const response = await axios.post('http://localhost:5000/logout',{},{
+      headers:{
+        'Cookie': `session_token=${session_token}`
+      }
     }).catch((error) => {
-      res.redirect('/login')
-    })
+    }) 
 
-    return res.redirect('/login')
+    res.redirect('/login')
+    return res.end() 
   }
 
   async forgotPassword(req, res){

@@ -11,7 +11,7 @@ const router = express.Router()
 //Home
 router.get('/', HomeController.index)
 router.post('/authenticate', HomeController.authenticate)
-router.post('/auth', HomeController.validateTokenAuth)
+router.post('/auth', authenticate,HomeController.validateTokenAuth)
 router.post('/logout', HomeController.logout)
 router.get('/forgotpassword', HomeController.forgotPassword)
 
@@ -44,7 +44,6 @@ router.post('/administrative/reservation', ReservationController.create)
 
 function authenticate (req, res, next) {
   const session_token = req.cookies["session_token"]
-  console.log(session_token)
 
   if(!session_token){
     res.status(401)

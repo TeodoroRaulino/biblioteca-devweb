@@ -7,7 +7,7 @@ class UserController extends ApplicationController{
     const error = req.query.error
     const current_user = super.define_user(res)
     const session_token = res.locals.session_token
-    console.log(res.locals)
+
     
     try {
       const response = await axios.get('http://localhost:5000/administrative/users',
@@ -26,7 +26,7 @@ class UserController extends ApplicationController{
         current_user: current_user,
         error: error
       })
-    } catch (error) {
+    } catch(error){
       console.log(error)
       res.status(401)
       return super.return_error(res)

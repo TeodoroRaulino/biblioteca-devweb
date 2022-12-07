@@ -10,7 +10,7 @@ const router = express.Router()
 
 //Home
 router.get('/', HomeController.index)
-router.get('/login', HomeController.login)
+router.get('/login', verify_user_logged, HomeController.login)
 router.post('/login', HomeController.authenticate)
 router.post('/logout', HomeController.logout)
 router.get('/forgotpassword', HomeController.forgotPassword)
@@ -50,11 +50,13 @@ async function authenticate (req, res, next) {
     res.redirect('/login')
   }
 
-
-  const response = await axios.post('http://localhost:5000/auth', {
-    session_token: session_token
+  const response = await axios.post('http://localhost:5000/auth',{},{
+    headers:{
+      'Cookie': `session_token=${session_token}`
+    }
   }).catch((error) => {
-    return res.redirect('/login')
+    res.redirect('/login')
+    return res.end 
   }) 
 
   const user = response.data.user
@@ -66,18 +68,25 @@ async function authenticate (req, res, next) {
 
 async function verify_user_logged(req, res, next){
   const session_token = req.cookies["session_token"]
+  let request_error = null
 
   if(!session_token){
-    next()
+    return next()
   }
 
-  const response = await axios.post('http://localhost:5000/auth', {
-    session_token: "outra coisa, qualquer coisa ai"
+  const response = await axios.post('http://localhost:5000/auth',{},{
+    headers:{
+      'Cookie': `session_token=${session_token}`
+    }
   }).catch((error) => {
-    next()
+    request_error = error
   }) 
-
+  if(request_error){
+    return next()
+  }
+  
   res.redirect('/administrative')  
+  return res.end() 
 }
 
 module.exports = router

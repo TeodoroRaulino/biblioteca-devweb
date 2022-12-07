@@ -14,7 +14,7 @@ class HomeController{
   }
 
   async validateTokenAuth(req, res) {
-    const session_token = req.body["session_token"]
+    const session_token = req.cookies["session_token"]
     const user = Authentication.validate_token(session_token)
 
     if(user){
