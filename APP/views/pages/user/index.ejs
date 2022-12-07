@@ -17,6 +17,15 @@
     <a class="lineHeight btn btn-success mr-4" href="/administrative/user/new"><i class="fa-solid fa-user-plus"></i> Adicionar novo usuário</a>
   </div>
 
+  <div class="m250 searchStyle p-5">
+    <input type="search" placeholder="Pesquisa pelo título" id="inputSearch" required>
+    <select name="type" id="selectType">
+      <option selected value="nome">Nome</option>
+      <option value="email">Email</option>
+    </select>
+    <input type="submit" value="Pesquisar" id="btnSearchUser">     
+  </div>
+
   <div class="m250 containeer gridUser"> 
     <% users.forEach(user => { %>
       <%- include('../../partials/userCard', {user: user}) %> 

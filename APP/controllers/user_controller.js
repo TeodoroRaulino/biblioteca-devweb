@@ -3,6 +3,22 @@ const axios = require('axios').default
 const urlApi = 'http://localhost:5000/'
 
 class UserController extends ApplicationController{
+  async usersJson(req,res){
+    let params = req.body
+
+    const response = await axios.post(urlApi+'users', {
+      params
+    }, {
+      headers: {
+        'content-Type': 'application/json'
+      }
+    }).catch((error) => {
+      console.log(error.message)
+    })
+    
+    res.end(JSON.stringify(response.data.users_jsons));
+  }
+
   async index(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)

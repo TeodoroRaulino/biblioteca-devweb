@@ -20,6 +20,7 @@ router.get('/forgotpassword', HomeController.forgotPassword)
 router.use('/administrative', authenticate)
 router.get('/administrative', AdministrativeController.administrative)
 
+router.post('/users', UserController.usersJson)
 router.get('/administrative/users', UserController.index)
 router.get('/administrative/user/new', UserController.new)
 router.post('/administrative/user/edit', UserController.update)
