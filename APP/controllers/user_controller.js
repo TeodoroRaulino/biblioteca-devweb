@@ -6,19 +6,29 @@ class UserController extends ApplicationController{
   async index(req, res){
     const error = req.query.error
     const current_user = super.define_user(res)
+    const session_token = res.locals.session_token
+    console.log(res.locals)
     
     try {
-      const response = await axios.get(urlApi+'administrative/users')
-      const data = JSON.parse(response)
+      const response = await axios.get('http://localhost:5000/administrative/users',
+      {
+        headers:{
+          'Cookie': `session_token=${session_token}`
+        }
+      })
+
+      const data = response.data
+
+      
       res.render('pages/user/index', {
         title: "Usuário",
         users: data.users,
-        baseUrl: req.baseUrl,
         current_user: current_user,
         error: error
       })
     } catch (error) {
-      res.status(response.status)
+      console.log(error)
+      res.status(401)
       return super.return_error(res)
     }
   }

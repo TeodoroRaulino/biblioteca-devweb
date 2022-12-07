@@ -45,26 +45,22 @@ router.post('/administrative/reservation', ReservationController.create)
 
 async function authenticate (req, res, next) {
   const session_token = req.cookies["session_token"]
-  const intanced_axios = axios.create({
-    headers: {
-      Cookie: `session_token=${session_token}`
-    }
-  })
-
+  
   if(!session_token){
     res.redirect('/login')
   }
 
+
   const response = await axios.post('http://localhost:5000/auth', {
     session_token: session_token
   }).catch((error) => {
-    res.redirect('/login')
+    return res.redirect('/login')
   }) 
 
-  const user = response.data
+  const user = response.data.user
 
   res.locals.user = user
-  res.locals.intanced_axios = intanced_axios
+  res.locals.session_token = session_token
   next()
 }
 

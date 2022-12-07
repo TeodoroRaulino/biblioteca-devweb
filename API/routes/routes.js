@@ -43,7 +43,8 @@ router.post('/administrative/reservation', ReservationController.create)
 
 
 function authenticate (req, res, next) {
-  const session_token = req.body["session_token"]
+  const session_token = req.cookies["session_token"]
+  console.log(session_token)
 
   if(!session_token){
     res.status(401)
