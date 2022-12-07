@@ -5,12 +5,10 @@ const Reservation = require('../model/reservation')
 
 class ReservationController extends ApplicationController{
   async index(req, res) {
-    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
-
     if(!policy.reservation().index()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
 
     let reservations = []
@@ -21,47 +19,54 @@ class ReservationController extends ApplicationController{
       reservations = Reservation.where({user_id: current_user.id})
     }
 
-    res.render('pages/reservation/index', {
-      title: "Reservas",
-      reservations: reservations,
-      current_user: current_user,
-      error: error
+    let newReserv = []
+    newReserv = reservations.map(element => {
+      return {
+        user_id: element.user_id,
+        book_id: element.book_id,
+        rental_date: element.rental_date,
+        return_date: element.return_date,
+        title: element.book().title,
+        name: element.user().name,
+        id: element.id
+      }
     })
+
+    let data = {
+      reservations: newReserv
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
 
   async new(req, res) {
-    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.reservation().new()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
 
     let users = User.all()
     let books = Book.all()
-
-    res.render('pages/reservation/form', {
-      title: "Painel do Funcionário",
-      users: users,
+    const data = {
       books: books,
-      reservation: null,
-      current_user: current_user,
-      error: error
-    })
+      users: users
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
 
   async create(req, res) {
-    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.reservation().create()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
 
     let reservations = Reservation.all()
-    let params = req.body
+    let params = req.body.params
 
     Reservation.create({
       user_id: params.user_id,
@@ -69,64 +74,60 @@ class ReservationController extends ApplicationController{
       rental_date: params.rental_date,
       return_date: params.return_date
     })
-
-    res.render('pages/reservation/index', {
-      title: "Reservas",
-      reservations: reservations,
-      current_user: current_user,
-      error: error
-    })
+    let data = {
+      reservations: reservations
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
   
   async edit(req, res) {
-    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
     
     if(!policy.reservation().edit()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
 
     let users = User.all()
     let books = Book.all()
     let reservation = Reservation.find(req.params.id)
 
-    res.render('pages/reservation/form', {
-      title: "Painel do Funcionário",
-      users: users,
+    const data = {
       books: books,
-      reservation: reservation,
-      current_user: current_user,
-      error: error
-    })
+      users: users,
+      reservation: reservation
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
   }
 
   async update(req, res) {
-    const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
 
     if(!policy.reservation().update()){
       res.status(401)
-      super.return_error(res)
+      return res.end()
     }
 
     let reservations = Reservation.all()
-    let params = req.body
+    let params = req.body.params
     let reservation = Reservation.find(params.id)
-
     reservation.update({
       user_id: params.user_id,
       book_id: params.book_id,
       rental_date: params.rental_date,
       return_date: params.return_date
     })
-
-    res.render('pages/reservation/index', {
-      title: "Reservas",
+    
+    const data = {
       reservations: reservations,
-      current_user: current_user,
-      error: error
-    })
+      params: params,
+      reservation: reservation
+    }
+    res.status(200)
+    return res.send(JSON.stringify(data))
+
   }
 
 }
