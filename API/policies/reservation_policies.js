@@ -83,6 +83,21 @@ class ReservationPolicies{
         return false
     }
   }
+
+  renovation(){
+    switch (this.logged_user.type) {
+      case 'admin':
+        return true
+      case 'student':
+        return true
+      case 'employee':
+        return true
+      case 'professor':
+        return true
+      default:
+        return false
+    }
+  }
   
   delete(){
     switch (this.logged_user.type) {

@@ -1,12 +1,15 @@
 const User = require('../model/user');
 const DataAccessor = require('./data_accessor');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 class Authenticate{
   static login(email, password){
     const user = User.where({email: email})[0]
 
-    if(user && user.password === password){
+    const hashDecrypt = bcrypt.compare(password, user.password)
+
+    if(user &&  hashDecrypt){
       const token = generate_jwt(user)
       return token
     }
@@ -32,7 +35,7 @@ class Authenticate{
   static logout(user_session_token){
     const db = new DataAccessor("session_tokens")
     const register = db.where("session_token", user_session_token)[0]
-    db.delete(register.id)
+    db.delete_session(register.id)
 
     const valid = Authenticate.validate_token(user_session_token)
     

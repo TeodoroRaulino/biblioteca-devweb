@@ -1,1 +1,146 @@
-[{"id":1,"title":"It a coisa","author":"Stephen King","category":"Terror","isbn":"123213123213","edition":"1","launch_year":"1900","quantity":"3","sinopse":"Tem um palhaço que come a rapaziada medrosa","deleted":"false"},{"id":2,"title":"Ashe","author":"Riot Games","category":"Fantasia","isbn":"12312321","edition":"1","launch_year":"2019","quantity":"3","sinopse":"História sobre uma personagem do jogo eletrônico, liga das lendas","deleted":"false"},{"id":3,"title":"Código limpo","author":"Robert Cecil Martin","category":"Tecnologia","isbn":"1231221","edition":"1","launch_year":"2008","quantity":"12","sinopse":"Código limpo está divido em três partes. Na primeira há diversos capítulos que descrevem os princípios, padrões e práticas para criar um código limpo. A segunda parte consiste em diversos casos de estudo de complexidade cada vez maior.","deleted":"false"},{"id":4,"title":"Arquitetura Limpa ","author":"Robert Cecil Martin","category":"Tecnologia","isbn":"123213123123","edition":"1","launch_year":"2019","quantity":"11","sinopse":"As regras universais de arquitetura de software aumentam dramaticamente a produtividade dos desenvolvedores ao longo da vida dos sistemas de software. Agora, aproveitando o sucesso dos seus best-sellers Código Limpo e O Codificador Limpo, o lendário artesão de software Robert C.","deleted":"false"},{"id":5,"title":"O Hobbit","author":"J. R. R. Tolkien","category":"Fantasia","isbn":"12323123131221332","edition":"1","launch_year":"1937","quantity":"3","sinopse":"The Hobbit, or There and Back Again é um livro infantojuvenil de alta fantasia escrito pelo filólogo e professor britânico J. R. R. Tolkien","deleted":"false"},{"id":6,"title":"Código Sujo","author":"Extreme Go Horse","category":"Tecnologia","isbn":"12312312312313131","edition":"1","launch_year":"2010","quantity":"37","sinopse":"Ensinando a fazer os piores códigos possíveis, para que de forma alguma eles possam ser reaproveitados ou entendidos.","deleted":"false"},{"id":7,"title":"Livro teste","author":"Testezin","category":"Ficção de teste","isbn":"1","edition":"1","launch_year":"2000","quantity":"1","sinopse":"Essa é uma descrição para um livro de teste","deleted":"false"},{"id":8,"title":"Livro teste","author":"Testezin","category":"Ficção de teste","isbn":"1","edition":"1","launch_year":"2000","quantity":"3","sinopse":"Essa é uma descrição para um livro de teste","deleted":"true"}]
+[
+  {
+    "id": 1,
+    "title": "It a coisa",
+    "author": "Stephen King",
+    "category": "Terror",
+    "isbn": "123213123213",
+    "edition": "1",
+    "launch_year": "1900",
+    "quantity": "3",
+    "sinopse": "Tem um palhaço que come a rapaziada medrosa",
+    "deleted": "false"
+  },
+  {
+    "id": 2,
+    "title": "Ashe",
+    "author": "Riot Games",
+    "category": "Fantasia",
+    "isbn": "12312321",
+    "edition": "1",
+    "launch_year": "2019",
+    "quantity": "3",
+    "sinopse": "História sobre uma personagem do jogo eletrônico, liga das lendas",
+    "deleted": "false"
+  },
+  {
+    "id": 3,
+    "title": "Código limpo",
+    "author": "Robert Cecil Martin",
+    "category": "Tecnologia",
+    "isbn": "1231221",
+    "edition": "1",
+    "launch_year": "2008",
+    "quantity": "12",
+    "sinopse": "Código limpo está divido em três partes. Na primeira há diversos capítulos que descrevem os princípios, padrões e práticas para criar um código limpo. A segunda parte consiste em diversos casos de estudo de complexidade cada vez maior.",
+    "deleted": "false"
+  },
+  {
+    "id": 4,
+    "title": "Arquitetura Limpa ",
+    "author": "Robert Cecil Martin",
+    "category": "Tecnologia",
+    "isbn": "123213123123",
+    "edition": "1",
+    "launch_year": "2019",
+    "quantity": "11",
+    "sinopse": "As regras universais de arquitetura de software aumentam dramaticamente a produtividade dos desenvolvedores ao longo da vida dos sistemas de software. Agora, aproveitando o sucesso dos seus best-sellers Código Limpo e O Codificador Limpo, o lendário artesão de software Robert C.",
+    "deleted": "false"
+  },
+  {
+    "id": 5,
+    "title": "O Hobbit",
+    "author": "J. R. R. Tolkien",
+    "category": "Fantasia",
+    "isbn": "12323123131221332",
+    "edition": "1",
+    "launch_year": "1937",
+    "quantity": "3",
+    "sinopse": "The Hobbit, or There and Back Again é um livro infantojuvenil de alta fantasia escrito pelo filólogo e professor britânico J. R. R. Tolkien",
+    "deleted": "false"
+  },
+  {
+    "id": 6,
+    "title": "Código Sujo",
+    "author": "Extreme Go Horse",
+    "category": "Tecnologia",
+    "isbn": "12312312312313131",
+    "edition": "1",
+    "launch_year": "2010",
+    "quantity": "37",
+    "sinopse": "Ensinando a fazer os piores códigos possíveis, para que de forma alguma eles possam ser reaproveitados ou entendidos.",
+    "deleted": "false"
+  },
+  {
+    "id": 7,
+    "title": "Livro teste",
+    "author": "Testezin",
+    "category": "Ficção de teste",
+    "isbn": "1",
+    "edition": "1",
+    "launch_year": "2000",
+    "quantity": "1",
+    "sinopse": "Essa é uma descrição para um livro de teste",
+    "deleted": "true"
+  },
+  {
+    "id": 8,
+    "title": "Livro teste",
+    "author": "Testezin",
+    "category": "Ficção de teste",
+    "isbn": "1",
+    "edition": "1",
+    "launch_year": "2000",
+    "quantity": "3",
+    "sinopse": "Essa é uma descrição para um livro de teste",
+    "deleted": "true"
+  },
+  {
+    "id": 9,
+    "title": "2",
+    "author": "1",
+    "category": "1",
+    "isbn": "1",
+    "edition": "1",
+    "launch_year": "1",
+    "quantity": "1",
+    "sinopse": "1",
+    "deleted": "true"
+  },
+  {
+    "id": 10,
+    "title": "2",
+    "author": "1",
+    "category": "1",
+    "isbn": "1",
+    "edition": "1",
+    "launch_year": "1",
+    "quantity": "1",
+    "sinopse": "1",
+    "deleted": "true"
+  },
+  {
+    "id": 11,
+    "title": "2",
+    "author": "1",
+    "category": "1",
+    "isbn": "1",
+    "edition": "1",
+    "launch_year": "1",
+    "quantity": "1",
+    "sinopse": "1",
+    "deleted": "true"
+  },
+  {
+    "id": 12,
+    "title": "2222",
+    "author": "1",
+    "category": "1",
+    "isbn": "1",
+    "edition": "1",
+    "launch_year": "1",
+    "quantity": "1",
+    "sinopse": "1",
+    "deleted": "true"
+  }
+]
