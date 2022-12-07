@@ -1,3 +1,5 @@
+const axios = require('axios').default
+
 class ApplicationController{
   define_user(res){
     const logged_user = res.locals.user
@@ -23,8 +25,7 @@ class ApplicationController{
         res.status(200)
         return res.end()
     }
-  }
-  
+  }  
 }
 
 module.exports = ApplicationController

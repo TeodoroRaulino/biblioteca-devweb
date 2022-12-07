@@ -4,21 +4,20 @@ const AdministrativeController = require('../controllers/administrative_controll
 const BookController = require("../controllers/book_controller")
 const UserController = require('../controllers/user_controller')
 const ReservationController = require('../controllers/reservation_controller')
-const Authentication = require('../services/authentication')
 const axios = require('axios').default
 
 const router = express.Router()
 
 //Home
 router.get('/', HomeController.index)
-router.get('/login', verify_user_logged,HomeController.login)
+router.get('/login', HomeController.login)
 router.post('/login', HomeController.authenticate)
 router.post('/logout', HomeController.logout)
 router.get('/forgotpassword', HomeController.forgotPassword)
 
 //Administrative
 
-// router.use('/administrative', authenticate)
+router.use('/administrative', authenticate)
 router.get('/administrative', AdministrativeController.administrative)
 
 router.get('/administrative/users', UserController.index)
@@ -46,20 +45,26 @@ router.post('/administrative/reservation', ReservationController.create)
 
 async function authenticate (req, res, next) {
   const session_token = req.cookies["session_token"]
+  const intanced_axios = axios.create({
+    headers: {
+      Cookie: `session_token=${session_token}`
+    }
+  })
 
   if(!session_token){
     res.redirect('/login')
   }
 
   const response = await axios.post('http://localhost:5000/auth', {
-    session_token: "outra coisa, qualquer coisa ai"
+    session_token: session_token
   }).catch((error) => {
     res.redirect('/login')
-  })  
-  console.log('hehe boy 3')
+  }) 
+
   const user = response.data
 
   res.locals.user = user
+  res.locals.intanced_axios = intanced_axios
   next()
 }
 

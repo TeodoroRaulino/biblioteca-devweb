@@ -24,10 +24,16 @@ class HomeController{
   async authenticate(req, res){
     const email = req.body["email"]
     const password = req.body["password"]
-    const token = Authentication.login(email, password)
 
-    if(token){
-      res.cookie("session_token", token)
+    const response = await axios.post('http://localhost:5000/authenticate', {
+      email: email,
+      password: password
+    }).catch((error) => {
+      res.redirect('/login')
+    })  
+
+    if(response.status == 200){
+      res.cookie("session_token", response.data.session_token)
       return res.redirect('/administrative');
     }
     return res.redirect('/login')
@@ -35,7 +41,14 @@ class HomeController{
 
   async logout(req, res){
     const session_token = req.cookies["session_token"]
-    Authentication.logout(session_token)
+
+    const response = await axios.post('http://localhost:5000/logout', {
+      email: email,
+      password: password
+    }).catch((error) => {
+      res.redirect('/login')
+    })
+
     return res.redirect('/login')
   }
 
