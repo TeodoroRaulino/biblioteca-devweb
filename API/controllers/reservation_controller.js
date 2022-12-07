@@ -68,12 +68,21 @@ class ReservationController extends ApplicationController{
     let reservations = Reservation.all()
     let params = req.body.params
 
-    Reservation.create({
-      user_id: params.user_id,
-      book_id: params.book_id,
-      rental_date: params.rental_date,
-      return_date: params.return_date
-    })
+    const bookReserv = Reservation.where({book_id: params.book_id})
+    let book = Book.find(params.book_id)
+
+    if(book.quantity > bookReserv.length){
+      Reservation.create({
+        user_id: params.user_id,
+        book_id: params.book_id,
+        rental_date: params.rental_date,
+        return_date: params.return_date
+      })
+    }else{
+      res.status(203)
+      return res.end() 
+    }
+
     let data = {
       reservations: reservations
     }
