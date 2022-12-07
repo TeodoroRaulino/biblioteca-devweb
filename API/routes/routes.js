@@ -40,6 +40,7 @@ router.get('/administrative/reservation/new', ReservationController.new)
 router.put('/administrative/reservation/edit', ReservationController.update)
 router.get('/administrative/reservation/edit/:id', ReservationController.edit)
 router.post('/administrative/reservation', ReservationController.create)
+router.patch('/administrative/renovation/:id', ReservationController.renovation)
 
 
 function authenticate (req, res, next) {

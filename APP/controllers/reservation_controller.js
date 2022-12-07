@@ -133,6 +133,28 @@ class ReservationController extends ApplicationController{
     return res.end()
   }
 
+  async renovation(req, res) {
+    const error = req.query.error
+    const current_user = super.define_user(res)
+    const session_token = res.locals.session_token
+    const id = req.params.id
+    let params = req.body
+
+    const response = await axios.patch(urlApi+'administrative/renovation/'+id,{
+    },{
+      headers:{
+        'Cookie': `session_token=${session_token}`
+      }
+    }).catch((error) => {
+      console.log(error.message)
+      res.status(401)
+      return super.return_error(res)
+    })
+
+    res.redirect('/administrative/reservation')
+    return res.end()
+  }
+
 }
 
 module.exports = new ReservationController

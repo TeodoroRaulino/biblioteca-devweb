@@ -41,6 +41,8 @@ router.get('/administrative/reservation/new', ReservationController.new)
 router.post('/administrative/reservation/edit', ReservationController.update)
 router.get('/administrative/reservation/edit/:id', ReservationController.edit)
 router.post('/administrative/reservation', ReservationController.create)
+router.post('/administrative/renovation/:id', ReservationController.renovation)
+
 
 
 async function authenticate (req, res, next) {

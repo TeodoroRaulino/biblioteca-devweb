@@ -6,10 +6,14 @@
   <th>
     <% if(current_user.type === 'admin' || current_user.type === 'employee'){ %>
     <a href="/administrative/reservation/edit/<%= reservation.id %>" class="btn btn-primary">Editar</a>
-    <a href="" value="<%= reservation.id %>" class="btn btn-info">Renovar</a>
+    <form action="/administrative/renovation/<%= reservation.id %>" method="post">
+      <input type="submit" value="Renovar" class="btn btn-info">
+    </form>
     <a class="btn btn-danger">Remover</a>
     <% } else { %>
-    <a href="" value="<%= reservation.id %>" class="btn btn-info">Renovar</a> 
+      <form action="/administrative/renovation/<%= reservation.id %>" method="post">
+        <input type="submit" value="Renovar" class="btn btn-info">
+      </form>
     <% } %> 
   </th>
 </tr>
