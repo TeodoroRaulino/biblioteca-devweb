@@ -13,28 +13,21 @@ class HomeController{
     res.send(JSON.stringify(data))
   }
 
-  async login(req, res){
-    
-    res.status(200)
-  }
-
   async validateTokenAuth(req, res) {
-    const session_token = req.body.session_token
-    const user = Authentication.validate_token(session_token.toString())
+    const session_token = req.body["session_token"]
+    const user = Authentication.validate_token(session_token)
 
-    if(user) {
+    if(user){
       const data = {
         user: user
       }
       res.status(200)
       res.send(JSON.stringify(data))
-      res.end()
+      return res.end()
     }
     
     res.status(401)
-    res.end()
-
- 
+    return res.end()
   }
 
   async authenticate(req, res) {
@@ -43,16 +36,23 @@ class HomeController{
     const token = Authentication.login(email, password)
 
     if(token){
-      res.cookie("session_token", token)
-      return res.redirect('/administrative');
+      const data = {
+        session_token: token
+      }
+      
+      res.status(200)
+      res.send(JSON.stringify(data));
+      return res.end()
     }
-    return res.redirect('/login')
+    res.status(401)
+    return res.end()
   }
 
   async logout(req, res){
     const session_token = req.cookies["session_token"]
     Authentication.logout(session_token)
-    return res.redirect('/login')
+    res.status(200)
+    return res.end()
   }
 
   async forgotPassword(req, res){

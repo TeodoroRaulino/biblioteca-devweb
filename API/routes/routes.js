@@ -10,8 +10,7 @@ const router = express.Router()
 
 //Home
 router.get('/', HomeController.index)
-// router.get('/login', HomeController.login)
-router.post('/login', HomeController.authenticate)
+router.post('/authenticate', HomeController.authenticate)
 router.post('/auth', HomeController.validateTokenAuth)
 router.post('/logout', HomeController.logout)
 router.get('/forgotpassword', HomeController.forgotPassword)
@@ -45,32 +44,22 @@ router.post('/administrative/reservation', ReservationController.create)
 
 
 function authenticate (req, res, next) {
-  const session_token = req.cookies["session_token"]
+  const session_token = req.body["session_token"]
+
   if(!session_token){
-    res.redirect('/login')
+    res.status(401)
+    return res.end()
   }
+
   const user = Authentication.validate_token(session_token)
   
   if(!user){
-    return res.redirect('/login');
+    res.status(401)
+    return res.end() 
   }
 
   res.locals.user = user
   next()
 }
-
-// function verify_user_logged(req, res, next){
-//   const session_token = req.cookies["session_token"]
-//   if(!session_token){
-//     next()
-//   }
-//   const user = Authentication.validate_token(session_token)
-
-//   if(user){
-//     res.redirect('/administrative')
-//   }else{
-//     next();  
-//   }
-// }
 
 module.exports = router
