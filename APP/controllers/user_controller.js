@@ -157,7 +157,7 @@ class UserController extends ApplicationController{
 
     let params = req.body
     
-    const response = await axios.post(
+    const response = await axios.put(
       urlApi+ 'administrative/user/edit',
       {
         params

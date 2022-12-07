@@ -118,7 +118,7 @@ class ReservationController extends ApplicationController{
     let params = req.body
 
 
-    const response = await axios.post(urlApi+'administrative/reservation/edit',{
+    const response = await axios.put(urlApi+'administrative/reservation/edit',{
       params
     },{
       headers:{

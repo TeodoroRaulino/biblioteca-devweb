@@ -32,7 +32,7 @@ class BookController extends ApplicationController{
 
   async books(req, res){
     try {
-      const response = await axios.post(urlApi+'/books')
+      const response = await axios.get(urlApi+'/books')
       const data = response.books_jsons
       res.render('pages/books', {
         title: "Livros",
@@ -183,7 +183,7 @@ class BookController extends ApplicationController{
 
     let params = req.body
 
-    const response = await axios.post(urlApi+'administrative/book/edit',{
+    const response = await axios.put(urlApi+'administrative/book/edit',{
         params
       },{
         headers:{
@@ -193,15 +193,10 @@ class BookController extends ApplicationController{
       console.log(error.message)
     })
 
-    const data = response.data
+    const data = params.id
 
-    res.render('pages/book/show',{
-      title: "Livro",
-      book: data.book,
-      current_user: current_user,
-      error: error
-    })
-    
+    res.redirect('/administrative/book/'+data)
+    return res.end()
   }
 }
 

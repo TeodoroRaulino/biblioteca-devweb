@@ -50,15 +50,19 @@ async function authenticate (req, res, next) {
     res.redirect('/login')
   }
 
+  let request_error = null
   const response = await axios.post('http://localhost:5000/auth',{},{
     headers:{
       'Cookie': `session_token=${session_token}`
     }
   }).catch((error) => {
+    request_error = error
+  }) 
+  if(request_error){
     res.redirect('/login')
     return res.end()
-  }) 
-
+  }
+  
   const user = response.data.user
 
   res.locals.user = user
