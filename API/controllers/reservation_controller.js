@@ -14,9 +14,9 @@ class ReservationController extends ApplicationController{
     let reservations = []
 
     if(current_user.type === 'employee' || current_user.type === 'admin'){
-      reservations = Reservation.all()
+      reservations = Reservation.where({deleted: "false"})
     }else{
-      reservations = Reservation.where({user_id: current_user.id})
+      reservations = Reservation.where({user_id: current_user.id, deleted: "false"})
     }
 
     let newReserv = []
@@ -47,8 +47,8 @@ class ReservationController extends ApplicationController{
       return res.end()
     }
 
-    let users = User.all()
-    let books = Book.all()
+    let users = User.where({deleted: "false"})
+    let books = Book.where({deleted: "false"})
     const data = {
       books: books,
       users: users
@@ -65,10 +65,10 @@ class ReservationController extends ApplicationController{
       return res.end()
     }
 
-    let reservations = Reservation.all()
+    let reservations = Reservation.where({deleted: "false"})
     let params = req.body.params
 
-    const bookReserv = Reservation.where({book_id: params.book_id})
+    const bookReserv = Reservation.where({book_id: params.book_id, deleted: "false"})
     let book = Book.find(params.book_id)
 
     if(book.quantity > bookReserv.length){
@@ -98,8 +98,8 @@ class ReservationController extends ApplicationController{
       return res.end()
     }
 
-    let users = User.all()
-    let books = Book.all()
+    let users = User.where({deleted: "false"})
+    let books = Book.all({deleted: "false"})
     let reservation = Reservation.find(req.params.id)
 
     const data = {
@@ -119,7 +119,7 @@ class ReservationController extends ApplicationController{
       return res.end()
     }
 
-    let reservations = Reservation.all()
+    let reservations = Reservation.where({deleted: "false"})
     let params = req.body.params
     let reservation = Reservation.find(params.id)
     reservation.update({
@@ -162,6 +162,13 @@ class ReservationController extends ApplicationController{
     return res.end() 
   }
 
+  async delete(req, res){
+    const id = req.params.id
+    Reservation.delete(id)
+
+    res.status(204)
+    return res.end();
+  }
 }
 
 module.exports = new ReservationController

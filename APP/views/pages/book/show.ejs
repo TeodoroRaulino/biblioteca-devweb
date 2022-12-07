@@ -40,7 +40,9 @@
               <a href="/administrative/book/edit/<%= book.id %>" type="submit" class="btn btn-primary col-4">Editar</a>
             </div>
             <div class="pb-3">
-              <a type="submit" class="btn btn-danger col-4">Deletar</a>
+              <form action="/administrative/delete/book/<%= book.id %>" method="post">
+                <input type="submit" value="Remover" class="btn btn-danger">
+              </form>
             </div>
           <% } %>
           <div class="">

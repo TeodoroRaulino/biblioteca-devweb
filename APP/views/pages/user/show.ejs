@@ -27,7 +27,9 @@
         <a href="/administrative/user/edit/<%= user.id %>" type="submit" class="btn btn-primary col-4">Editar</a>
       </div>
       <div class="pb-3">
-        <a type="submit" class="btn btn-danger col-4">Deletar</a>
+        <form action="/administrative/delete/user/<%= user.id %>" method="post">
+          <input type="submit" value="Remover" class="btn btn-danger">
+        </form>
       </div>
       <div class="">
         <a href="/administrative/users" type="button" class="btn btn-secondary col-4">Voltar</a>

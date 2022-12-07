@@ -73,6 +73,7 @@ class Book{
       quantity,
       sinopse
     )
+    json['deleted'] = 'false'
 
     let data = db.create(json)
     let book = new Book(
@@ -201,7 +202,7 @@ class Book{
   }
 
   static delete(id){
-    const db = DataAccessor('book')
+    const db = new DataAccessor('book')
     db.delete(id)
   }
 
@@ -213,7 +214,8 @@ class Book{
     edition = null,
     launch_year = null,
     quantity = null,
-    sinopse = null
+    sinopse = null,
+    deleted = null
   }) => {
     const db = new DataAccessor('book')
     let titles_data = []
@@ -224,6 +226,7 @@ class Book{
     let launch_year_data = []
     let quantity_data = []
     let sinopse_data = []
+    let deleted_data = []
     let books_data = []
     let books = []
 
@@ -251,6 +254,9 @@ class Book{
     if(sinopse){
       sinopse_data = db.where('sinopse', sinopse)
     }
+    if(deleted){
+      deleted_data = db.where('deleted', deleted)
+    }
 
     books_data = authors_data.concat(
       titles_data,
@@ -260,6 +266,7 @@ class Book{
       launch_year_data,
       quantity_data,
       sinopse_data,
+      deleted_data
     )
 
     
@@ -286,6 +293,9 @@ class Book{
     }
     if(sinopse){
       books_data = books_data.filter(element => element["sinopse"].includes(sinopse));
+    }
+    if(deleted){
+      books_data = books_data.filter(element => element["deleted"].includes(deleted))
     }
 
     books_data = books_data.filter((arr, index, self) => 

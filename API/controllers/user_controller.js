@@ -5,7 +5,7 @@ class UserController extends ApplicationController{
   async index(req, res){
     const error = req.query.error
     const [current_user, policy] = super.define_user_and_policy(res)
-    let users = User.all()
+    let users = User.where({deleted: "false"})
     
     if(!policy.user().index()){
       res.status(401)
@@ -123,6 +123,14 @@ class UserController extends ApplicationController{
 
     res.status(200)
     return res.send(JSON.stringify(data))
+  }
+
+  async delete(req, res){
+    const id = req.params.id
+    User.delete(id)
+
+    res.status(204)
+    return res.end();
   }
 }
 

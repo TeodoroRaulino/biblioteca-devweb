@@ -9,7 +9,9 @@
     <form action="/administrative/renovation/<%= reservation.id %>" method="post">
       <input type="submit" value="Renovar" class="btn btn-info">
     </form>
-    <a class="btn btn-danger">Remover</a>
+    <form action="/administrative/delete/reservation/<%= reservation.id %>" method="post">
+      <input type="submit" value="Remover" class="btn btn-danger">
+    </form>
     <% } else { %>
       <form action="/administrative/renovation/<%= reservation.id %>" method="post">
         <input type="submit" value="Renovar" class="btn btn-info">

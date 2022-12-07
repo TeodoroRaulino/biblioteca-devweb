@@ -56,10 +56,12 @@ class DataAccessor{
 
   delete(id){
     let record = this.find(id);
-    const existing_ids = this.data.map(({id})=>(id))
-    let index = existing_ids.indexOf(record["id"])
+    record["deleted"] = "true"
 
-    this.data.splice(index, 1)
+    // const existing_ids = this.data.map(({id})=>(id))
+    // let index = existing_ids.indexOf(record["id"])
+
+    // this.data.splice(index, 1)
     this.save(); 
   }
 
