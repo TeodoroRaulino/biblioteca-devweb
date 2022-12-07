@@ -3,17 +3,18 @@ const Book = require('./../model/book');
 
 class BookController extends ApplicationController{
   async booksJson(req,res){
-    let type = req.body.type
+    let type = req.body.params.type
     let books = []
+
     switch (type) {
       case "categoria":
-        books = Book.where({category: req.body.search})
+        books = Book.where({category: req.body.params.search})
         break;
       case "titulo":
-        books = Book.where({title: req.body.search})
+        books = Book.where({title: req.body.params.search})
         break;
       case "autor":
-        books = Book.where({author: req.body.search})
+        books = Book.where({author: req.body.params.search})
         break;
       default:
         books = Book.all()
@@ -24,8 +25,13 @@ class BookController extends ApplicationController{
       return book.json()
     });
 
+    let data = {
+      books_jsons: books_jsons
+    }
+
     res.setHeader('Content-Type', 'application/json');
-    return res.end(JSON.stringify(books_jsons));
+    res.status(200)
+    return res.send(JSON.stringify(data));
   }
 
   async index(req, res){

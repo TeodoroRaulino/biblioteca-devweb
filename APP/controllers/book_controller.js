@@ -6,28 +6,19 @@ const urlApi = 'http://localhost:5000/'
 
 class BookController extends ApplicationController{
   async booksJson(req,res){
-    let type = req.body.type
-    let books = []
-    switch (type) {
-      case "categoria":
-        books = Book.where({category: req.body.search})
-        break;
-      case "titulo":
-        books = Book.where({title: req.body.search})
-        break;
-      case "autor":
-        books = Book.where({author: req.body.search})
-        break;
-      default:
-        books = Book.all()
-        break;
-    }
-  
-    let books_jsons = books.map(book => {
-      return book.json()
-    });
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(books_jsons));
+    let params = req.body
+
+    const response = await axios.post(urlApi+'books', {
+      params
+    }, {
+      headers: {
+        'content-Type': 'application/json'
+      }
+    }).catch((error) => {
+      console.log(error.message)
+    })
+    
+    res.end(JSON.stringify(response.data.books_jsons));
   }
 
   async books(req, res){
