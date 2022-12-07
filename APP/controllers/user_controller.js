@@ -10,7 +10,7 @@ class UserController extends ApplicationController{
 
     
     try {
-      const response = await axios.get('http://localhost:5000/administrative/users',
+      const response = await axios.get(urlApi+ 'administrative/users',
       {
         headers:{
           'Cookie': `session_token=${session_token}`
@@ -40,7 +40,7 @@ class UserController extends ApplicationController{
     const current_user = super.define_user(res)
     
     try {
-      const response = await axios.get('http://localhost:5000/administrative/user/'+id,
+      const response = await axios.get(urlApi+ 'administrative/user/'+id,
       {
         headers:{
           'Cookie': `session_token=${session_token}`
@@ -67,7 +67,7 @@ class UserController extends ApplicationController{
     const current_user = super.define_user(res)
 
     try {
-      const response = await axios.get('http://localhost:5000/administrative/user/new',
+      const response = await axios.get(urlApi + 'administrative/user/new',
       {
         headers:{
           'Cookie': `session_token=${session_token}`
@@ -99,7 +99,7 @@ class UserController extends ApplicationController{
 
 
     const response = await axios.post(
-      'http://localhost:5000/administrative/user',
+      urlApi + 'administrative/user',
       {
         params
       },
@@ -127,7 +127,7 @@ class UserController extends ApplicationController{
     const current_user = super.define_user(res)
 
     try {
-      const response = await axios.get('http://localhost:5000/administrative/user/edit/'+id,
+      const response = await axios.get(urlApi + 'administrative/user/edit/'+id,
       {
         headers:{
           'Cookie': `session_token=${session_token}`
@@ -158,7 +158,7 @@ class UserController extends ApplicationController{
     let params = req.body
     
     const response = await axios.post(
-      'http://localhost:5000/administrative/user/edit',
+      urlApi+ 'administrative/user/edit',
       {
         params
       },
