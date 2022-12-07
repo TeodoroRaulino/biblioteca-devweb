@@ -119,7 +119,8 @@ class User{
       identifier,
       this.id
     )
-
+    
+    json['deleted'] = 'false'
     let data = db.update(json);
 
     this.cpf = data["cpf"]

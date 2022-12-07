@@ -1,1 +1,112 @@
-[{"id":1,"cpf":"123.456.789-10","type":"admin","name":"Teodoro Raulino","email":"teo@alu","password":"123456","identifier":"123456","deleted":"false"},{"id":2,"cpf":"123.456.789-10","type":"professor","name":"Marques","email":"marques@prof","password":"123456","identifier":"12356","deleted":"false"},{"id":3,"cpf":"123.456.789-10","type":"employee","name":"Victor Ehrich","email":"ehrich@alu","password":"123456","identifier":"213456","deleted":"false"},{"id":4,"cpf":"123.456.789-10","type":"admin","name":"John Vasco da Gama","email":"john@alu","password":"123456","identifier":"123456","deleted":"false"},{"id":5,"cpf":"123.456.789-10","type":"admin","name":"Italo Severo","email":"italo@alu","password":"123456","identifier":"213561","deleted":"false"},{"id":6,"cpf":"123.456.789-01","type":"student","name":"Maurício de Moura","email":"mauricio@alu","password":"123456","identifier":"012345","deleted":"false"},{"id":7,"cpf":"123.456.789-11","type":"student","name":"Crypto","email":"crypto@crypto","password":"$2b$10$aX06wpa740zEEywxwnTbO.9owl64cvSgZwocXMf3eIFoc08aT2OCC","identifier":"123456","deleted":"false"}]
+[
+  {
+    "id": 1,
+    "cpf": "123.456.789-10",
+    "type": "admin",
+    "name": "Teodoro Raulino",
+    "email": "teo@alu",
+    "password": "123456",
+    "identifier": "123456",
+    "deleted": "false"
+  },
+  {
+    "id": 2,
+    "cpf": "123.456.789-10",
+    "type": "professor",
+    "name": "Marques",
+    "email": "marques@prof",
+    "password": "$2b$10$AMY14S7gMkFwxSGTlJGZzORlE37yUF102jQoMLbXk2.zWos4ICQFe",
+    "identifier": "12356",
+    "deleted": "false"
+  },
+  {
+    "id": 3,
+    "cpf": "123.456.789-10",
+    "type": "employee",
+    "name": "Victor Ehrich",
+    "email": "ehrich@alu",
+    "password": "$2b$10$eQSbWYFB9AUx9LcKlJkhLejzRdixvJ0Zg7k5DnEpfO3WcvUkj6Fbu",
+    "identifier": "213456",
+    "deleted": "false"
+  },
+  {
+    "id": 4,
+    "cpf": "123.456.789-10",
+    "type": "admin",
+    "name": "John Vasco da Gama",
+    "email": "john@alu",
+    "password": "123456",
+    "identifier": "123456",
+    "deleted": "false"
+  },
+  {
+    "id": 5,
+    "cpf": "123.456.789-10",
+    "type": "admin",
+    "name": "Italo Severo",
+    "email": "italo@alu",
+    "password": "123456",
+    "identifier": "213561",
+    "deleted": "false"
+  },
+  {
+    "id": 6,
+    "cpf": "123.456.789-01",
+    "type": "student",
+    "name": "Maurício de Moura",
+    "email": "mauricio@alu",
+    "password": "123456",
+    "identifier": "012345",
+    "deleted": "false"
+  },
+  {
+    "id": 7,
+    "cpf": "123.456.789-11",
+    "type": "student",
+    "name": "Crypto",
+    "email": "crypto@crypto",
+    "password": "$2b$10$aX06wpa740zEEywxwnTbO.9owl64cvSgZwocXMf3eIFoc08aT2OCC",
+    "identifier": "123456",
+    "deleted": "true"
+  },
+  {
+    "id": 8,
+    "cpf": "1",
+    "type": "student",
+    "name": "2",
+    "email": "1@alu",
+    "password": "$2b$10$7iVYQVstx/HwaICk8Lgi6uBarE207uwzYsSgVBqaK8OA0OZnx9fuK",
+    "identifier": "1",
+    "deleted": "true"
+  },
+  {
+    "id": 9,
+    "cpf": "1",
+    "type": "student",
+    "name": "2",
+    "email": "1@alu",
+    "password": "$2b$10$G4CJfnkcH3tvtErowGTSOufUwpNkjfIfVWtk2LoD9PdKg0pcZH7uO",
+    "identifier": "1",
+    "deleted": "true"
+  },
+  {
+    "id": 10,
+    "cpf": "1",
+    "type": "student",
+    "name": "2",
+    "email": "1@alu",
+    "password": "$2b$10$lBiv67D3/oW6n2AB/FTqUOly5ve21Ac9d1gBPkHYc/IsjaGbt58g2",
+    "identifier": "1",
+    "deleted": "true"
+  },
+  {
+    "id": 11,
+    "cpf": "1",
+    "type": "student",
+    "name": "2",
+    "email": "1@alu",
+    "password": "$2b$10$O0JF0j5HXtH6AkiHymaGreeWKlqsA9iuORkUZl9RJw4VjJWkrSQxe",
+    "identifier": "1",
+    "deleted": "true"
+  }
+]

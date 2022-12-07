@@ -142,15 +142,14 @@ class ReservationController extends ApplicationController{
   async renovation(req, res) {
     const [current_user, policy] = super.define_user_and_policy(res)
     
-    if(!policy.reservation().edit()){
+    if(!policy.reservation().renovation()){
       res.status(401)
       return res.end()
     }
     
     let params = req.params.id
     let reservation = Reservation.find(params)
-    let date = reservation.return_date
-    var dateRenovation = new Date()  
+    var dateRenovation = new Date()
     
     dateRenovation.setMonth(dateRenovation.getMonth() + 1)
     dateRenovation = dateRenovation.toISOString().split('T')[0]

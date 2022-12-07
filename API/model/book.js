@@ -140,6 +140,7 @@ class Book{
       this.id
     )
 
+    json['deleted'] = 'false'
     let data = db.update(json);
 
     this.title = data["title"]

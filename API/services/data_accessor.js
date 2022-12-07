@@ -65,6 +65,15 @@ class DataAccessor{
     this.save(); 
   }
 
+  delete_session(id){
+    let record = this.find(id)
+    const existing_ids = this.data.map(({id})=>(id))
+    let index = existing_ids.indexOf(record["id"])
+
+    this.data.splice(index, 1)
+    this.save(); 
+  }
+
   save(){
     writeFile(this.path, this.data);
     this.reload_data();

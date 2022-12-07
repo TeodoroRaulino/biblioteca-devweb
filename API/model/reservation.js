@@ -93,7 +93,7 @@ class Reservation{
       return_date,
       this.id
     )
-
+    json['deleted'] = 'false'
     let data = db.update(json);
 
     this.user_id = data["user_id"]
