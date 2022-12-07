@@ -3,7 +3,7 @@
   <th><%= reservation.name %></th>
   <th><%= reservation.rental_date %></th>
   <th><%= reservation.return_date %></th>
-  <th>
+  <th class="thFlex">
     <% if(current_user.type === 'admin' || current_user.type === 'employee'){ %>
     <a href="/administrative/reservation/edit/<%= reservation.id %>" class="btn btn-primary">Editar</a>
     <form action="/administrative/renovation/<%= reservation.id %>" method="post">

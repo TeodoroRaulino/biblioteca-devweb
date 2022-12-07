@@ -108,11 +108,11 @@ let inputSearch = document.querySelector("#inputSearch")
 const btnSearch = document.querySelector("#btnSearch")
 const selectValue = document.querySelector("#selectType")
 
-
-
-btnSearch.addEventListener("click", () => {
-  searchbook(selectValue.value, inputSearch.value)
-})
+if(btnSearch){
+  btnSearch.addEventListener("click", () => {
+    searchbook(selectValue.value, inputSearch.value)
+  })
+}
 
 async function searchbook(type, search){
   let body = {"type": type, "search": search}
@@ -141,6 +141,46 @@ function creatBookCard(data) {
     </div>
   </div>
   </a>`
+  
+  return htmlBook
+}
+
+
+const btnSearchIndex = document.querySelector("#btnSearchIndex")
+
+if(btnSearchIndex){
+  btnSearchIndex.addEventListener("click", () => {
+    searchbookindex(selectValue.value, inputSearch.value)
+  })
+}
+
+
+async function searchbookindex(type, search){
+  let body = {"type": type, "search": search}
+  let resp = await fetch('/books', {method: 'POST', body: JSON.stringify(body), headers:{'Content-Type': 'application/json'}})
+  let datas = await resp.json()
+
+  let divBook = document.querySelector(".d-grid-book")
+  divBook.innerHTML = ''
+      
+  datas.forEach( data => {
+    let newDiv = document.createElement("div")
+    newDiv.innerHTML = creatBookCardIndex(data) 
+    divBook.appendChild(newDiv)
+  })
+}
+
+function creatBookCardIndex(data) {
+  let htmlBook = `
+  <div class="container-book"> 
+    <img src="/images/bookXGH.jpg" alt="Avatar" class="image-book"> 
+    <div class="overlay d-flex-book"> 
+      <p>${data.title}</p> 
+      <p>${data.author}</p> 
+      <p>${data.category}</p> 
+    </div> 
+  </div>
+`
   
   return htmlBook
 }

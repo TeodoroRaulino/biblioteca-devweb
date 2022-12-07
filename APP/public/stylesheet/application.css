@@ -470,3 +470,9 @@ table, th {
   transition: 1s;
   color: white;
 }
+
+.thFlex {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}

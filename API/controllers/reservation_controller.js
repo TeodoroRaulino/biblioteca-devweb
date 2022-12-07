@@ -79,14 +79,14 @@ class ReservationController extends ApplicationController{
         return_date: params.return_date
       })
     }else{
-      res.status(203)
+      res.status(400)
       return res.end() 
     }
 
     let data = {
       reservations: reservations
     }
-    res.status(200)
+    res.status(201)
     return res.send(JSON.stringify(data))
   }
   

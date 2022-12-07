@@ -107,7 +107,7 @@ class BookController extends ApplicationController{
     let data = {
       book: book
     }
-    res.status(200)
+    res.status(201)
     return res.send(JSON.stringify(data))
   }
 

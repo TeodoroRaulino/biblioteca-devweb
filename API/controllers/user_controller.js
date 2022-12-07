@@ -74,7 +74,7 @@ class UserController extends ApplicationController{
       user: user
     }
 
-    res.status(200)
+    res.status(201)
     return res.send(JSON.stringify(data))
   }
 

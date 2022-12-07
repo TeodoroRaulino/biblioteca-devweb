@@ -16,6 +16,16 @@
     <a href="/login" class="btn btn-primary">Login</a>
   </div>
 
+  <div class="searchStyle p-5">
+    <input type="search" placeholder="Pesquisa pelo título" id="inputSearch" required>
+    <select name="type" id="selectType">
+      <option selected value="categoria">Categoria</option>
+      <option value="titulo">Titulo</option>
+      <option value="autor">Autor</option>
+    </select>
+    <input type="submit" value="Pesquisar" id="btnSearchIndex">     
+  </div>
+
   <div class="d-grid-book p-5">
     <% books.forEach(book => { %>
       <%- include('../partials/book', {book: book}) %> 
